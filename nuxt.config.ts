@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
-	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode"],
+	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode", "@nuxt/fonts"],
 	css: ["~/assets/css/main.css"],
 	components: [
 		{
@@ -16,6 +16,13 @@ export default defineNuxtConfig({
 		},
 		experimental: {
 			componentDetection: true,
+		},
+	},
+	fonts: {
+		defaults: {
+			weights: ["400 700"],
+			styles: ["normal"],
+			subsets: ["latin-ext", "latin"],
 		},
 	},
 	colorMode: {
