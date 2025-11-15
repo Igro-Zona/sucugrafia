@@ -9,6 +9,11 @@ export default defineNuxtConfig({
   ],
    css: ['~/assets/css/main.css'],
 
+   ui: {
+    experimental: {
+      componentDetection: true
+    }
+   },
   nitro: {
     preset: "cloudflare_module",
 
