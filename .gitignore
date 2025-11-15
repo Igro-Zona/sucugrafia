@@ -13,6 +13,8 @@ node_modules
 logs
 *.log
 
+.eslintcache
+
 # Misc
 .DS_Store
 .fleet
