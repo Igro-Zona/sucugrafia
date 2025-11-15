@@ -21,4 +21,7 @@ export default defineNuxtConfig({
 			nodeCompat: true,
 		},
 	},
+	typescript: {
+		typeCheck: "build",
+	},
 });
