@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+	--color-grass: #008000;
+	--color-sun: #fff200;
+	--color-night: #000000;
+	--color-day: #ffffff;
+}
