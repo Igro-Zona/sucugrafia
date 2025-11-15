@@ -12,7 +12,9 @@
 		"cf-typegen": "wrangler types",
 		"format": "prettier --write .",
 		"lint": "eslint .",
-		"lint:fix": "eslint . --fix"
+		"lint:fix": "eslint . --fix",
+		"pre-commit": "npm run lint:fix && npm run format && npx nuxt typecheck",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"@nuxt/eslint": "^1.10.0",
@@ -23,6 +25,7 @@
 		"vue-router": "^4.6.3"
 	},
 	"devDependencies": {
+		"husky": "^9.1.7",
 		"nitro-cloudflare-dev": "^0.2.2",
 		"nitropack": "^2.12.9",
 		"prettier": "^3.6.2",
