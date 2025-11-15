@@ -1,25 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-  modules: [
-    "nitro-cloudflare-dev",
-    '@nuxt/ui',
-    '@nuxtjs/eslint-module'
-  ],
-   css: ['~/assets/css/main.css'],
+	compatibilityDate: "2025-07-15",
+	devtools: { enabled: true },
+	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxtjs/eslint-module"],
+	css: ["~/assets/css/main.css"],
 
-   ui: {
-    experimental: {
-      componentDetection: true
-    }
-   },
-  nitro: {
-    preset: "cloudflare_module",
+	ui: {
+		experimental: {
+			componentDetection: true,
+		},
+	},
+	nitro: {
+		preset: "cloudflare_module",
 
-    cloudflare: {
-      deployConfig: true,
-      nodeCompat: true
-    }
-  }
-})
+		cloudflare: {
+			deployConfig: true,
+			nodeCompat: true,
+		},
+	},
+});

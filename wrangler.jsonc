@@ -9,11 +9,11 @@
 	"compatibility_date": "2025-11-13",
 	"assets": {
 		"binding": "ASSETS",
-		"directory": "./.output/public/"
+		"directory": "./.output/public/",
 	},
 	"observability": {
-		"enabled": true
-	}
+		"enabled": true,
+	},
 	/**
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including

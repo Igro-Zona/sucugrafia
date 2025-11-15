@@ -9,7 +9,8 @@
 		"preview": "npm run build && wrangler dev",
 		"postinstall": "nuxt prepare",
 		"deploy": "npm run build && wrangler deploy",
-		"cf-typegen": "wrangler types"
+		"cf-typegen": "wrangler types",
+		"format": "prettier --write ."
 	},
 	"dependencies": {
 		"@nuxt/ui": "^4.1.0",
@@ -21,6 +22,8 @@
 	"devDependencies": {
 		"nitro-cloudflare-dev": "^0.2.2",
 		"nitropack": "^2.12.9",
+		"prettier": "^3.6.2",
+		"prettier-plugin-tailwindcss": "^0.7.1",
 		"wrangler": "^4.48.0"
 	}
 }
