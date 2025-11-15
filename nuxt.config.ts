@@ -2,13 +2,21 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
-	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint"],
+	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode"],
 	css: ["~/assets/css/main.css"],
-
+	components: [
+		{
+			path: "~/components",
+			pathPrefix: false,
+		},
+	],
 	ui: {
 		experimental: {
 			componentDetection: true,
 		},
+	},
+	colorMode: {
+		preference: "dark",
 	},
 	eslint: {
 		checker: true,
