@@ -2,11 +2,13 @@
 @import "@nuxt/ui";
 
 @theme {
-	--color-grass: #008000;
-	--color-sun: #fff200;
 	--color-night: #000000;
 	--color-day: #ffffff;
 	--font-main: "Inter", "sans-serif";
 	--font-roboto: "Roboto", system-ui, sans-serif;
 	--font-latto: "Lato", system-ui, sans-serif;
+}
+
+:root {
+	--ui-radius: 0.5rem;
 }

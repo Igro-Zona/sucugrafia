@@ -4,6 +4,14 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode", "@nuxt/fonts"],
 	css: ["~/assets/css/main.css"],
+	icon: {
+		customCollections: [
+			{
+				prefix: "custom",
+				dir: "./app/assets/icons",
+			},
+		],
+	},
 	components: [
 		{
 			path: "~/components",
@@ -20,7 +28,6 @@ export default defineNuxtConfig({
 	},
 	fonts: {
 		defaults: {
-			weights: ["400 700"],
 			styles: ["normal"],
 			subsets: ["latin-ext", "latin"],
 		},
