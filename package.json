@@ -13,7 +13,7 @@
 		"format": "prettier --write .",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"pre-commit": "npm run format && npx nuxt typecheck",
+		"pre-commit": " npx nuxt typecheck && npm run format",
 		"prepare": "husky"
 	},
 	"dependencies": {
