@@ -1,0 +1,20 @@
+{
+	"recommendations": [
+		"mgmcdermott.vscode-language-babel",
+		"formulahendry.code-runner",
+		"vunguyentuan.vscode-css-variables",
+		"dbaeumer.vscode-eslint",
+		"antfu.goto-alias",
+		"ritwickdey.liveserver",
+		"pkief.material-icon-theme",
+		"nuxt.mdc",
+		"nuxtr.nuxt-vscode-extentions",
+		"nuxtr.nuxtr-vscode",
+		"christian-kohler.path-intellisense",
+		"esbenp.prettier-vscode",
+		"mrmlnc.vscode-scss",
+		"bradlc.vscode-tailwindcss",
+		"vue.volar",
+		"sdras.vue-vscode-snippets"
+	]
+}
