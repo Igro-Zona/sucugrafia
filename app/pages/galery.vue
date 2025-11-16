@@ -1,17 +1,30 @@
 <template>
-	<AppPage title="Nuestra Galeria">
-		<p class="mt-2">
-			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae nisi maxime, deleniti magni laborum
-			exercitationem explicabo accusamus nihil expedita, ex accusantium porro quos dolorum at? Sit similique,
-			provident, alias iusto atque natus dolorum accusantium fuga sapiente, deserunt hic veniam nihil aliquam
-			numquam officia perferendis nisi pariatur temporibus odio amet ex quam iste ducimus? Dolores dignissimos
-			tempore praesentium fugiat minima iusto quam illo, id consectetur sit vel eius veniam molestias
-			necessitatibus explicabo debitis ab ullam iste nemo quod voluptas reiciendis dolorum maxime! Delectus
-			architecto, commodi inventore omnis sequi, quasi deleniti sit rerum similique ducimus animi tempora
-			accusamus aut perspiciatis dignissimos facilis error explicabo id aliquam ut ratione, dolore sed amet eos!
-			Perspiciatis nostrum numquam mollitia eum reprehenderit quae doloribus beatae temporibus neque dolorum quasi
-			unde, quisquam nam sapiente distinctio magnam voluptatibus facere cumque molestias porro. Est asperiores
-			iusto, excepturi distinctio ullam quas culpa explicabo quod nisi accusamus tempora velit vel dolorem?
-		</p>
+	<AppPage title="Nuestra galeria">
+		<ScrollAreaRoot
+			class="h-[80dvh]"
+			style="--scrollbar-size: 10px"
+		>
+			<ScrollAreaViewport
+				class="my-4 grid h-full grid-cols-1 gap-4 px-4 lg:grid-cols-2"
+				:as-child="true"
+			>
+				<div
+					v-for="tag in tags"
+					:key="tag"
+					class="text-mauve12 border-t-mauve6 bg-muted h-80 px-4 pt-2.5 text-xs leading-[18px]"
+				>
+					{{ tag }}
+				</div>
+			</ScrollAreaViewport>
+			<ScrollAreaScrollbar class="bg-muted w-2.5 rounded-2xl p-[1.5px]">
+				<ScrollAreaThumb class="bg-secondary translate-x-px cursor-grab rounded-2xl" />
+			</ScrollAreaScrollbar>
+		</ScrollAreaRoot>
 	</AppPage>
 </template>
+
+<script setup lang="ts">
+import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from "reka-ui";
+
+const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
+</script>
