@@ -1,5 +1,5 @@
 <template>
-	<AppPage title="¿Qué es Sucugrafia?">
+	<AppPage title="Nuestros artciulos">
 		<p class="mt-2">
 			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae nisi maxime, deleniti magni laborum
 			exercitationem explicabo accusamus nihil expedita, ex accusantium porro quos dolorum at? Sit similique,
