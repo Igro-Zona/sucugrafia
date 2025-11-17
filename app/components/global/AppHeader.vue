@@ -28,38 +28,29 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const route = useRoute();
 const items = ref<NavigationMenuItem[]>([
 	{
 		label: "Inicio",
 		icon: "i-lucide-flag",
 		to: "/",
-		active: route.path === "/",
-		disabled: route.path === "/",
 		class: "text-md",
 	},
 	{
 		label: "Galeria",
 		icon: "i-lucide-images",
 		to: "/galery",
-		active: route.path === "/galery",
-		disabled: route.path === "/galery",
 		class: "text-md",
 	},
 	{
 		label: "Leer",
 		icon: "i-lucide-clipboard-list",
 		to: "/article",
-		active: route.path === "/article",
-		disabled: route.path === "/article",
 		class: "text-md",
 	},
 	{
 		label: "Referencias",
 		icon: "i-lucide-text-select",
 		to: "/about",
-		active: route.path === "/about",
-		disabled: route.path === "/about",
 		class: "text-md",
 	},
 ]);

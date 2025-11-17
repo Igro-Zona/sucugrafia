@@ -1,5 +1,7 @@
 <template>
 	<UMain as="main">
-		<slot />
+		<UContainer>
+			<slot />
+		</UContainer>
 	</UMain>
 </template>

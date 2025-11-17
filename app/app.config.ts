@@ -7,5 +7,14 @@ export default defineAppConfig({
 			day: "day",
 			night: "night",
 		},
+		navigationMenu: {
+			variants: {
+				disabled: {
+					true: {
+						link: "cursor-default opacity-75",
+					},
+				},
+			},
+		},
 	},
 });

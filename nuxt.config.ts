@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
-	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode", "@nuxt/fonts"],
+	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode", "@nuxt/fonts", "@nuxt/image"],
 	css: ["~/assets/css/main.css"],
 	icon: {
 		customCollections: [
@@ -48,5 +48,12 @@ export default defineNuxtConfig({
 	},
 	typescript: {
 		typeCheck: "build",
+	},
+	image: {
+		quality: 100,
+		format: ["avif", "webp"],
+		densities: [1, 2],
+		provider: "ipx",
+		domains: ["sucugrafia.sucua.workers.dev"],
 	},
 });
