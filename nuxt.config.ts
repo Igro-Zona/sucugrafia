@@ -2,22 +2,37 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
-	modules: ["nitro-cloudflare-dev", "@nuxt/ui", "@nuxt/eslint", "@nuxtjs/color-mode", "@nuxt/fonts", "@nuxt/image"],
+	modules: [
+		"nitro-cloudflare-dev",
+		"@nuxt/icon",
+		"@nuxt/ui",
+		"@nuxt/eslint",
+		"@nuxtjs/color-mode",
+		"@nuxt/fonts",
+		"@nuxt/image",
+	],
 	css: ["~/assets/css/main.css"],
-	icon: {
-		customCollections: [
-			{
-				prefix: "custom",
-				dir: "./app/assets/icons",
-			},
-		],
-	},
 	components: [
 		{
 			path: "~/components",
 			pathPrefix: false,
 		},
 	],
+	icon: {
+		serverBundle: false,
+		clientBundle: {
+			scan: true,
+			includeCustomCollections: true,
+			sizeLimitKb: 256,
+		},
+		customCollections: [
+			{
+				provider: "",
+				prefix: "sucua",
+				dir: "./app/assets/icons",
+			},
+		],
+	},
 	ui: {
 		theme: {
 			colors: ["primary", "secondary", "info", "success", "warning", "error", "day", "night"],
@@ -50,10 +65,12 @@ export default defineNuxtConfig({
 		typeCheck: "build",
 	},
 	image: {
-		quality: 100,
+		quality: 90,
 		format: ["avif", "webp"],
 		densities: [1, 2],
-		provider: "ipx",
 		domains: ["sucugrafia.sucua.workers.dev"],
+		cloudinary: {
+			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
+		},
 	},
 });

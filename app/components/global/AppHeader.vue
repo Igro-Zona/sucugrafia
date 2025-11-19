@@ -7,8 +7,9 @@
 	>
 		<template #title>
 			<UIcon
-				name="i-custom-book"
-				class="text-primary-500 size-8 lg:size-10"
+				name="i-sucua-book"
+				class="text-primary-500"
+				size="30"
 			/>
 			<h1 class="font-main text-primary-500 text-xl font-black lg:text-2xl">Sucugrafia</h1>
 		</template>

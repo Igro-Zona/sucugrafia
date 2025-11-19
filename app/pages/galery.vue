@@ -15,8 +15,8 @@
 					@click="open(src)"
 				>
 					<NuxtPicture
-						:src="`/${src}`"
-						sizes="sm:400px md:500px lg:600px"
+						provider="cloudinary"
+						:src="`${src}`"
 						class="block overflow-hidden rounded-xl object-cover"
 						:img-attrs="{ alt: 'Gallery image', loading: 'lazy', class: 'w-full aspect-video  ' }"
 					/>
