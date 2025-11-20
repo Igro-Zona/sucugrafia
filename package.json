@@ -17,6 +17,7 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"@nuxt/content": "^3.8.2",
 		"@nuxt/eslint": "^1.10.0",
 		"@nuxt/image": "^2.0.0",
 		"@nuxt/ui": "^4.1.0",

@@ -13,5 +13,19 @@
 			unde, quisquam nam sapiente distinctio magnam voluptatibus facere cumque molestias porro. Est asperiores
 			iusto, excepturi distinctio ullam quas culpa explicabo quod nisi accusamus tempora velit vel dolorem?
 		</p>
+		<ContentRenderer
+			v-if="home"
+			:value="home"
+		/>
+		<div v-else>Home not found</div>
 	</AppPage>
 </template>
+
+<script setup lang="ts">
+const { data: home } = await useAsyncData("content", () => queryCollection("content").path("/").first());
+
+useSeoMeta({
+	title: home.value?.title,
+	description: home.value?.description,
+});
+</script>

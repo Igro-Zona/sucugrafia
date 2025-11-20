@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/color-mode",
 		"@nuxt/fonts",
 		"@nuxt/image",
+		"@nuxt/content",
 	],
 	css: ["~/assets/css/main.css"],
 	components: [
@@ -59,6 +60,15 @@ export default defineNuxtConfig({
 		cloudflare: {
 			deployConfig: true,
 			nodeCompat: true,
+			wrangler: {
+				d1_databases: [
+					{
+						binding: "DB",
+						database_name: "content",
+						database_id: "0767df81-aea3-4baf-9cb9-d95fd60612ee",
+					},
+				],
+			},
 		},
 	},
 	typescript: {
@@ -71,6 +81,25 @@ export default defineNuxtConfig({
 		domains: ["sucugrafia.sucua.workers.dev"],
 		cloudinary: {
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
+		},
+	},
+	content: {
+		database: {
+			type: "d1",
+			bindingName: "DB",
+		},
+		build: {
+			markdown: {
+				toc: {
+					depth: 3,
+				},
+			},
+			pathMeta: {
+				forceLeadingSlash: false,
+			},
+		},
+		renderer: {
+			anchorLinks: false,
 		},
 	},
 });
