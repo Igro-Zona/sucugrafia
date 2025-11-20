@@ -22,10 +22,6 @@
 </template>
 
 <script setup lang="ts">
-const { data: home } = await useAsyncData("content", () => queryCollection("content").path("/").first());
-
-useSeoMeta({
-	title: home.value?.title,
-	description: home.value?.description,
-});
+const route = useRoute();
+const { data: home } = await useAsyncData(route.path, () => queryCollection("content").path(route.path).first());
 </script>
