@@ -61,6 +61,9 @@ export default defineNuxtConfig({
 			deployConfig: true,
 			nodeCompat: true,
 			wrangler: {
+				observability: {
+					logs: { enabled: true },
+				},
 				d1_databases: [
 					{
 						binding: "DB",
@@ -93,9 +96,6 @@ export default defineNuxtConfig({
 				toc: {
 					depth: 3,
 				},
-			},
-			pathMeta: {
-				forceLeadingSlash: false,
 			},
 		},
 		renderer: {
