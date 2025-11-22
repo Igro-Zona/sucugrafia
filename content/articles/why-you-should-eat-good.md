@@ -45,11 +45,6 @@ cousin twice removed. These are the foods that:
 - Can survive a nuclear apocalypse (and probably will)
 - Light up the pleasure centers of your brain like a Christmas tree
 
-::u-table{:data='[{"Food":"Frozen berries, canned beans, plain yogurt", "Benefit":"Retains most nutrients, minimal
-additives"}, {"Food":"Whole grain bread, cheese, canned tomatoes", "Benefit":"Still nutritious, convenient options"},
-{"Food":"Breakfast cereals, flavored yogurts, deli meats", "Benefit":"Convenience vs. nutrition trade-off"},
-{"Food":"Pop-Tarts, instant noodles, soda", "Benefit":"Convenience, long shelf life, questionable nutrition"}]'} ::
-
 ## Why Your Body Loves Whole Foods (And You Will Too)
 
 When you eat whole foods, magical things happen:

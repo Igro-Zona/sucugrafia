@@ -36,11 +36,6 @@ needs a ride somewhere, and water is the driver.
 That "8 glasses a day" rule? It's about as accurate as weather forecasts and horoscopes. Your water needs depend on
 several factors:
 
-::u-table{:data='[{"Factor":"Body Weight", "Impact":"Heavier people need more water (sorry, physics)"},
-{"Factor":"Activity Level", "Impact":"Sweating = need more H2O (shocking revelation)"}, {"Factor":"Climate",
-"Impact":"Hot/humid weather increases needs"}, {"Factor":"Overall Health", "Impact":"Fever, vomiting, or illness ups
-requirements"}, {"Factor":"Pregnancy/Breastfeeding", "Impact":"Growing humans is thirsty work"}]'} ::
-
 **The actual formula:** Aim for about 0.5-1 ounce per pound of body weight. So if you weigh 150 pounds, you're looking
 at 75-150 ounces daily. That's roughly 2-4 liters, or "a lot more than you're probably drinking right now."
 

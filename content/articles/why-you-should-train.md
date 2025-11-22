@@ -44,12 +44,6 @@ well-worn path through the forest – the more you walk it, the easier it become
 
 Small, consistent actions don't just add up – they multiply. Here's what happens when you stick with something:
 
-::u-table{:data='[{"Time Period":"Week 1-2", "What Happens":"Feels hard, requires lots of willpower", "Example":"Every
-workout is a battle"}, {"Time Period":"Week 3-4", "What Happens":"Starts to feel slightly easier", "Example":"You
-remember to pack gym clothes"}, {"Time Period":"Week 5-8", "What Happens":"Becomes part of routine", "Example":"You feel
-weird on rest days"}, {"Time Period":"Month 3+", "What Happens":"Automatic behavior", "Example":"Working out feels as
-natural as brushing teeth"}]'} ::
-
 ### Your Brain on Consistency
 
 - **Neural pathways strengthen** (like upgrading from dial-up to fiber optic internet)
