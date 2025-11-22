@@ -6,19 +6,31 @@ export default defineNuxtConfig({
 		"nitro-cloudflare-dev",
 		"@nuxt/icon",
 		"@nuxt/ui",
+		"@nuxt/content",
 		"@nuxt/eslint",
 		"@nuxtjs/color-mode",
 		"@nuxt/fonts",
 		"@nuxt/image",
-		"@nuxt/content",
+		"@nuxtjs/seo",
 	],
 	css: ["~/assets/css/main.css"],
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: "es",
+			},
+		},
+	},
 	components: [
 		{
 			path: "~/components",
 			pathPrefix: false,
 		},
 	],
+	site: {
+		url: "https://sucugrafia.sucua.workers.dev",
+		name: "Sucugrafia",
+	},
 	icon: {
 		serverBundle: false,
 		clientBundle: {
@@ -64,13 +76,6 @@ export default defineNuxtConfig({
 				observability: {
 					logs: { enabled: true },
 				},
-				d1_databases: [
-					{
-						binding: "DB",
-						database_name: "content",
-						database_id: "0767df81-aea3-4baf-9cb9-d95fd60612ee",
-					},
-				],
 			},
 		},
 	},
@@ -95,11 +100,15 @@ export default defineNuxtConfig({
 			markdown: {
 				toc: {
 					depth: 3,
+					searchDepth: 3,
+				},
+				remarkPlugins: {
+					"remark-reading-time": {},
 				},
 			},
 		},
 		renderer: {
-			anchorLinks: false,
+			anchorLinks: true,
 		},
 	},
 });

@@ -45,7 +45,7 @@ const items = ref<NavigationMenuItem[]>([
 	{
 		label: "Leer",
 		icon: "i-lucide-clipboard-list",
-		to: "/article",
+		to: "/articles",
 		class: "text-md",
 	},
 	{
