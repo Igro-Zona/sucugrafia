@@ -12,13 +12,27 @@ export default defineNuxtConfig({
 		"@nuxt/fonts",
 		"@nuxt/image",
 		"@nuxtjs/seo",
+		"@nuxtjs/i18n",
 	],
+	i18n: {
+		locales: [{ code: "es", language: "es-EC" }],
+		defaultLocale: "es",
+	},
 	css: ["~/assets/css/main.css"],
 	app: {
 		head: {
 			htmlAttrs: {
 				lang: "es",
 			},
+		},
+		pageTransition: {
+			name: "page",
+			mode: "out-in",
+		},
+	},
+	vite: {
+		css: {
+			devSourcemap: false,
 		},
 	},
 	components: [
