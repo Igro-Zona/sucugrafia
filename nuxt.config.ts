@@ -14,6 +14,22 @@ export default defineNuxtConfig({
 		"@nuxtjs/seo",
 		"@nuxtjs/i18n",
 	],
+
+	css: ["~/assets/css/main.css"],
+	app: {
+		pageTransition: {
+			name: "page",
+			mode: "out-in",
+		},
+	},
+
+	components: [
+		{
+			path: "~/components",
+			pathPrefix: false,
+		},
+	],
+
 	routeRules: {
 		"/": {
 			static: true,
@@ -31,37 +47,29 @@ export default defineNuxtConfig({
 			static: true,
 		},
 	},
+
+	nitro: {
+		preset: "cloudflare_module",
+		cloudflare: {
+			deployConfig: true,
+			nodeCompat: true,
+		},
+	},
+
+	typescript: {
+		typeCheck: "build",
+	},
+
 	i18n: {
 		locales: [{ code: "es", language: "es-EC" }],
 		defaultLocale: "es",
 	},
-	css: ["~/assets/css/main.css"],
-	app: {
-		head: {
-			htmlAttrs: {
-				lang: "es",
-			},
-		},
-		pageTransition: {
-			name: "page",
-			mode: "out-in",
-		},
-	},
-	vite: {
-		css: {
-			devSourcemap: false,
-		},
-	},
-	components: [
-		{
-			path: "~/components",
-			pathPrefix: false,
-		},
-	],
+
 	site: {
 		url: "https://sucugrafia.sucua.workers.dev",
 		name: "Sucugrafia",
 	},
+
 	icon: {
 		serverBundle: false,
 		clientBundle: {
@@ -77,6 +85,7 @@ export default defineNuxtConfig({
 			},
 		],
 	},
+
 	ui: {
 		theme: {
 			colors: ["primary", "secondary", "info", "success", "warning", "error", "day", "night"],
@@ -85,34 +94,22 @@ export default defineNuxtConfig({
 			componentDetection: true,
 		},
 	},
+
 	fonts: {
 		defaults: {
 			styles: ["normal"],
 			subsets: ["latin-ext", "latin"],
 		},
 	},
+
 	colorMode: {
 		preference: "dark",
 	},
+
 	eslint: {
 		checker: true,
 	},
-	nitro: {
-		preset: "cloudflare_module",
 
-		cloudflare: {
-			deployConfig: true,
-			nodeCompat: true,
-			wrangler: {
-				observability: {
-					logs: { enabled: true },
-				},
-			},
-		},
-	},
-	typescript: {
-		typeCheck: "build",
-	},
 	image: {
 		quality: 90,
 		format: ["avif", "webp"],
@@ -122,11 +119,8 @@ export default defineNuxtConfig({
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
 		},
 	},
+
 	content: {
-		database: {
-			type: "d1",
-			bindingName: "DB",
-		},
 		build: {
 			markdown: {
 				toc: {
