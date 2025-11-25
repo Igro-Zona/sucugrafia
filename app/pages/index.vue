@@ -13,15 +13,5 @@
 			unde, quisquam nam sapiente distinctio magnam voluptatibus facere cumque molestias porro. Est asperiores
 			iusto, excepturi distinctio ullam quas culpa explicabo quod nisi accusamus tempora velit vel dolorem?
 		</p>
-		<ContentRenderer
-			v-if="home"
-			:value="home"
-		/>
-		<div v-else>Home not found</div>
 	</AppPage>
 </template>
-
-<script setup lang="ts">
-const route = useRoute();
-const { data: home } = await useAsyncData(route.path, () => queryCollection("content").path(route.path).first());
-</script>
