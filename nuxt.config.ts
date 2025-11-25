@@ -12,13 +12,44 @@ export default defineNuxtConfig({
 		"@nuxt/fonts",
 		"@nuxt/image",
 		"@nuxtjs/seo",
+		"@nuxtjs/i18n",
 	],
+	routeRules: {
+		"/": {
+			static: true,
+		},
+		"/galery": {
+			static: true,
+		},
+		"/articles": {
+			prerender: true,
+		},
+		"/articles/*": {
+			prerender: true,
+		},
+		"/about": {
+			static: true,
+		},
+	},
+	i18n: {
+		locales: [{ code: "es", language: "es-EC" }],
+		defaultLocale: "es",
+	},
 	css: ["~/assets/css/main.css"],
 	app: {
 		head: {
 			htmlAttrs: {
 				lang: "es",
 			},
+		},
+		pageTransition: {
+			name: "page",
+			mode: "out-in",
+		},
+	},
+	vite: {
+		css: {
+			devSourcemap: false,
 		},
 	},
 	components: [
