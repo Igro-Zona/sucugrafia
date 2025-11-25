@@ -37,12 +37,6 @@ export default defineNuxtConfig({
 		"/galery": {
 			static: true,
 		},
-		"/articles": {
-			prerender: true,
-		},
-		"/articles/*": {
-			prerender: true,
-		},
 		"/about": {
 			static: true,
 		},
@@ -121,6 +115,10 @@ export default defineNuxtConfig({
 	},
 
 	content: {
+		database: {
+			type: "d1",
+			bindingName: "DB",
+		},
 		build: {
 			markdown: {
 				toc: {
