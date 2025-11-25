@@ -14,6 +14,23 @@ export default defineNuxtConfig({
 		"@nuxtjs/seo",
 		"@nuxtjs/i18n",
 	],
+	routeRules: {
+		"/": {
+			static: true,
+		},
+		"/galery": {
+			static: true,
+		},
+		"/articles": {
+			prerender: true,
+		},
+		"/articles/*": {
+			prerender: true,
+		},
+		"/about": {
+			static: true,
+		},
+	},
 	i18n: {
 		locales: [{ code: "es", language: "es-EC" }],
 		defaultLocale: "es",
