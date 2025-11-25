@@ -14,13 +14,6 @@
 	"observability": {
 		"enabled": true,
 	},
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "content",
-			"database_id": "0767df81-aea3-4baf-9cb9-d95fd60612ee",
-		},
-	],
 	/**
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
