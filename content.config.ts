@@ -1,6 +1,6 @@
 import { defineContentConfig, defineCollection } from "@nuxt/content";
 import { asSitemapCollection } from "@nuxtjs/sitemap/content";
-import type { PageCollectionItemBase } from "@nuxt/content";
+import type { ArticlesCollectionItem } from "@nuxt/content";
 import * as z from "zod";
 
 const articleSchema = z.object({
@@ -15,7 +15,7 @@ const articleSchema = z.object({
 	}),
 });
 
-export type Article = z.infer<typeof articleSchema> & PageCollectionItemBase;
+export type Article = z.infer<typeof articleSchema> & ArticlesCollectionItem;
 
 export default defineContentConfig({
 	collections: {

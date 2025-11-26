@@ -4,13 +4,13 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	modules: [
 		"nitro-cloudflare-dev",
-		"@nuxt/icon",
-		"@nuxt/ui",
-		"@nuxt/content",
 		"@nuxt/eslint",
-		"@nuxtjs/color-mode",
+		"@nuxt/icon",
 		"@nuxt/fonts",
+		"@nuxtjs/color-mode",
+		"@nuxt/ui",
 		"@nuxt/image",
+		"@nuxt/content",
 		"@nuxtjs/seo",
 		"@nuxtjs/i18n",
 	],
@@ -54,14 +54,8 @@ export default defineNuxtConfig({
 		typeCheck: "build",
 	},
 
-	i18n: {
-		locales: [{ code: "es", language: "es-EC" }],
-		defaultLocale: "es",
-	},
-
-	site: {
-		url: "https://sucugrafia.sucua.workers.dev",
-		name: "Sucugrafia",
+	eslint: {
+		checker: true,
 	},
 
 	icon: {
@@ -80,15 +74,6 @@ export default defineNuxtConfig({
 		],
 	},
 
-	ui: {
-		theme: {
-			colors: ["primary", "secondary", "info", "success", "warning", "error", "day", "night"],
-		},
-		experimental: {
-			componentDetection: true,
-		},
-	},
-
 	fonts: {
 		defaults: {
 			styles: ["normal"],
@@ -100,8 +85,13 @@ export default defineNuxtConfig({
 		preference: "dark",
 	},
 
-	eslint: {
-		checker: true,
+	ui: {
+		theme: {
+			colors: ["primary", "secondary", "info", "success", "warning", "error", "day", "night"],
+		},
+		experimental: {
+			componentDetection: true,
+		},
 	},
 
 	image: {
@@ -133,5 +123,15 @@ export default defineNuxtConfig({
 		renderer: {
 			anchorLinks: true,
 		},
+	},
+
+	site: {
+		url: "https://sucugrafia.sucua.workers.dev",
+		name: "Sucugrafia",
+	},
+
+	i18n: {
+		locales: [{ code: "es", language: "es-EC" }],
+		defaultLocale: "es",
 	},
 });
