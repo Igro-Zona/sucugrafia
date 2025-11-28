@@ -1,17 +1,17 @@
 <template>
 	<UHeader
 		title="Sucugrafia"
-		class="border-primary shadow-primary-500/20 shadow-2xl backdrop-blur-xs"
+		class="border-primary shadow-primary/20 shadow-2xl backdrop-blur-xs"
 		mode="slideover"
 		:toggle="{ color: 'primary', variant: 'link', class: 'cursor-pointer' }"
 	>
 		<template #title>
 			<UIcon
 				name="i-sucua-book"
-				class="text-primary-500"
+				class="text-primary"
 				size="30"
 			/>
-			<h1 class="font-main text-primary-500 text-xl font-black lg:text-2xl">Sucugrafia</h1>
+			<h1 class="font-main text-primary text-xl font-black lg:text-2xl">Sucugrafia</h1>
 		</template>
 
 		<UNavigationMenu :items />

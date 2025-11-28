@@ -2,7 +2,7 @@
 	<UApp :locale="es">
 		<AppHeader />
 
-		<AppMain>
+		<AppMain class="light:bg-muted">
 			<NuxtPage />
 		</AppMain>
 

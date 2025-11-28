@@ -7,7 +7,6 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 		"@nuxt/icon",
 		"@nuxt/fonts",
-		"@nuxtjs/color-mode",
 		"@nuxt/ui",
 		"@nuxt/image",
 		"@nuxt/content",
@@ -17,6 +16,11 @@ export default defineNuxtConfig({
 
 	css: ["~/assets/css/main.css"],
 	app: {
+		head: {
+			htmlAttrs: {
+				class: "dark",
+			},
+		},
 		pageTransition: {
 			name: "page",
 			mode: "out-in",
@@ -81,10 +85,6 @@ export default defineNuxtConfig({
 		},
 	},
 
-	colorMode: {
-		preference: "dark",
-	},
-
 	ui: {
 		theme: {
 			colors: ["primary", "secondary", "info", "success", "warning", "error", "day", "night"],
@@ -92,6 +92,7 @@ export default defineNuxtConfig({
 		experimental: {
 			componentDetection: true,
 		},
+		colorMode: false,
 	},
 
 	image: {

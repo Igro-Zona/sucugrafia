@@ -24,5 +24,8 @@ export default defineAppConfig({
 				linkDescription: "text-left",
 			},
 		},
+		theme: {
+			dark: true,
+		},
 	},
 });
