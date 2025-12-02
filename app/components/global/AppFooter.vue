@@ -1,12 +1,16 @@
 <template>
-	<footer class="border-primary mt-4 border-t lg:mt-8">
+	<footer class="border-muted mt-4 border-t lg:mt-8">
 		<UiContainer>
 			<UFooterColumns
 				:columns
 				class="py-8 lg:py-12"
 			/>
 		</UiContainer>
-		<UiContainer class="border-muted flex flex-col gap-3 border-t py-4 lg:flex-row">
+
+		<USeparator color="primary" />
+
+		<UiContainer class="flex flex-col items-center gap-3 py-4 lg:flex-row">
+			<UiLogo />
 			<p class="text-muted text-sm">
 				Copyright © {{ new Date().getFullYear() }} | Todos los derechos reservados.
 			</p>

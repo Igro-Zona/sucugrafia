@@ -6,12 +6,7 @@
 		:toggle="{ color: 'primary', variant: 'link', class: 'cursor-pointer' }"
 	>
 		<template #title>
-			<UIcon
-				name="i-sucua-book"
-				class="text-primary"
-				size="30"
-			/>
-			<h1 class="font-main text-primary text-xl font-black lg:text-2xl">Sucugrafia</h1>
+			<UiLogo as="h1" />
 		</template>
 
 		<UNavigationMenu :items />
