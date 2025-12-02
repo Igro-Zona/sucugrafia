@@ -2,10 +2,10 @@
 @import "@nuxt/ui";
 
 @theme {
+	--default-font-family: var(--font-main);
 	--color-night: #000000;
 	--color-day: #ffffff;
 	--font-main: "Inter", "sans-serif";
-	--font-roboto: "Roboto", system-ui, sans-serif;
 	--font-latto: "Lato", system-ui, sans-serif;
 }
 

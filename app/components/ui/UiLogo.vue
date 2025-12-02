@@ -1,6 +1,6 @@
 <template>
 	<Primitive
-		:class="twMerge('font-main text-primary flex items-center gap-1 text-2xl font-semibold', className)"
+		:class="twMerge('text-primary flex items-center gap-1 text-2xl font-semibold', className)"
 		:as
 	>
 		<Icon
