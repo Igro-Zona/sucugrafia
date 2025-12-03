@@ -28,4 +28,9 @@ export default defineAppConfig({
 			dark: true,
 		},
 	},
+	icon: {
+		size: "30px",
+		mode: "svg",
+		cssLayer: "base",
+	},
 });

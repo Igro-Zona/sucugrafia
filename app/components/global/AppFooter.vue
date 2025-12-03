@@ -13,29 +13,19 @@
 		<UiContainer class="flex auto-cols-fr grid-flow-col flex-col gap-8 lg:grid xl:col-span-2">
 			<UFooterColumns
 				:columns
-				class="py-8 lg:py-12"
-			/>
-			<nav
-				aria-label="Navegación"
 				class="py-8 text-sm lg:py-12"
-			>
-				<h3 class="font-semibold">Navegación</h3>
+			/>
+		</UiContainer>
 
-				<ul class="text-muted mt-6 space-y-4">
-					<li class="hover:text-default">
-						<UiLink to="https://nuxters.nuxt.com">Nuxters</UiLink>
-					</li>
-					<li class="hover:text-default">
-						<UiLink to="https://nuxters.nuxt.com">Nuxters</UiLink>
-					</li>
-					<li class="hover:text-default">
-						<UiLink to="https://nuxters.nuxt.com">Nuxters</UiLink>
-					</li>
-					<li class="hover:text-default">
-						<UiLink to="https://nuxters.nuxt.com">Nuxters</UiLink>
-					</li>
-				</ul>
-			</nav>
+		<USeparator color="primary" />
+
+		<UiContainer class="flex auto-cols-fr grid-flow-col flex-col gap-8 lg:grid xl:col-span-2">
+			<FooterColumn
+				v-for="(column, index) in columns"
+				:key="index"
+				:label="column.label"
+				:children="column.children"
+			/>
 		</UiContainer>
 
 		<USeparator color="primary" />
@@ -55,11 +45,7 @@
 						:styled="false"
 						class="hover:bg-muted active:bg-accented rounded-lg p-2 lg:hidden"
 					>
-						<Icon
-							name="i-simple-icons-github"
-							size="30"
-							class="text-muted"
-						/>
+						<Icon name="i-simple-icons-github" />
 					</UiLink>
 				</div>
 
@@ -71,22 +57,16 @@
 			<UiLink
 				to="https://github.com/Igro-Zona/sucugrafia"
 				:styled="false"
-				class="hover:bg-muted active:bg-accented hidden rounded-lg p-2 lg:inline-flex"
+				class="hover:bg-muted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
 			>
-				<Icon
-					name="i-simple-icons-github"
-					size="30"
-					class="text-muted"
-				/>
+				<Icon name="i-simple-icons-github" />
 			</UiLink>
 		</UiContainer>
 	</footer>
 </template>
 
 <script setup lang="ts">
-import type { FooterColumn } from "@nuxt/ui";
-
-const columns: FooterColumn[] = [
+const columns = [
 	{
 		label: "Community",
 		children: [
@@ -98,12 +78,10 @@ const columns: FooterColumn[] = [
 			{
 				label: "Video Courses",
 				to: "https://masteringnuxt.com/nuxt3?ref=nuxt",
-				target: "_blank",
 			},
 			{
 				label: "Nuxt on GitHub",
 				to: "https://github.com/nuxt",
-				target: "_blank",
 			},
 		],
 	},
@@ -113,22 +91,18 @@ const columns: FooterColumn[] = [
 			{
 				label: "Nuxt Content",
 				to: "https://content.nuxt.com/",
-				target: "_blank",
 			},
 			{
 				label: "Nuxt DevTools",
 				to: "https://devtools.nuxt.com/",
-				target: "_blank",
 			},
 			{
 				label: "Nuxt Image",
 				to: "https://image.nuxt.com/",
-				target: "_blank",
 			},
 			{
 				label: "Nuxt UI",
 				to: "https://ui.nuxt.com/",
-				target: "_blank",
 			},
 		],
 	},
