@@ -24,5 +24,13 @@ export default defineAppConfig({
 				linkDescription: "text-left",
 			},
 		},
+		theme: {
+			dark: true,
+		},
+	},
+	icon: {
+		size: "30px",
+		mode: "svg",
+		cssLayer: "base",
 	},
 });
