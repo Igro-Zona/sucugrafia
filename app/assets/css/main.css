@@ -12,3 +12,8 @@
 :root {
 	--ui-radius: 0.5rem;
 }
+
+.router-link-active,
+.router-link-active-exact {
+	@apply text-primary;
+}

@@ -1,35 +1,32 @@
 <template>
-	<nav
-		:aria-label="props.label"
-		class="py-8 text-sm lg:py-12"
-	>
-		<h3 class="font-semibold">{{ props.label }}</h3>
+	<div>
+		<h3 class="font-semibold">{{ label }}</h3>
 
 		<ul
-			v-if="children"
+			v-if="links"
 			class="text-muted mt-6 space-y-4"
 		>
 			<li
-				v-for="(item, index) in props.children"
+				v-for="(link, index) in links"
 				:key="index"
 				class="hover:text-default cursor-pointer transition-colors"
 			>
-				<UiLink v-bind="item">{{ item.label }}</UiLink>
+				<UiLink v-bind="link">{{ link.label }}</UiLink>
 			</li>
 		</ul>
-	</nav>
+	</div>
 </template>
 
 <script setup lang="ts">
 import type { NuxtLinkProps } from "#app";
 
-type ChildrenProps = {
+type LinkProps = {
 	label: string;
 } & NuxtLinkProps;
 
-const props = defineProps<{
-	label: string;
-	children?: ChildrenProps[];
+const { label = "", links = undefined } = defineProps<{
+	label?: string;
+	links?: LinkProps[];
 }>();
 </script>
 
