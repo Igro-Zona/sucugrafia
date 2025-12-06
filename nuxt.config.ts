@@ -11,7 +11,6 @@ export default defineNuxtConfig({
 		"@nuxt/image",
 		"@nuxt/content",
 		"@nuxtjs/seo",
-		"@nuxtjs/i18n",
 	],
 
 	css: ["~/assets/css/main.css"],
@@ -25,7 +24,6 @@ export default defineNuxtConfig({
 			name: "page",
 			mode: "out-in",
 		},
-		baseURL: "/",
 	},
 
 	components: [
@@ -35,23 +33,10 @@ export default defineNuxtConfig({
 		},
 	],
 
-	routeRules: {
-		"/": {
-			static: true,
-		},
-		"/galery": {
-			static: true,
-		},
-		"/about": {
-			static: true,
-		},
-	},
-
 	nitro: {
 		preset: "cloudflare_module",
 		cloudflare: {
 			deployConfig: true,
-			nodeCompat: true,
 		},
 	},
 
@@ -87,9 +72,6 @@ export default defineNuxtConfig({
 	},
 
 	ui: {
-		theme: {
-			colors: ["primary", "secondary", "info", "success", "warning", "error", "day", "night"],
-		},
 		experimental: {
 			componentDetection: true,
 		},
@@ -130,10 +112,6 @@ export default defineNuxtConfig({
 	site: {
 		url: "https://sucugrafia.sucua.workers.dev",
 		name: "Sucugrafia",
-	},
-
-	i18n: {
-		locales: [{ code: "es", language: "es-EC" }],
-		defaultLocale: "es",
+		defaultLocale: "es-EC",
 	},
 });

@@ -4,8 +4,6 @@ export default defineAppConfig({
 			primary: "green",
 			secondary: "yellow",
 			neutral: "neutral",
-			day: "day",
-			night: "night",
 		},
 		navigationMenu: {
 			variants: {
@@ -23,9 +21,6 @@ export default defineAppConfig({
 				linkLeadingIcon: ["group-hover:text-secondary"],
 				linkDescription: "text-left",
 			},
-		},
-		theme: {
-			dark: true,
 		},
 	},
 	icon: {
