@@ -57,7 +57,7 @@
 							name="material-symbols:calendar-today-rounded"
 							class="text-secondary"
 						/>
-						{{ dayjs(data?.meta.date).format("DD MMM YYYY") }}
+						{{ formattedDate }}
 					</p>
 					<p class="flex items-center gap-1">
 						<UIcon
@@ -140,12 +140,13 @@
 </template>
 
 <script lang="ts" setup>
-import dayjs from "dayjs";
 import l from "lodash";
 import type { Article } from "./../../../content.config";
+import dayjs from "dayjs";
 
 const route = useRoute();
 const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
+const formattedDate = computed(() => (data.value?.meta?.date ? dayjs(data.value.meta.date).format("DD MMM YYYY") : ""));
 
 const { data } = await useAsyncData(
 	route.path,
