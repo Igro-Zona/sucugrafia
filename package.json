@@ -32,7 +32,7 @@
 		"@iconify-json/lucide": "^1.2.79",
 		"@iconify-json/material-symbols": "^1.2.49",
 		"@iconify-json/mdi": "^1.2.3",
-		"@iconify-json/simple-icons": "^1.2.61",
+		"@iconify-json/simple-icons": "^1.2.62",
 		"@nuxt/content": "^3.9.0",
 		"@nuxt/eslint": "^1.11.0",
 		"better-sqlite3": "^12.5.0",
@@ -45,7 +45,7 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.25",
-		"vue-tsc": "^3.1.6",
+		"vue-tsc": "^3.1.7",
 		"wrangler": "^4.53.0",
 		"zod": "^4.1.13"
 	},
