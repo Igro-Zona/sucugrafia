@@ -5,10 +5,11 @@ export default function (dateInput: Date) {
 		return "Fecha inválida";
 	}
 
-	const months = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+	const formatter = new Intl.DateTimeFormat("es-ES", {
+		day: "2-digit",
+		month: "short",
+		year: "numeric",
+	});
 
-	const day = String(date.getDate()).padStart(2, "0");
-	const month = months[date.getMonth()];
-	const year = date.getFullYear();
-	return `${day} ${month} ${year}`;
+	return formatter.format(date).replace(".", "");
 }
