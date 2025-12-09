@@ -1,7 +1,7 @@
 <template>
 	<UHeader
 		title="Sucugrafia"
-		class="border-primary shadow-primary/20 shadow-2xl backdrop-blur-xs"
+		class="border-primary shadow-primary/40 shadow-2xl backdrop-blur-xs"
 		mode="slideover"
 		:toggle="{ color: 'primary', variant: 'link', class: 'cursor-pointer' }"
 	>
