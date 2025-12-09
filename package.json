@@ -21,10 +21,8 @@
 		"@nuxt/image": "^2.0.0",
 		"@nuxt/ui": "^4.1.0",
 		"@nuxtjs/seo": "^3.2.2",
-		"dayjs": "^1.11.19",
-		"eslint": "^9.39.1",
-		"fuse.js": "^7.1.0",
-		"nuxt": "^4.2.1",
+		"lodash-es": "^4.17.21",
+		"nuxt": "^4.2.2",
 		"remark-reading-time": "^2.0.2",
 		"vue-router": "^4.6.3"
 	},
@@ -36,6 +34,7 @@
 		"@nuxt/content": "^3.9.0",
 		"@nuxt/eslint": "^1.11.0",
 		"better-sqlite3": "^12.5.0",
+		"eslint": "^9.39.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.2.6",
 		"nitro-cloudflare-dev": "^0.2.2",
@@ -45,12 +44,9 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.25",
-		"vue-tsc": "^3.1.7",
+		"vue-tsc": "^3.1.8",
 		"wrangler": "^4.53.0",
 		"zod": "^4.1.13"
-	},
-	"overrides": {
-		"vue-i18n": "11.2.1"
 	},
 	"lint-staged": {
 		"*.{js,mjs,ts,mts,vue}": "npm run lint:fix"
