@@ -140,13 +140,12 @@
 </template>
 
 <script lang="ts" setup>
-import l from "lodash";
 import type { Article } from "./../../../content.config";
-import dayjs from "dayjs";
+import { orderBy, intersection } from "lodash";
 
 const route = useRoute();
 const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
-const formattedDate = computed(() => (data.value?.meta?.date ? dayjs(data.value.meta.date).format("DD MMM YYYY") : ""));
+const formattedDate = computed(() => (data.value?.meta?.date ? formatDate(data.value.meta.date) : ""));
 
 const { data } = await useAsyncData(
 	route.path,
@@ -154,7 +153,7 @@ const { data } = await useAsyncData(
 );
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 	const res = (await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all()) as Article[];
-	return l.orderBy(res, (a) => l.intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
+	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
 });
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 	return queryCollectionItemSurroundings("articles", route.path, {

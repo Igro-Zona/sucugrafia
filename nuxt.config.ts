@@ -8,10 +8,18 @@ export default defineNuxtConfig({
 		"@nuxt/icon",
 		"@nuxt/fonts",
 		"@nuxt/ui",
-		"@nuxt/image",
 		"@nuxt/content",
+		"@nuxt/image",
 		"@nuxtjs/seo",
 	],
+
+	vite: {
+		resolve: {
+			alias: {
+				lodash: "lodash-es",
+			},
+		},
+	},
 
 	css: ["~/assets/css/main.css"],
 	app: {
@@ -32,6 +40,12 @@ export default defineNuxtConfig({
 			pathPrefix: false,
 		},
 	],
+
+	mdc: {
+		components: {
+			prose: false,
+		},
+	},
 
 	nitro: {
 		preset: "cloudflare_module",
