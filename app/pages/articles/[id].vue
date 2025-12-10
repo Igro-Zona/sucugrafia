@@ -1,17 +1,91 @@
 <template>
-	<UPage v-if="data">
-		<template #right>
-			<UPageAside class="border-l-default border-l">
-				<UContentToc
-					class="top-0"
-					title="Contenido"
-					color="secondary"
-					:links="data.body.toc?.links"
-				/>
+	<UiContainer>
+		<UPage v-if="data">
+			<template #right>
+				<UPageAside class="border-l-default border-l">
+					<UContentToc
+						class="top-0"
+						title="Contenido"
+						color="secondary"
+						:links="data.body.toc?.links"
+					/>
 
-				<div class="flex flex-col justify-between gap-2">
+					<div class="flex flex-col justify-between gap-2">
+						<UButton
+							class="w-full hover:cursor-pointer"
+							icon="material-symbols:share"
+							variant="subtle"
+							color="neutral"
+							size="xl"
+							@click="share"
+							>Compartir</UButton
+						>
+
+						<UButton
+							class="w-full hover:cursor-pointer"
+							icon="mdi:link-variant"
+							variant="subtle"
+							color="neutral"
+							size="xl"
+							:trailing-icon="isLinkCopied ? 'i-lucide-check' : undefined"
+							@click="copyLink"
+						>
+							{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
+						>
+					</div>
+				</UPageAside>
+			</template>
+
+			<UPageHeader
+				class="text-center"
+				:title="data?.title"
+				:description="data?.description"
+			>
+				<div class="mt-4 flex flex-wrap items-center justify-between gap-4">
+					<div class="flex flex-wrap items-center gap-2">
+						<UBadge
+							v-for="tag in data?.meta.tags"
+							:key="tag"
+							color="secondary"
+							variant="soft"
+							size="xl"
+							>{{ tag }}</UBadge
+						>
+					</div>
+					<div class="flex gap-4">
+						<p class="flex items-center gap-1">
+							<UIcon
+								name="material-symbols:calendar-today-rounded"
+								class="text-secondary"
+							/>
+							{{ formattedDate }}
+						</p>
+						<p class="flex items-center gap-1">
+							<UIcon
+								name="material-symbols:alarm-rounded"
+								class="text-secondary"
+							/>
+							{{ readingTimeText }}
+						</p>
+					</div>
+				</div>
+			</UPageHeader>
+
+			<UContentToc
+				class="lg:hidden"
+				title="Contenido"
+				color="secondary"
+				:links="data.body.toc?.links"
+				highlight
+				:ui="{
+					container: 'border-solid',
+				}"
+			/>
+
+			<UPageBody>
+				<div class="flex gap-2 lg:hidden">
 					<UButton
-						class="w-full hover:cursor-pointer"
+						class="hover:cursor-pointer"
 						icon="material-symbols:share"
 						variant="subtle"
 						color="neutral"
@@ -21,7 +95,7 @@
 					>
 
 					<UButton
-						class="w-full hover:cursor-pointer"
+						class="hover:cursor-pointer"
 						icon="mdi:link-variant"
 						variant="subtle"
 						color="neutral"
@@ -32,111 +106,39 @@
 						{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
 					>
 				</div>
-			</UPageAside>
-		</template>
 
-		<UPageHeader
-			class="text-center"
-			:title="data?.title"
-			:description="data?.description"
-		>
-			<div class="mt-4 flex flex-wrap items-center justify-between gap-4">
-				<div class="flex flex-wrap items-center gap-2">
-					<UBadge
-						v-for="tag in data?.meta.tags"
-						:key="tag"
-						color="secondary"
-						variant="soft"
-						size="xl"
-						>{{ tag }}</UBadge
-					>
-				</div>
-				<div class="flex gap-4">
-					<p class="flex items-center gap-1">
-						<UIcon
-							name="material-symbols:calendar-today-rounded"
-							class="text-secondary"
-						/>
-						{{ formattedDate }}
-					</p>
-					<p class="flex items-center gap-1">
-						<UIcon
-							name="material-symbols:alarm-rounded"
-							class="text-secondary"
-						/>
-						{{ readingTimeText }}
-					</p>
-				</div>
-			</div>
-		</UPageHeader>
+				<ContentRenderer :value="data" />
 
-		<UContentToc
-			class="lg:hidden"
-			title="Contenido"
-			color="secondary"
-			:links="data.body.toc?.links"
-			highlight
-			:ui="{
-				container: 'border-solid',
-			}"
-		/>
+				<USeparator color="secondary" />
 
-		<UPageBody>
-			<div class="flex gap-2 lg:hidden">
-				<UButton
-					class="hover:cursor-pointer"
-					icon="material-symbols:share"
-					variant="subtle"
-					color="neutral"
-					size="xl"
-					@click="share"
-					>Compartir</UButton
-				>
+				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
+				<UBlogPosts>
+					<UBlogPost
+						v-for="article in links"
+						:key="article.id"
+						:title="article.title"
+						:image="article.meta.thumbnail"
+						:badge="
+							Math.abs(new Date().getTime() - new Date(article?.meta.date).getTime()) < 8.64e7 * 7
+								? { label: 'New', color: 'primary' }
+								: undefined
+						"
+						:date="article.meta.date"
+						:to="article.path"
+						variant="outline"
+					/>
+				</UBlogPosts>
 
-				<UButton
-					class="hover:cursor-pointer"
-					icon="mdi:link-variant"
-					variant="subtle"
-					color="neutral"
-					size="xl"
-					:trailing-icon="isLinkCopied ? 'i-lucide-check' : undefined"
-					@click="copyLink"
-				>
-					{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
-				>
-			</div>
+				<USeparator color="secondary" />
 
-			<ContentRenderer :value="data" />
-
-			<USeparator color="secondary" />
-
-			<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
-			<UBlogPosts>
-				<UBlogPost
-					v-for="article in links"
-					:key="article.id"
-					:title="article.title"
-					:image="article.meta.thumbnail"
-					:badge="
-						Math.abs(new Date().getTime() - new Date(article?.meta.date).getTime()) < 8.64e7 * 7
-							? { label: 'New', color: 'primary' }
-							: undefined
-					"
-					:date="article.meta.date"
-					:to="article.path"
-					variant="outline"
+				<UContentSurround
+					prev-icon="i-lucide-chevron-left"
+					next-icon="i-lucide-chevron-right"
+					:surround="surround"
 				/>
-			</UBlogPosts>
-
-			<USeparator color="secondary" />
-
-			<UContentSurround
-				prev-icon="i-lucide-chevron-left"
-				next-icon="i-lucide-chevron-right"
-				:surround="surround"
-			/>
-		</UPageBody>
-	</UPage>
+			</UPageBody>
+		</UPage>
+	</UiContainer>
 </template>
 
 <script lang="ts" setup>

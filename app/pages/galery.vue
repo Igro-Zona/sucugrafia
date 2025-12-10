@@ -1,32 +1,34 @@
 <template>
-	<AppPage title="Nuestra galeria">
-		<ScrollAreaRoot
-			class="h-[80dvh]"
-			style="--scrollbar-size: 10px"
-		>
-			<ScrollAreaViewport
-				class="my-4 grid h-full auto-rows-max grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3"
-				:as-child="true"
+	<UiContainer>
+		<AppPage title="Nuestra galeria">
+			<ScrollAreaRoot
+				class="h-[80dvh]"
+				style="--scrollbar-size: 10px"
 			>
-				<button
-					v-for="src in images"
-					:key="src"
-					class="cursor-pointer"
-					@click="open(src)"
+				<ScrollAreaViewport
+					class="my-4 grid h-full auto-rows-max grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3"
+					:as-child="true"
 				>
-					<NuxtPicture
-						provider="cloudinary"
-						:src="`${src}`"
-						class="block overflow-hidden rounded-xl object-cover"
-						:img-attrs="{ alt: 'Gallery image', loading: 'lazy', class: 'w-full aspect-video  ' }"
-					/>
-				</button>
-			</ScrollAreaViewport>
-			<ScrollAreaScrollbar class="bg-muted w-2.5 rounded-2xl p-[1.5px]">
-				<ScrollAreaThumb class="bg-secondary cursor-grab rounded-2xl" />
-			</ScrollAreaScrollbar>
-		</ScrollAreaRoot>
-	</AppPage>
+					<button
+						v-for="src in images"
+						:key="src"
+						class="cursor-pointer"
+						@click="open(src)"
+					>
+						<NuxtPicture
+							provider="cloudinary"
+							:src="`${src}`"
+							class="block overflow-hidden rounded-xl object-cover"
+							:img-attrs="{ alt: 'Gallery image', loading: 'lazy', class: 'w-full aspect-video  ' }"
+						/>
+					</button>
+				</ScrollAreaViewport>
+				<ScrollAreaScrollbar class="bg-muted w-2.5 rounded-2xl p-[1.5px]">
+					<ScrollAreaThumb class="bg-secondary cursor-grab rounded-2xl" />
+				</ScrollAreaScrollbar>
+			</ScrollAreaRoot>
+		</AppPage>
+	</UiContainer>
 </template>
 
 <script setup lang="ts">

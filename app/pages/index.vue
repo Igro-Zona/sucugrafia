@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div class="relative h-[600px] w-full overflow-hidden">
+	<UiContainer class="space-y-8">
+		<HeroMarquee>
 			<UPageHero
 				as="section"
 				:title
@@ -13,65 +13,9 @@
 					description: 'font-latto text-violet-200 font-semibold',
 				}"
 			/>
-			<UMarquee
-				reverse
-				orientation="vertical"
-				:overlay="false"
-				:ui="{
-					root: '[--duration:40s] absolute w-[460px] -left-[120px] -top-[800px] h-[2000px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
-				}"
-			>
-				<NuxtPicture
-					v-for="src in images"
-					:key="src"
-					provider="cloudinary"
-					:src="`${src}`"
-					width="460"
-					height="258"
-					class="border-default block aspect-video overflow-hidden rounded-lg object-cover blur-[1px] brightness-50 filter"
-					:img-attrs="{ alt: 'Gallery image', loading: 'lazy' }"
-				/>
-			</UMarquee>
-			<UMarquee
-				orientation="vertical"
-				:overlay="false"
-				:ui="{
-					root: '[--duration:40s] absolute w-[460px] -top-[820px] left-[480px] h-[2000px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
-				}"
-			>
-				<NuxtPicture
-					v-for="src in images"
-					:key="src"
-					provider="cloudinary"
-					:src="`${src}`"
-					width="460"
-					height="258"
-					class="border-default block aspect-video overflow-hidden rounded-lg object-cover blur-[1px] brightness-50 filter"
-					:img-attrs="{ alt: 'Gallery image', loading: 'lazy' }"
-				/>
-			</UMarquee>
-			<UMarquee
-				reverse
-				orientation="vertical"
-				:overlay="false"
-				:ui="{
-					root: 'hidden md:flex [--duration:40s] absolute w-[460px] -top-[780px] left-[1020px] h-[2000px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
-				}"
-			>
-				<NuxtPicture
-					v-for="src in images"
-					:key="src"
-					provider="cloudinary"
-					:src="`${src}`"
-					width="460"
-					height="258"
-					class="border-default block aspect-video overflow-hidden rounded-lg object-cover blur-[1px] brightness-50 filter"
-					:img-attrs="{ alt: 'Gallery image', loading: 'lazy' }"
-				/>
-			</UMarquee>
-		</div>
+		</HeroMarquee>
 
-		<p class="font-main mt-8 text-lg">
+		<p class="lg:text-lg">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi consequatur eius illo tenetur voluptates
 			beatae possimus velit minima itaque, impedit, et quis dolorem maxime fugiat magnam, hic reiciendis
 			consequuntur error? Lorem ipsum dolor sit amet consectetur adipisicing elit. In reprehenderit, quidem iure
@@ -79,22 +23,30 @@
 			Blanditiis eius odit quas recusandae quaerat.
 		</p>
 
-		<UPageGrid class="mt-8">
+		<UiGrid>
 			<UPageCard
 				v-for="(card, index) in cards"
 				:key="index"
 				v-bind="card"
 			/>
-		</UPageGrid>
+		</UiGrid>
 
-		<p class="font-main mt-8 text-lg">
+		<p class="lg:text-lg">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi consequatur eius illo tenetur voluptates
 			beatae possimus velit minima itaque, impedit, et quis dolorem maxime fugiat magnam, hic reiciendis
 			consequuntur error? Lorem ipsum dolor sit amet consectetur adipisicing elit. In reprehenderit, quidem iure
 			sunt voluptatem quas possimus, quo expedita numquam exercitationem sequi repellendus vitae dolorum!
 			Blanditiis eius odit quas recusandae quaerat.
 		</p>
-	</div>
+
+		<p class="lg:text-lg">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi consequatur eius illo tenetur voluptates
+			beatae possimus velit minima itaque, impedit, et quis dolorem maxime fugiat magnam, hic reiciendis
+			consequuntur error? Lorem ipsum dolor sit amet consectetur adipisicing elit. In reprehenderit, quidem iure
+			sunt voluptatem quas possimus, quo expedita numquam exercitationem sequi repellendus vitae dolorum!
+			Blanditiis eius odit quas recusandae quaerat.
+		</p>
+	</UiContainer>
 </template>
 
 <script setup lang="ts">
@@ -157,6 +109,4 @@ const cards = ref([
 		icon: "i-lucide-sun-moon",
 	},
 ]);
-
-const images = Array.from({ length: 8 }, (_, i) => `img${i + 1}.jpg`);
 </script>
