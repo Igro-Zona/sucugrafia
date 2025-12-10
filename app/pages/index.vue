@@ -23,13 +23,15 @@
 			Blanditiis eius odit quas recusandae quaerat.
 		</p>
 
-		<UiGrid>
-			<UPageCard
-				v-for="(card, index) in cards"
-				:key="index"
-				v-bind="card"
-			/>
-		</UiGrid>
+		<UiSection title="Abre Sucúa desde nuevo punto de vista:">
+			<UiGrid>
+				<UPageCard
+					v-for="(card, index) in cards"
+					:key="index"
+					v-bind="card"
+				/>
+			</UiGrid>
+		</UiSection>
 
 		<p class="lg:text-lg">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi consequatur eius illo tenetur voluptates
@@ -50,7 +52,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import type { ButtonProps } from "@nuxt/ui";
 
 const title = "Sucugrafia - Mejor forma para conocer a cantón Sucúa";
