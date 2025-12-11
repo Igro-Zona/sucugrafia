@@ -11,6 +11,7 @@ export default defineNuxtConfig({
 		"@nuxt/content",
 		"@nuxt/image",
 		"@nuxtjs/seo",
+		"nuxt-aos",
 	],
 
 	vite: {
@@ -27,10 +28,6 @@ export default defineNuxtConfig({
 			htmlAttrs: {
 				class: "dark",
 			},
-		},
-		pageTransition: {
-			name: "page",
-			mode: "out-in",
 		},
 	},
 
