@@ -1,27 +1,26 @@
 <template>
 	<UApp :locale="es">
-		<AppHeader />
+		<AppHeader
+			class="transition-transform"
+			:class="{ '-translate-y-full': footerIsVisible }"
+		/>
 
 		<AppMain class="light:bg-muted">
 			<NuxtPage />
 		</AppMain>
 
-		<AppFooter />
+		<AppFooter ref="footer" />
 	</UApp>
 </template>
 
 <script setup lang="ts">
 import { es } from "@nuxt/ui/locale";
-</script>
+import { useIntersectionObserver } from "@vueuse/core";
 
-<style>
-.page-enter-active,
-.page-leave-active {
-	transition: all 0.1s;
-}
-.page-enter-from,
-.page-leave-to {
-	opacity: 0;
-	filter: opacity(8px) blur(2px);
-}
-</style>
+const footer = useTemplateRef("footer");
+const footerIsVisible = ref(false);
+
+useIntersectionObserver(footer, ([entry], _) => {
+	footerIsVisible.value = entry?.isIntersecting || false;
+});
+</script>
