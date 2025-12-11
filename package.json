@@ -21,6 +21,7 @@
 		"@nuxt/image": "^2.0.0",
 		"@nuxt/ui": "^4.1.0",
 		"@nuxtjs/seo": "^3.2.2",
+		"commander": "^13.1.0",
 		"lodash-es": "^4.17.21",
 		"nuxt": "^4.2.2",
 		"remark-reading-time": "^2.0.2",
