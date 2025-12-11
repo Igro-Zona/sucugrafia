@@ -47,9 +47,9 @@ const ariaCurrent = computed(() => {
 
 const styles = computed(() => {
 	if (ariaCurrent.value === "page" && styled === true) {
-		return "inline-flex gap-0.5 cursor-default";
+		return "inline-flex gap-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-md cursor-default";
 	}
-	return "inline-flex gap-0.5";
+	return "inline-flex gap-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-md";
 });
 </script>
 

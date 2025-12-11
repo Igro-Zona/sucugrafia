@@ -46,7 +46,7 @@
 					</UiLink>
 				</div>
 
-				<p class="text-muted text-sm">
+				<p class="text-muted text-sm text-balance">
 					Copyright © {{ new Date().getFullYear() }} | Todos los derechos reservados.
 				</p>
 			</div>
