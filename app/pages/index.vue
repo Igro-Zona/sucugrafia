@@ -8,35 +8,41 @@
 		</HeroMarquee>
 
 		<p class="text-pretty sm:text-lg lg:text-xl">
-			Sucugrafia es una plataforma digital dedicada a difundir el patrimonio cultural, histórico y natural de
-			Sucúa. Nuestro sitio ofrece contenidos cuidadosamente elaborados que permiten al visitante conocer de manera
-			organizada y confiable la riqueza de la región amazónica. Cada publicación está orientada a resaltar la
-			identidad local y a proyectar el valor de la comunidad hacia un público más amplio.
+			<b class="text-primary">Sucugrafia</b> es una plataforma digital dedicada a difundir el patrimonio cultural,
+			histórico y natural de Sucúa. Nuestro sitio ofrece contenidos
+			<b class="text-primary">cuidadosamente elaborados</b> que permiten al visitante conocer de manera organizada
+			y confiable la riqueza de la región amazónica. Cada publicación está orientada a resaltar la
+			<b class="text-primary">identidad local</b>
+			y a proyectar el valor de la comunidad hacia un público más amplio.
 		</p>
 
 		<UiSection title="Abre Sucúa desde nuevo punto de vista:">
 			<UiGrid class="gap-4 sm:gap-6 [&>*:nth-child(n+4)]:hidden sm:[&>*:nth-child(n+4)]:block">
-				<UPageCard
+				<UiCard
 					v-for="(card, index) in cards"
 					:key="index"
+					v-hover
 					v-bind="card"
+					as="h3"
 				/>
 			</UiGrid>
 		</UiSection>
 
 		<p class="text-pretty sm:text-lg lg:text-xl">
-			El contenido de Sucugrafia abarca relatos, fotografías, artículos y proyectos que documentan tradiciones,
-			paisajes y expresiones artísticas propias de Sucúa. La presentación se realiza con criterios profesionales
-			de comunicación y diseño, garantizando una experiencia informativa y visualmente atractiva. De esta manera,
-			el usuario accede a información relevante y de calidad que refleja la autenticidad de la región.
+			El contenido de Sucugrafia abarca
+			<b class="text-primary">relatos, fotografías, artículos y proyectos</b> que documentan tradiciones, paisajes
+			y expresiones artísticas propias de Sucúa. La presentación se realiza con criterios profesionales de
+			comunicación y diseño, garantizando una
+			<b class="text-primary">experiencia informativa y visualmente atractiva</b>. De esta manera, el usuario
+			accede a información relevante y de calidad que refleja la autenticidad de la región.
 		</p>
 
 		<p class="text-pretty sm:text-lg lg:text-xl">
-			Sucugrafia se consolida como un espacio de referencia para la preservación y difusión de la memoria
-			colectiva. Al destacar la historia, las costumbres y las manifestaciones culturales de Sucúa, nuestro sitio
-			contribuye a fortalecer la identidad amazónica y a transmitirla a nuevas generaciones. Así, se convierte en
-			una herramienta que une tradición y conocimiento, proyectando el legado cultural de la comunidad hacia el
-			futuro.
+			<b class="text-primary">Sucugrafia</b> se consolida como un espacio de referencia para la preservación y
+			difusión de la memoria colectiva. Al destacar la historia, las costumbres y las manifestaciones culturales
+			de Sucúa, nuestro sitio contribuye a fortalecer la <b class="text-primary">identidad amazónica</b> y a
+			transmitirla a nuevas generaciones. Así, se convierte en una herramienta que une tradición y conocimiento,
+			proyectando el legado cultural de la comunidad <b class="text-primary">hacia el futuro</b>.
 		</p>
 	</UiContainer>
 </template>
@@ -53,51 +59,42 @@ useSeoMeta({
 	twitterDescription: description,
 });
 
-useHead({
-	link: [
-		{
-			rel: "icon",
-			type: "image/ico",
-			href: "/favicon.ico",
-		},
-	],
-});
 const cards = ref([
 	{
-		title: "Lorem",
+		title: "Galeria maravillosa",
 		description:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minima, porro temporibus nesciunt cum architecto.",
-		icon: "i-lucide-smile",
+			"Una colección visual única que muestra lo mejor de nuestro proyecto. Cada imagen transmite emoción y creatividad.",
+		icon: "i-lucide-image",
 	},
 	{
-		title: "Lorem",
+		title: "Moderno e Innovador",
 		description:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minima, porro temporibus nesciunt cum architecto.",
-		icon: "i-lucide-a-large-small",
+			"Un sitio web con diseño actual y soluciones innovadoras. Pensado para ofrecer una experiencia fresca y atractiva.",
+		icon: "i-lucide-lightbulb",
 	},
 	{
-		title: "Lorem",
+		title: "Espiritu de la Amazonia",
 		description:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minima, porro temporibus nesciunt cum architecto.",
-		icon: "i-lucide-sun-moon",
+			"Reflejamos la esencia cultural y natural de Sucúa. Un espacio que conecta con nuestras raíces amazónicas.",
+		icon: "i-lucide-leaf",
 	},
 	{
-		title: "Lorem",
+		title: "Veloz y facil",
 		description:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minima, porro temporibus nesciunt cum architecto.",
-		icon: "i-lucide-smile",
+			"Navegación rápida y sencilla para todos los usuarios. Compatible con cualquier dispositivo y pensado para la comodidad.",
+		icon: "i-lucide-rocket",
 	},
 	{
-		title: "Lorem",
+		title: "Informacion segura",
 		description:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minima, porro temporibus nesciunt cum architecto.",
-		icon: "i-lucide-a-large-small",
+			"El contenido de nuestro sitio es confiable. Compartimos información honesta que refleja transparencia y credibilidad.",
+		icon: "i-lucide-shield-check",
 	},
 	{
-		title: "Lorem",
+		title: "Mejor guia",
 		description:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minima, porro temporibus nesciunt cum architecto.",
-		icon: "i-lucide-sun-moon",
+			"Un recurso claro y práctico para orientarte en cada paso. Te acompañamos con información útil y accesible.",
+		icon: "i-lucide-map",
 	},
 ]);
 </script>

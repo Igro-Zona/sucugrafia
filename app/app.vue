@@ -5,7 +5,7 @@
 			:class="{ '-translate-y-full': footerIsVisible }"
 		/>
 
-		<AppMain class="light:bg-muted">
+		<AppMain>
 			<NuxtPage />
 		</AppMain>
 
@@ -16,6 +16,16 @@
 <script setup lang="ts">
 import { es } from "@nuxt/ui/locale";
 import { useIntersectionObserver } from "@vueuse/core";
+
+useHead({
+	link: [
+		{
+			rel: "icon",
+			type: "image/ico",
+			href: "/favicon.ico",
+		},
+	],
+});
 
 const footer = useTemplateRef("footer");
 const footerIsVisible = ref(false);
