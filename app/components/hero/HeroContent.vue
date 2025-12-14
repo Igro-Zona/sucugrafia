@@ -1,7 +1,7 @@
 <template>
 	<section
 		:aria-label="title"
-		class="relative z-1 space-y-8 py-12 backdrop-blur-xs transition-all duration-1000 hover:backdrop-blur-none sm:px-6 sm:py-32 lg:px-8 lg:py-40"
+		class="relative z-9 space-y-8 px-4 py-24 backdrop-blur-xs transition-all duration-1000 hover:backdrop-blur-none sm:px-6 sm:py-32 lg:px-8 lg:py-40"
 	>
 		<hgroup class="text-center">
 			<h2 class="text-primary text-4xl font-semibold tracking-tighter sm:text-6xl md:text-7xl">
@@ -11,6 +11,7 @@
 				{{ description }}
 			</p>
 		</hgroup>
+
 		<div class="flex flex-wrap items-center justify-center gap-6">
 			<UiLink
 				to="/galery"
