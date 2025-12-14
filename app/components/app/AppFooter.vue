@@ -1,6 +1,6 @@
 <template>
 	<footer
-		class="border-primary mt-4 border-t lg:mt-8"
+		class="border-primary border-t"
 		aria-labelledby="footer-label"
 	>
 		<h2
@@ -46,7 +46,7 @@
 					</UiLink>
 				</div>
 
-				<p class="text-muted text-sm text-balance">
+				<p class="text-muted text-[13px] sm:text-sm">
 					Copyright © {{ new Date().getFullYear() }} | Todos los derechos reservados.
 				</p>
 			</div>
