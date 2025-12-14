@@ -1,7 +1,8 @@
 <template>
-	<div class="relative h-[600px] w-full overflow-hidden">
-		<slot />
-
+	<div
+		aria-hidden="true"
+		class="absolute top-0 -right-4 bottom-0 -left-4 z-2 overflow-hidden sm:-right-6 sm:-left-6 lg:-right-8 lg:-left-8"
+	>
 		<UMarquee
 			reverse
 			orientation="vertical"
