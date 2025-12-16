@@ -1,43 +1,63 @@
 <template>
 	<div
 		aria-hidden="true"
-		class="absolute top-0 -right-4 bottom-0 -left-4 z-2 overflow-hidden sm:-right-6 sm:-left-6 lg:-right-8 lg:-left-8"
+		class="absolute inset-0 overflow-hidden"
 	>
+		<!-- <UiSkeleton class="aspect-video w-115" /> -->
+
 		<UMarquee
 			reverse
 			orientation="vertical"
 			:overlay="false"
 			:ui="{
-				root: '[--duration:40s] absolute w-[460px] -left-[120px] -top-[800px] h-[2000px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
+				root: '[--duration:40s] absolute w-115 -left-30 -top-200 h-500 transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
 			}"
 		>
 			<NuxtPicture
 				v-for="src in images"
 				:key="src"
-				provider="cloudinary"
-				:src="`${src}`"
+				quality="60"
 				width="460"
-				height="258"
-				class="border-default block aspect-video overflow-hidden rounded-lg object-cover blur-[1px] brightness-50 filter"
-				:img-attrs="{ alt: 'Gallery image', loading: 'lazy' }"
+				height="259"
+				densities="1x 2x"
+				format="avif,webp"
+				legacy-format="jpg"
+				:src="src"
+				provider="cloudinary"
+				class="block aspect-video w-115"
+				:img-attrs="{
+					alt: '',
+					class: 'rounded-md object-cover w-full aspect-video',
+				}"
+				loading="eager"
+				sizes="460px"
 			/>
 		</UMarquee>
 		<UMarquee
 			orientation="vertical"
 			:overlay="false"
 			:ui="{
-				root: '[--duration:40s] absolute w-[460px] -top-[820px] left-[480px] h-[2000px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
+				root: '[--duration:40s] absolute w-115 -top-205 left-120 h-500 transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
 			}"
 		>
 			<NuxtPicture
 				v-for="src in images"
 				:key="src"
-				provider="cloudinary"
-				:src="`${src}`"
+				quality="60"
 				width="460"
-				height="258"
-				class="border-default block aspect-video overflow-hidden rounded-lg object-cover blur-[1px] brightness-50 filter"
-				:img-attrs="{ alt: 'Gallery image', loading: 'lazy' }"
+				height="259"
+				densities="1x 2x"
+				format="avif,webp"
+				legacy-format="jpg"
+				:src="src"
+				provider="cloudinary"
+				class="block aspect-video w-115"
+				:img-attrs="{
+					alt: '',
+					class: 'rounded-md object-cover w-full aspect-video',
+				}"
+				loading="eager"
+				sizes="460px"
 			/>
 		</UMarquee>
 		<UMarquee
@@ -45,18 +65,27 @@
 			orientation="vertical"
 			:overlay="false"
 			:ui="{
-				root: 'hidden md:flex [--duration:40s] absolute w-[460px] -top-[780px] left-[1020px] h-[2000px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
+				root: 'hidden md:flex [--duration:40s] absolute w-115 -top-195 left-255 h-500 transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
 			}"
 		>
 			<NuxtPicture
 				v-for="src in images"
 				:key="src"
-				provider="cloudinary"
-				:src="`${src}`"
+				quality="60"
 				width="460"
-				height="258"
-				class="border-default block aspect-video overflow-hidden rounded-lg object-cover blur-[1px] brightness-50 filter"
-				:img-attrs="{ alt: 'Gallery image', loading: 'lazy' }"
+				height="259"
+				densities="1x 2x"
+				format="avif,webp"
+				legacy-format="jpg"
+				:src="src"
+				provider="cloudinary"
+				class="block aspect-video w-115"
+				:img-attrs="{
+					alt: '',
+					class: 'rounded-md object-cover w-full aspect-video',
+				}"
+				loading="eager"
+				sizes="460px"
 			/>
 		</UMarquee>
 	</div>
