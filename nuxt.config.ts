@@ -60,11 +60,11 @@ export default defineNuxtConfig({
 	},
 
 	icon: {
-		serverBundle: false,
 		clientBundle: {
+			icons: ["lucide:menu", "simple-icons:github", "lucide:chevron-down"],
 			scan: true,
 			includeCustomCollections: true,
-			sizeLimitKb: 256,
+			sizeLimitKb: 4096,
 		},
 		customCollections: [
 			{
@@ -90,12 +90,15 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		quality: 90,
-		format: ["avif", "webp"],
-		densities: [1, 2],
-		domains: ["sucugrafia.sucua.workers.dev"],
+		domains: ["sucugrafia.sucua.workers.dev", "res.cloudinary.com"],
 		cloudinary: {
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
+			modifiers: {},
+		},
+		screens: {
+			sm: 640,
+			md: 768,
+			lg: 1024,
 		},
 	},
 

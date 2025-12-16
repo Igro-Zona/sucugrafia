@@ -28,10 +28,10 @@
 		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.80",
+		"@iconify-json/lucide": "^1.2.81",
 		"@iconify-json/material-symbols": "^1.2.50",
 		"@iconify-json/mdi": "^1.2.3",
-		"@iconify-json/simple-icons": "^1.2.62",
+		"@iconify-json/simple-icons": "^1.2.63",
 		"@nuxt/content": "^3.9.0",
 		"@nuxt/eslint": "^1.12.1",
 		"better-sqlite3": "^12.5.0",
