@@ -1,6 +1,6 @@
 <template>
 	<NuxtPicture
-		quality="60"
+		quality="40"
 		width="460"
 		height="259"
 		densities="1x 2x"
@@ -11,14 +11,12 @@
 		class="block aspect-video w-115"
 		:img-attrs="{
 			alt: '',
-			class: 'rounded-md object-cover w-full aspect-video',
+			class: 'rounded-md object-cover w-full  h-full',
+			fetchpriority: 'high',
+			decoding: 'async',
 		}"
 		loading="eager"
 		sizes="460px"
-		:preload="{
-			fetchPriority: 'high',
-		}"
-		placeholder
 	/>
 </template>
 

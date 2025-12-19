@@ -21,7 +21,7 @@ import { twMerge } from "tailwind-merge";
 const {
 	class: className = "",
 	as = "div",
-	repeat = 3,
+	repeat = 2,
 	reverse = false,
 } = defineProps<{
 	class?: string;
