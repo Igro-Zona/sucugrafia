@@ -1,15 +1,41 @@
 <template>
 	<div class="space-y-8 lg:space-y-12">
-		<UiContainer class="relative px-0 sm:px-0 lg:px-0">
+		<UiContainer
+			class="relative px-0 sm:px-0 lg:px-0"
+			data-aos="fade-down"
+		>
 			<HeroContent
 				:title
 				:description
 			/>
-			<HeroMarquee />
+			<HeroMarquee v-if="mdAndLarger" />
+			<NuxtPicture
+				v-else
+				class="md absolute inset-0 blur-lg brightness-50 grayscale-100 filter"
+				quality="40"
+				width="768"
+				height="800"
+				densities="1x 2x"
+				format="avif,webp"
+				legacy-format="jpg"
+				src="bg-green.jpg"
+				provider="cloudinary"
+				:img-attrs="{
+					alt: '',
+					class: 'object-cover w-full  h-full',
+					fetchpriority: 'high',
+					decoding: 'async',
+				}"
+				loading="eager"
+				sizes="390px sm:768px "
+			/>
 		</UiContainer>
 
 		<UiContainer class="space-y-8 lg:space-y-12">
-			<p class="text-pretty sm:text-lg lg:text-xl">
+			<p
+				class="text-pretty sm:text-lg lg:text-xl"
+				data-aos="fade-up"
+			>
 				<b class="text-primary">Sucugrafia</b> es una plataforma digital dedicada a difundir el patrimonio
 				cultural, histórico y natural de Sucúa. Nuestro sitio ofrece contenidos
 				<b class="text-primary">cuidadosamente elaborados</b> que permiten al visitante conocer de manera
@@ -18,7 +44,10 @@
 				y a proyectar el valor de la comunidad hacia un público más amplio.
 			</p>
 
-			<UiSection title="Abre Sucúa desde nuevo punto de vista:">
+			<UiSection
+				title="Abre Sucúa desde nuevo punto de vista:"
+				data-aos="zoom-in-up"
+			>
 				<UiGrid class="gap-4 sm:gap-6 [&>*:nth-child(n+4)]:hidden sm:[&>*:nth-child(n+4)]:block">
 					<UiCard
 						v-for="(card, index) in cards"
@@ -30,7 +59,10 @@
 				</UiGrid>
 			</UiSection>
 
-			<p class="text-pretty sm:text-lg lg:text-xl">
+			<p
+				class="text-pretty sm:text-lg lg:text-xl"
+				data-aos="fade-left"
+			>
 				El contenido de Sucugrafia abarca
 				<b class="text-primary">relatos, fotografías, artículos y proyectos</b> que documentan tradiciones,
 				paisajes y expresiones artísticas propias de Sucúa. La presentación se realiza con criterios
@@ -39,7 +71,10 @@
 				accede a información relevante y de calidad que refleja la autenticidad de la región.
 			</p>
 
-			<p class="text-pretty sm:text-lg lg:text-xl">
+			<p
+				class="text-pretty sm:text-lg lg:text-xl"
+				data-aos="fade-right"
+			>
 				<b class="text-primary">Sucugrafia</b> se consolida como un espacio de referencia para la preservación y
 				difusión de la memoria colectiva. Al destacar la historia, las costumbres y las manifestaciones
 				culturales de Sucúa, nuestro sitio contribuye a fortalecer la
@@ -52,6 +87,8 @@
 </template>
 
 <script setup lang="ts">
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+
 const title = "Sucugrafia - Mejor forma para conocer a cantón Sucúa";
 const description =
 	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa, donde cada imagen y relato conecta con sus raíces amazónicas y su riqueza cultural.";
@@ -101,4 +138,9 @@ const cards = ref([
 		icon: "i-lucide-map",
 	},
 ]);
+
+const breakpoints = useBreakpoints(breakpointsTailwind, {
+	ssrWidth: 767,
+});
+const mdAndLarger = computed(() => breakpoints.isGreaterOrEqual("md"));
 </script>

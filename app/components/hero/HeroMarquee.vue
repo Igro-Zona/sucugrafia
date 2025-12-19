@@ -25,7 +25,6 @@
 		</UiMarquee>
 
 		<UiMarquee
-			v-if="greaterOrEqualThenMd"
 			reverse
 			class="absolute -top-80 left-304 h-200 w-115 rotate-x-35 rotate-y-20 rotate-z-30 brightness-40 filter transform-3d"
 		>
@@ -39,11 +38,5 @@
 </template>
 
 <script setup lang="ts">
-import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
-
 const images = Array.from({ length: 6 }, (_, i) => `img${i + 1}.jpg`);
-const breakpoints = useBreakpoints(breakpointsTailwind, {
-	ssrWidth: 769,
-});
-const greaterOrEqualThenMd = breakpoints.greaterOrEqual("md");
 </script>
