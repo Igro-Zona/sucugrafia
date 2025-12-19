@@ -38,16 +38,19 @@ export default defineNuxtConfig({
 		},
 	],
 
-	mdc: {
-		components: {
-			prose: false,
-		},
-	},
-
 	nitro: {
 		preset: "cloudflare_module",
 		cloudflare: {
 			deployConfig: true,
+			wrangler: {
+				d1_databases: [
+					{
+						binding: "DB",
+						database_name: "content",
+						database_id: "85935025-4a15-4768-9463-a83fd7b0f1d8",
+					},
+				],
+			},
 		},
 	},
 
@@ -93,12 +96,6 @@ export default defineNuxtConfig({
 		domains: ["sucugrafia.sucua.workers.dev", "res.cloudinary.com"],
 		cloudinary: {
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
-			modifiers: {},
-		},
-		screens: {
-			sm: 640,
-			md: 768,
-			lg: 1024,
 		},
 	},
 
