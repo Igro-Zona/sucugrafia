@@ -52,5 +52,3 @@ const styles = computed(() => {
 	return "inline-flex gap-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-md";
 });
 </script>
-
-<style scoped></style>
