@@ -26,6 +26,5 @@ export default defineAppConfig({
 	icon: {
 		size: "30px",
 		mode: "svg",
-		cssLayer: "base",
 	},
 });

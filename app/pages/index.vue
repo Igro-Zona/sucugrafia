@@ -1,12 +1,12 @@
 <template>
 	<div class="space-y-8 lg:space-y-12">
-		<div class="relative mx-auto w-full max-w-(--ui-container) overflow-hidden">
+		<UiContainer class="relative px-0 sm:px-0 lg:px-0">
 			<HeroContent
 				:title
 				:description
 			/>
 			<HeroMarquee />
-		</div>
+		</UiContainer>
 
 		<UiContainer class="space-y-8 lg:space-y-12">
 			<p class="text-pretty sm:text-lg lg:text-xl">

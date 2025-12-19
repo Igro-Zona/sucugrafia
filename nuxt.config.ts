@@ -38,16 +38,19 @@ export default defineNuxtConfig({
 		},
 	],
 
-	mdc: {
-		components: {
-			prose: false,
-		},
-	},
-
 	nitro: {
 		preset: "cloudflare_module",
 		cloudflare: {
 			deployConfig: true,
+			wrangler: {
+				d1_databases: [
+					{
+						binding: "DB",
+						database_name: "content",
+						database_id: "85935025-4a15-4768-9463-a83fd7b0f1d8",
+					},
+				],
+			},
 		},
 	},
 
@@ -60,11 +63,11 @@ export default defineNuxtConfig({
 	},
 
 	icon: {
-		serverBundle: false,
 		clientBundle: {
+			icons: ["lucide:menu", "simple-icons:github", "lucide:chevron-down"],
 			scan: true,
 			includeCustomCollections: true,
-			sizeLimitKb: 256,
+			sizeLimitKb: 4096,
 		},
 		customCollections: [
 			{
@@ -90,10 +93,7 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		quality: 90,
-		format: ["avif", "webp"],
-		densities: [1, 2],
-		domains: ["sucugrafia.sucua.workers.dev"],
+		domains: ["sucugrafia.sucua.workers.dev", "res.cloudinary.com"],
 		cloudinary: {
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
 		},

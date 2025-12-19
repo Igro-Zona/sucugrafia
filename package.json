@@ -22,16 +22,16 @@
 		"@nuxt/ui": "^4.1.0",
 		"@nuxtjs/seo": "^3.3.0",
 		"commander": "^13.1.0",
-		"lodash-es": "^4.17.21",
+		"lodash-es": "^4.17.22",
 		"nuxt": "^4.2.2",
 		"remark-reading-time": "^2.0.2",
 		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.80",
+		"@iconify-json/lucide": "^1.2.81",
 		"@iconify-json/material-symbols": "^1.2.50",
 		"@iconify-json/mdi": "^1.2.3",
-		"@iconify-json/simple-icons": "^1.2.62",
+		"@iconify-json/simple-icons": "^1.2.63",
 		"@nuxt/content": "^3.9.0",
 		"@nuxt/eslint": "^1.12.1",
 		"better-sqlite3": "^12.5.0",
@@ -45,10 +45,10 @@
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
-		"vue": "^3.5.25",
+		"vue": "^3.5.26",
 		"vue-tsc": "^3.1.8",
-		"wrangler": "^4.54.0",
-		"zod": "^4.1.13"
+		"wrangler": "^4.56.0",
+		"zod": "^4.2.1"
 	},
 	"lint-staged": {
 		"*.{js,mjs,ts,mts,vue}": "npm run lint:fix"
