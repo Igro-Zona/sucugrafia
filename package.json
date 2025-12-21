@@ -28,7 +28,7 @@
 		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.81",
+		"@iconify-json/lucide": "^1.2.82",
 		"@iconify-json/material-symbols": "^1.2.50",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify-json/simple-icons": "^1.2.63",
@@ -46,7 +46,7 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.26",
-		"vue-tsc": "^3.1.8",
+		"vue-tsc": "^3.2.0",
 		"wrangler": "^4.56.0",
 		"zod": "^4.2.1"
 	},
