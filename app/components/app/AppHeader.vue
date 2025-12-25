@@ -34,7 +34,7 @@ const items = ref<NavigationMenuItem[]>([
 	{
 		label: "Galeria",
 		icon: "i-lucide-images",
-		to: "/galery",
+		to: "/gallery",
 		class: "text-md",
 	},
 	{
