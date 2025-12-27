@@ -74,7 +74,7 @@ const columns = [
 			},
 			{
 				label: "Nuestra Galeria",
-				to: "/galery",
+				to: "/gallery",
 			},
 			{
 				label: "Leer los Articulos",

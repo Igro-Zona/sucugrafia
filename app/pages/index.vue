@@ -11,7 +11,7 @@
 			<HeroMarquee v-if="mdAndLarger" />
 			<NuxtPicture
 				v-else
-				class="md absolute inset-0 blur-lg brightness-50 grayscale-100 filter"
+				class="md absolute inset-0 blur-lg brightness-50 grayscale-90 filter"
 				quality="40"
 				width="768"
 				height="800"
