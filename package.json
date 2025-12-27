@@ -19,8 +19,9 @@
 	"dependencies": {
 		"@nuxt/fonts": "^0.12.1",
 		"@nuxt/image": "^2.0.0",
-		"@nuxt/ui": "^4.1.0",
+		"@nuxt/ui": "^4.3.0",
 		"@nuxtjs/seo": "^3.3.0",
+		"@tanstack/vue-virtual": "^3.13.13",
 		"commander": "^13.1.0",
 		"lodash-es": "^4.17.22",
 		"nuxt": "^4.2.2",
@@ -32,7 +33,7 @@
 		"@iconify-json/material-symbols": "^1.2.50",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify-json/simple-icons": "^1.2.63",
-		"@nuxt/content": "^3.9.0",
+		"@nuxt/content": "^3.10.0",
 		"@nuxt/eslint": "^1.12.1",
 		"better-sqlite3": "^12.5.0",
 		"eslint": "^9.39.2",
@@ -46,8 +47,8 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.26",
-		"vue-tsc": "^3.2.0",
-		"wrangler": "^4.56.0",
+		"vue-tsc": "^3.2.1",
+		"wrangler": "^4.54.0",
 		"zod": "^4.2.1"
 	},
 	"lint-staged": {
