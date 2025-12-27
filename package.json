@@ -23,6 +23,7 @@
 		"@nuxtjs/seo": "^3.3.0",
 		"@tanstack/vue-virtual": "^3.13.13",
 		"commander": "^13.1.0",
+		"focus-trap": "^7.7.0",
 		"lodash-es": "^4.17.22",
 		"nuxt": "^4.2.2",
 		"remark-reading-time": "^2.0.2",
