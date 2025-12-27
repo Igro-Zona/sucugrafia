@@ -1,22 +1,22 @@
 <template>
 	<NuxtPicture
 		quality="60"
-		width="384"
-		height="216"
+		width="389"
+		height="219"
 		densities="1x 2x"
 		format="avif,webp"
 		legacy-format="jpg"
 		:src
 		provider="cloudinary"
-		class="block aspect-video w-96"
+		class="block aspect-video w-97"
 		:img-attrs="{
 			alt: '',
-			class: 'rounded-xs object-cover w-full  h-full',
+			class: 'object-cover w-full h-full',
 			fetchpriority: 'low',
 			decoding: 'async',
 		}"
 		loading="lazy"
-		sizes="384px"
+		sizes="389px"
 	/>
 </template>
 

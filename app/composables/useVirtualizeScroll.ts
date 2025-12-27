@@ -3,6 +3,7 @@ import type { CSSProperties } from "vue";
 
 type MaybeRef<T> = T | Ref<T>;
 export type VirtualScrollOptions = {
+	viewportWidth?: unknown;
 	virtualizerOptions: Omit<
 		VirtualizerOptions<Element, Element>,
 		"observeElementRect" | "observeElementOffset" | "scrollToFn"
@@ -11,6 +12,7 @@ export type VirtualScrollOptions = {
 
 export default function (options: MaybeRef<VirtualScrollOptions>) {
 	const virtualizerOptions = computed(() => unref(options).virtualizerOptions);
+	const width = computed(() => unref(options).viewportWidth);
 
 	const lanes = computed(() => virtualizerOptions.value.lanes ?? 1);
 	const gap = computed(() => virtualizerOptions.value.gap ?? 0);
@@ -31,7 +33,7 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 	});
 
 	watch(
-		lanes,
+		[lanes, width],
 		() => {
 			virtualizer.value.measure();
 		},
