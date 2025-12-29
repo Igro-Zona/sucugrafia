@@ -1,7 +1,6 @@
 <template>
 	<UiContainer>
 		<AppPage title="Nuestra galeria">
-			<UButton @click="page++">Click</UButton>
 			<ScrollAreaRoot
 				ref="scrollList"
 				class="relative mt-4 h-[80dvh] w-full pr-4"
