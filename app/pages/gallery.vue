@@ -1,6 +1,7 @@
 <template>
 	<UiContainer>
 		<AppPage title="Nuestra galeria">
+			<UButton @click="page++">Click</UButton>
 			<ScrollAreaRoot
 				ref="scrollList"
 				class="relative mt-4 h-[80dvh] w-full pr-4"
@@ -10,6 +11,7 @@
 				<ScrollAreaViewport
 					class="relative h-full w-full"
 					:as-child="true"
+					@scroll="handleScroll"
 				>
 					<div
 						:style="virtualViewportStyle"
@@ -27,10 +29,10 @@
 								class="h-full w-full cursor-pointer"
 								:tabindex="trapActive ? 0 : -1"
 								:aria-label="`Abrir imagen ${virtualItem.index + 1}`"
-								@click="open(repeated[virtualItem.index] ?? '')"
+								@click="open(images[virtualItem.index] || '')"
 							>
 								<GalleryImage
-									:src="repeated[virtualItem.index] ?? ''"
+									:src="images[virtualItem.index] || ''"
 									class="h-full w-full object-cover"
 								/>
 							</button>
@@ -56,13 +58,40 @@ import { useWindowSize } from "@vueuse/core";
 import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import ImageModal from "~/components/ImageModal.vue";
 
-const images = Array.from({ length: 8 }, (_, i) => `img${i + 1}.jpg`);
-const repeated = Array.from({ length: 8 }, () => images).flat();
+const route = useRoute();
+const page = ref(route.query.page ? Number(route.query.page) : 1);
+const pagesMax = ref<number | null>(null);
+const images = ref<string[]>([]);
+await useFetch("/api/cloudinary-folders", {
+	onResponse({ response }) {
+		if (response._data) {
+			pagesMax.value = response._data;
+		}
+	},
+});
+await useFetch("/api/cloudinary-images", {
+	query: { limit: 10, page: page },
+	onResponse({ response }) {
+		if (response._data) {
+			images.value.push(...response._data);
+		}
+	},
+});
+
+async function handleScroll() {
+	const viewport = scrollList.value?.viewport as HTMLElement;
+	if (!viewport) return;
+
+	const nearBottom = viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 200;
+
+	if (pagesMax.value && nearBottom && page.value < pagesMax.value) {
+		page.value++;
+	}
+}
 
 const scrollList = useTemplateRef("scrollList");
 const { activate } = useFocusTrap(scrollList);
 const trapActive = ref(false);
-
 function handleKeydown(e: KeyboardEvent) {
 	if (e.key === "Enter") {
 		trapActive.value = true;
@@ -83,7 +112,6 @@ const gridLanes = computed(() => {
 		return 3;
 	}
 });
-
 function estimateItemHeight(): number {
 	const viewport = scrollList.value?.viewport as HTMLElement | undefined;
 	if (!viewport) return 216;
@@ -94,18 +122,17 @@ function estimateItemHeight(): number {
 
 	return Math.round((laneWidth * 9) / 16);
 }
-
-const virtualScrollOptions: Ref<VirtualScrollOptions> = ref({
-	viewportWidth: width,
+const virtualScrollOptions = computed<VirtualScrollOptions>(() => ({
+	viewportWidth: width.value,
 	virtualizerOptions: {
 		getScrollElement: () => scrollList.value?.viewport as Element,
 		estimateSize: () => estimateItemHeight(),
 		gap: gridGap,
-		lanes: gridLanes,
-		count: repeated.length,
+		lanes: gridLanes.value,
+		count: images.value.length,
 		overscan: 6,
 	},
-});
+}));
 const { getVirtualItemStyle, measureElement, virtualItems, virtualViewportStyle } =
 	useVirtualizeScroll(virtualScrollOptions);
 
