@@ -14,6 +14,12 @@ export default defineNuxtConfig({
 		"nuxt-aos",
 	],
 
+	runtimeConfig: {
+		cloudinaryApiKey: "",
+		cloudinaryApiSecret: "",
+		cloudinaryCloudName: "",
+	},
+
 	vite: {
 		resolve: {
 			alias: {
