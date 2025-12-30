@@ -11,26 +11,15 @@ export type VirtualScrollOptions = {
 };
 
 export default function (options: MaybeRef<VirtualScrollOptions>) {
+	const isMounted = ref(false);
+
 	const virtualizerOptions = computed(() => unref(options).virtualizerOptions);
-	const width = computed(() => unref(options).viewportWidth);
-
-	const lanes = computed(() => virtualizerOptions.value.lanes ?? 1);
-	const gap = computed(() => virtualizerOptions.value.gap ?? 0);
-
 	const virtualizer = useVirtualizer(virtualizerOptions);
-
 	const virtualItems = computed(() => virtualizer.value.getVirtualItems());
 
-	const isMounted = ref(false);
-	onMounted(() => {
-		isMounted.value = true;
-		virtualizer.value.measure();
-	});
-
-	const totalSize = computed(() => {
-		if (!isMounted.value) return 216;
-		return virtualizer.value.getTotalSize();
-	});
+	const width = computed(() => unref(options).viewportWidth);
+	const lanes = computed(() => virtualizerOptions.value.lanes ?? 1);
+	const gap = computed(() => virtualizerOptions.value.gap ?? 0);
 
 	watch(
 		[lanes, width],
@@ -39,6 +28,11 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 		},
 		{ flush: "sync" },
 	);
+
+	const totalSize = computed(() => {
+		if (!isMounted.value) return 216;
+		return virtualizer.value.getTotalSize();
+	});
 
 	function measureElement(el: Element | ComponentPublicInstance | null) {
 		if (el) {
@@ -69,6 +63,11 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 			transform: `translateY(${virtualItem.start}px)`,
 		};
 	}
+
+	onMounted(() => {
+		isMounted.value = true;
+		virtualizer.value.measure();
+	});
 
 	return {
 		virtualizer,
