@@ -8,6 +8,37 @@
 				@keydown="handleKeydown"
 			>
 				<ScrollAreaViewport
+					v-if="!isVirtualizerReady"
+					class="relative h-full w-full"
+					:as-child="true"
+				>
+					<div
+						role="feed"
+						class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+					>
+						<article
+							v-for="(image, index) in images"
+							:key="index"
+							class="aspect-video w-full overflow-hidden rounded-xs filter transition-[filter] hover:brightness-120"
+						>
+							<button
+								type="button"
+								class="h-full w-full cursor-pointer"
+								:tabindex="trapActive ? 0 : -1"
+								:aria-label="`Abrir imagen ${index + 1}`"
+								@click="open(image)"
+							>
+								<GalleryImage
+									:src="image"
+									class="h-full w-full object-cover"
+								/>
+							</button>
+						</article>
+					</div>
+				</ScrollAreaViewport>
+
+				<ScrollAreaViewport
+					v-else
 					class="relative h-full w-full"
 					:as-child="true"
 					@scroll="handleScroll"
@@ -25,6 +56,7 @@
 							class="overflow-hidden rounded-xs filter transition-[filter] hover:brightness-120"
 						>
 							<button
+								type="button"
 								class="h-full w-full cursor-pointer"
 								:tabindex="trapActive ? 0 : -1"
 								:aria-label="`Abrir imagen ${virtualItem.index + 1}`"
@@ -57,36 +89,23 @@ import { useWindowSize } from "@vueuse/core";
 import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import ImageModal from "~/components/ImageModal.vue";
 
+const isVirtualizerReady = ref(false);
+
 const route = useRoute();
 const page = ref(route.query.page ? Number(route.query.page) : 1);
-const pagesMax = ref<number | null>(null);
+const pagesMax = await usePageCount();
 const images = ref<string[]>([]);
-await useFetch("/api/cloudinary-folders", {
-	onResponse({ response }) {
-		if (response._data) {
-			pagesMax.value = response._data;
-		}
-	},
+const initImages = await useInitPageImages(50, page.value);
+images.value.push(...initImages);
+watch(page, async () => {
+	const loadedImages = await $fetch("/api/cloudinary-images", {
+		query: {
+			page: page.value,
+			limit: 50,
+		},
+	});
+	images.value.push(...loadedImages);
 });
-await useFetch("/api/cloudinary-images", {
-	query: { limit: 10, page: page },
-	onResponse({ response }) {
-		if (response._data) {
-			images.value.push(...response._data);
-		}
-	},
-});
-
-async function handleScroll() {
-	const viewport = scrollList.value?.viewport as HTMLElement;
-	if (!viewport) return;
-
-	const nearBottom = viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 200;
-
-	if (pagesMax.value && nearBottom && page.value < pagesMax.value) {
-		page.value++;
-	}
-}
 
 const scrollList = useTemplateRef("scrollList");
 const { activate } = useFocusTrap(scrollList);
@@ -100,17 +119,29 @@ function handleKeydown(e: KeyboardEvent) {
 	}
 }
 
+async function handleScroll() {
+	const viewport = scrollList.value?.viewport as HTMLElement;
+	if (!viewport) return;
+
+	const nearBottom = viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 200;
+
+	if (pagesMax.value && nearBottom && page.value < pagesMax.value) {
+		page.value++;
+	}
+}
+
 const { width } = useWindowSize();
-const gridGap = 16;
 const gridLanes = computed(() => {
 	if (width.value < 640) {
 		return 1;
-	} else if (width.value < 1040) {
+	} else if (width.value < 1024) {
 		return 2;
 	} else {
 		return 3;
 	}
 });
+const gridGap = 16;
+
 function estimateItemHeight(): number {
 	const viewport = scrollList.value?.viewport as HTMLElement | undefined;
 	if (!viewport) return 216;
@@ -134,6 +165,10 @@ const virtualScrollOptions = computed<VirtualScrollOptions>(() => ({
 }));
 const { getVirtualItemStyle, measureElement, virtualItems, virtualViewportStyle } =
 	useVirtualizeScroll(virtualScrollOptions);
+
+onMounted(() => {
+	isVirtualizerReady.value = true;
+});
 
 const overlay = useOverlay();
 const modal = overlay.create(ImageModal);
