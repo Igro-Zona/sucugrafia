@@ -93,14 +93,18 @@ const isVirtualizerReady = ref(false);
 
 const route = useRoute();
 const page = ref(route.query.page ? Number(route.query.page) : 1);
-const images = ref<string[]>([]);
 const pagesMax = await usePageCount();
-const { data } = await useFetch("/api/cloudinary-images", {
-	query: { limit: 10, page: page },
-});
-images.value.push(...(data.value ?? []));
-watch(data, () => {
-	images.value.push(...(data.value ?? []));
+const images = ref<string[]>([]);
+const initImages = await useInitPageImages(50, page.value);
+images.value.push(...initImages);
+watch(page, async () => {
+	const loadedImages = await $fetch("/api/cloudinary-images", {
+		query: {
+			page: page.value,
+			limit: 50,
+		},
+	});
+	images.value.push(...loadedImages);
 });
 
 const scrollList = useTemplateRef("scrollList");
