@@ -1,5 +1,6 @@
 <template>
 	<UApp :locale="es">
+		<AppOverlay />
 		<AppHeader
 			class="transition-transform"
 			:class="{ '-translate-y-full': footerIsVisible }"
