@@ -8,7 +8,7 @@
 		legacy-format="jpg"
 		:src
 		provider="cloudinary"
-		:class="twMerge('block aspect-video w-97', className)"
+		class="block aspect-video w-full"
 		:img-attrs="{
 			alt: '',
 			class: 'object-cover w-full h-full',
@@ -21,10 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { twMerge } from "tailwind-merge";
-
-const { src, class: className = "" } = defineProps<{
+const { src } = defineProps<{
 	src: string;
-	class?: string;
 }>();
 </script>
