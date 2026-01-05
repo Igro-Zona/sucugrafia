@@ -1,5 +1,6 @@
 <template>
 	<UApp :locale="es">
+		<AppOverlay />
 		<AppHeader />
 
 		<AppMain class="flex items-center justify-center">

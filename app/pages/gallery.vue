@@ -1,9 +1,12 @@
 <template>
 	<UiContainer>
-		<AppPage title="Nuestra galeria">
+		<UiSection
+			title="Nuestra galeria"
+			class="mt-4"
+		>
 			<ScrollAreaRoot
 				ref="scrollList"
-				class="relative mt-4 h-[80dvh] w-full pr-4"
+				class="relative mt-4 h-200 w-full pr-4"
 				tabindex="0"
 				@keydown="handleKeydown"
 			>
@@ -26,12 +29,9 @@
 								class="h-full w-full cursor-pointer"
 								:tabindex="trapActive ? 0 : -1"
 								:aria-label="`Abrir imagen ${index + 1}`"
-								@click="open(image)"
+								@click="openImageModal(image)"
 							>
-								<GalleryImage
-									:src="image"
-									class="h-full w-full object-cover"
-								/>
+								<GalleryImage :src="image" />
 							</button>
 						</article>
 					</div>
@@ -60,12 +60,9 @@
 								class="h-full w-full cursor-pointer"
 								:tabindex="trapActive ? 0 : -1"
 								:aria-label="`Abrir imagen ${virtualItem.index + 1}`"
-								@click="open(images[virtualItem.index] || '')"
+								@click="openImageModal(images[virtualItem.index] || '')"
 							>
-								<GalleryImage
-									:src="images[virtualItem.index] || ''"
-									class="h-full w-full object-cover"
-								/>
+								<GalleryImage :src="images[virtualItem.index] || ''" />
 							</button>
 						</article>
 					</div>
@@ -79,7 +76,7 @@
 					<ScrollAreaThumb class="bg-primary cursor-grab rounded-2xl" />
 				</ScrollAreaScrollbar>
 			</ScrollAreaRoot>
-		</AppPage>
+		</UiSection>
 	</UiContainer>
 </template>
 
@@ -87,17 +84,42 @@
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from "reka-ui";
 import { useWindowSize } from "@vueuse/core";
 import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
-import ImageModal from "~/components/ImageModal.vue";
+import GalleryModal from "~/components/gallery/GalleryModal.vue";
 
 const isVirtualizerReady = ref(false);
 
 const route = useRoute();
-const page = ref(route.query.page ? Number(route.query.page) : 1);
+const queryPage = computed(() => (route.query.page ? Number(route.query.page) : 1));
+
+watch(queryPage, async (_, oldQuery) => {
+	if (oldQuery !== queryPage.value) {
+		page.value = queryPage.value;
+		await loadMore(true);
+	}
+});
+
+const page = ref(queryPage.value);
 const pagesMax = await usePageCount();
+
+watch(page, async (_, oldPage) => {
+	if (oldPage !== page.value) {
+		await loadMore(false);
+	}
+});
+
 const images = ref<string[]>([]);
 const initImages = await useInitPageImages(50, page.value);
 images.value.push(...initImages);
-watch(page, async () => {
+
+const loading = ref(false);
+async function loadMore(reset = false) {
+	if (loading.value) return;
+	loading.value = true;
+
+	if (reset) {
+		images.value = [];
+	}
+
 	const loadedImages = await $fetch("/api/cloudinary-images", {
 		query: {
 			page: page.value,
@@ -105,7 +127,9 @@ watch(page, async () => {
 		},
 	});
 	images.value.push(...loadedImages);
-});
+
+	loading.value = false;
+}
 
 const scrollList = useTemplateRef("scrollList");
 const { activate } = useFocusTrap(scrollList);
@@ -119,7 +143,7 @@ function handleKeydown(e: KeyboardEvent) {
 	}
 }
 
-async function handleScroll() {
+function handleScroll() {
 	const viewport = scrollList.value?.viewport as HTMLElement;
 	if (!viewport) return;
 
@@ -170,9 +194,8 @@ onMounted(() => {
 	isVirtualizerReady.value = true;
 });
 
-const overlay = useOverlay();
-const modal = overlay.create(ImageModal);
-async function open(src: string) {
-	modal.open({ src });
+const { open } = useAppOverlay();
+function openImageModal(src: string) {
+	open(GalleryModal, { src });
 }
 </script>
