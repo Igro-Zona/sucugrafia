@@ -84,17 +84,42 @@
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from "reka-ui";
 import { useWindowSize } from "@vueuse/core";
 import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
-import GalleryImageModal from "~/components/gallery/GalleryImageModal.vue";
+import GalleryModal from "~/components/gallery/GalleryModal.vue";
 
 const isVirtualizerReady = ref(false);
 
 const route = useRoute();
-const page = ref(route.query.page ? Number(route.query.page) : 1);
+const queryPage = computed(() => (route.query.page ? Number(route.query.page) : 1));
+
+watch(queryPage, async (_, oldQuery) => {
+	if (oldQuery !== queryPage.value) {
+		page.value = queryPage.value;
+		await loadMore(true);
+	}
+});
+
+const page = ref(queryPage.value);
 const pagesMax = await usePageCount();
+
+watch(page, async (_, oldPage) => {
+	if (oldPage !== page.value) {
+		await loadMore(false);
+	}
+});
+
 const images = ref<string[]>([]);
 const initImages = await useInitPageImages(50, page.value);
 images.value.push(...initImages);
-watch(page, async () => {
+
+const loading = ref(false);
+async function loadMore(reset = false) {
+	if (loading.value) return;
+	loading.value = true;
+
+	if (reset) {
+		images.value = [];
+	}
+
 	const loadedImages = await $fetch("/api/cloudinary-images", {
 		query: {
 			page: page.value,
@@ -102,7 +127,9 @@ watch(page, async () => {
 		},
 	});
 	images.value.push(...loadedImages);
-});
+
+	loading.value = false;
+}
 
 const scrollList = useTemplateRef("scrollList");
 const { activate } = useFocusTrap(scrollList);
@@ -116,7 +143,7 @@ function handleKeydown(e: KeyboardEvent) {
 	}
 }
 
-async function handleScroll() {
+function handleScroll() {
 	const viewport = scrollList.value?.viewport as HTMLElement;
 	if (!viewport) return;
 
@@ -169,6 +196,6 @@ onMounted(() => {
 
 const { open } = useAppOverlay();
 function openImageModal(src: string) {
-	open(GalleryImageModal, { src });
+	open(GalleryModal, { src });
 }
 </script>
