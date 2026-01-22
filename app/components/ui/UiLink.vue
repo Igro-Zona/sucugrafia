@@ -5,7 +5,7 @@
 		:target="isExternal || external ? '_blank' : target"
 		:to
 		:aria-current="ariaCurrent"
-		:aria-disabled="ariaCurrent === 'page'"
+		:aria-disabled="ariaCurrent === 'page' || disabled"
 		:class="styled ? twMerge(styles, className) : twMerge(styles, className)"
 	>
 		<slot />
@@ -25,6 +25,7 @@ import { twMerge } from "tailwind-merge";
 type UiLinkProps = {
 	styled?: boolean;
 	class?: string;
+	disabled?: boolean;
 } & NuxtLinkProps;
 
 const { styled = true, class: className = "", to, external, target, noPrefetch, ...props } = defineProps<UiLinkProps>();

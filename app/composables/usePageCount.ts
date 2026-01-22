@@ -1,6 +1,6 @@
 export default async function () {
-	const maxPagesCookie = useCookie<number | null>("pages_max", {
-		default: () => null,
+	const maxPagesCookie = useCookie<number>("pages_max", {
+		default: () => 1,
 		maxAge: 86400,
 	});
 	const maxPagesCount = ref(maxPagesCookie.value);

@@ -4,6 +4,14 @@
 			title="Nuestra galeria"
 			class="mt-4"
 		>
+			<GalleryPagination
+				v-model:page="page"
+				class="flex justify-center"
+				:default-page="queryPage"
+				:sibling-count="1"
+				:total="pagesMax"
+			/>
+
 			<ScrollAreaRoot
 				ref="scrollList"
 				class="relative mt-4 h-200 w-full pr-4"
@@ -76,6 +84,14 @@
 					<ScrollAreaThumb class="bg-primary cursor-grab rounded-2xl" />
 				</ScrollAreaScrollbar>
 			</ScrollAreaRoot>
+
+			<GalleryPagination
+				v-model:page="page"
+				class="flex justify-center"
+				:default-page="queryPage"
+				:sibling-count="1"
+				:total="pagesMax"
+			/>
 		</UiSection>
 	</UiContainer>
 </template>
