@@ -17,7 +17,7 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
-		"@nuxt/fonts": "^0.12.1",
+		"@nuxt/fonts": "^0.13.0",
 		"@nuxt/image": "^2.0.0",
 		"@nuxt/ui": "^4.4.0",
 		"@nuxtjs/seo": "^3.3.0",
@@ -31,11 +31,11 @@
 	},
 	"devDependencies": {
 		"@iconify-json/lucide": "^1.2.86",
-		"@iconify-json/material-symbols": "^1.2.52",
+		"@iconify-json/material-symbols": "^1.2.53",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify-json/simple-icons": "^1.2.67",
 		"@nuxt/content": "^3.11.0",
-		"@nuxt/eslint": "^1.12.1",
+		"@nuxt/eslint": "^1.13.0",
 		"better-sqlite3": "^12.6.2",
 		"eslint": "^9.39.2",
 		"husky": "^9.1.7",
@@ -48,9 +48,9 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.27",
-		"vue-tsc": "^3.2.2",
-		"wrangler": "^4.59.3",
-		"zod": "^4.3.5"
+		"vue-tsc": "^3.2.3",
+		"wrangler": "^4.60.0",
+		"zod": "^4.3.6"
 	},
 	"lint-staged": {
 		"*.{js,mjs,ts,mts,vue}": "npm run lint:fix"
