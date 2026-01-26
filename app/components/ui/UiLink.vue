@@ -1,17 +1,29 @@
 <template>
 	<NuxtLink
 		v-bind="props"
-		:external="isExternal ? isExternal : external"
-		:target="isExternal || external ? '_blank' : target"
+		:external="external ?? isExternal"
+		:target="target ?? (external || isExternal ? '_blank' : undefined)"
 		:to
 		:aria-current="ariaCurrent"
-		:aria-disabled="ariaCurrent === 'page' || disabled"
-		:class="styled ? twMerge(styles, className) : twMerge(styles, className)"
+		:class="
+			twMerge(
+				'inline-flex gap-0.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white',
+				className,
+			)
+		"
+		:style="
+			ariaCurrent === 'page'
+				? {
+						pointerEvents: 'none',
+						cursor: 'default',
+					}
+				: undefined
+		"
 	>
 		<slot />
 
 		<Icon
-			v-if="(isExternal || external) && styled"
+			v-if="(external || isExternal) && externalIcon"
 			name="i-lucide-arrow-up-right"
 			size="15"
 		/>
@@ -23,12 +35,19 @@ import type { NuxtLinkProps } from "#app";
 import { twMerge } from "tailwind-merge";
 
 type UiLinkProps = {
-	styled?: boolean;
+	externalIcon?: boolean;
 	class?: string;
-	disabled?: boolean;
 } & NuxtLinkProps;
 
-const { styled = true, class: className = "", to, external, target, noPrefetch, ...props } = defineProps<UiLinkProps>();
+const {
+	externalIcon = true,
+	class: className = "",
+	to,
+	external,
+	target,
+	noPrefetch,
+	...props
+} = defineProps<UiLinkProps>();
 
 const EXTERNAL_REGEX = /^(https?:)?\/\//;
 const isExternal = computed(() => {
@@ -39,17 +58,10 @@ const route = useRoute();
 const ariaCurrent = computed(() => {
 	const currentPath = route.path;
 	const targetPath = to?.toString();
-
 	if (!targetPath) return undefined;
+
 	if (currentPath === targetPath) return "page";
 	if (currentPath.startsWith(targetPath)) return "step";
 	return undefined;
-});
-
-const styles = computed(() => {
-	if (ariaCurrent.value === "page" && styled === true) {
-		return "inline-flex gap-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-md cursor-default";
-	}
-	return "inline-flex gap-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-md";
 });
 </script>
