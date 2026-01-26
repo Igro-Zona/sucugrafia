@@ -30,10 +30,10 @@
 		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.86",
+		"@iconify-json/lucide": "^1.2.87",
 		"@iconify-json/material-symbols": "^1.2.53",
 		"@iconify-json/mdi": "^1.2.3",
-		"@iconify-json/simple-icons": "^1.2.67",
+		"@iconify-json/simple-icons": "^1.2.68",
 		"@nuxt/content": "^3.11.0",
 		"@nuxt/eslint": "^1.13.0",
 		"better-sqlite3": "^12.6.2",
@@ -48,7 +48,7 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.27",
-		"vue-tsc": "^3.2.3",
+		"vue-tsc": "^3.2.4",
 		"wrangler": "^4.60.0",
 		"zod": "^4.3.6"
 	},
