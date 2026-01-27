@@ -12,10 +12,7 @@
 		:img-attrs="{
 			alt: '',
 			class: 'rounded-md object-cover w-full  h-full',
-			fetchpriority: 'high',
-			decoding: 'async',
 		}"
-		loading="eager"
 		sizes="460px"
 	/>
 </template>

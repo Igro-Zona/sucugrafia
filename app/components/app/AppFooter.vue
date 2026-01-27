@@ -31,7 +31,7 @@
 				<div class="flex items-center gap-6">
 					<UiLink
 						to="/"
-						:styled="false"
+						:events="true"
 					>
 						<UiLogo />
 					</UiLink>
@@ -39,8 +39,8 @@
 					<UiLink
 						to="https://github.com/Igro-Zona/sucugrafia"
 						aria-label="Abrir en GitHub"
-						:styled="false"
-						class="hover:bg-muted active:bg-accented rounded-lg p-2 lg:hidden"
+						class="hover:bg-muted hover:text-highlighted active:bg-accented rounded-lg p-2 transition-colors lg:hidden"
+						:external-icon="false"
 					>
 						<Icon name="i-simple-icons-github" />
 					</UiLink>
@@ -53,9 +53,9 @@
 
 			<UiLink
 				to="https://github.com/Igro-Zona/sucugrafia"
-				:styled="false"
 				aria-label="Abrir en GitHub"
-				class="hover:bg-muted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
+				class="hover:bg-muted hover:text-highlighted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
+				:external-icon="false"
 			>
 				<Icon name="i-simple-icons-github" />
 			</UiLink>
