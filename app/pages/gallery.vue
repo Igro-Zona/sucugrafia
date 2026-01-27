@@ -1,9 +1,11 @@
 <template>
 	<UiContainer>
 		<UiSection
-			title="Nuestra galeria"
+			:title
 			class="mt-4"
 		>
+			<p class="lg: text-xl">{{ description }}</p>
+
 			<GalleryPagination
 				v-model:page="page"
 				class="flex justify-center"
@@ -102,6 +104,17 @@ import { useWindowSize } from "@vueuse/core";
 import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import GalleryModal from "~/components/gallery/GalleryModal.vue";
 
+const title = "Nuestra galeria";
+const description =
+	"Explora la galería de Sucugrafia y déjate llevar por las imágenes que cuentan la historia de Sucúa: aquí cada fotografía está pensada para ti, para que descubras la cultura, la naturaleza y la vida de nuestra comunidad de una manera cercana y envolvente; haz clic en las que más te llamen la atención y disfruta cada detalle como si estuvieras caminando por sus calles y paisajes.";
+
+useSeoMeta({
+	description,
+	ogTitle: title,
+	twitterTitle: title,
+	twitterDescription: description,
+});
+
 const isVirtualizerReady = ref(false);
 
 const route = useRoute();
@@ -116,17 +129,15 @@ watch(queryPage, async (_, oldQuery) => {
 
 const page = ref(queryPage.value);
 const pagesMax = await usePageCount();
+const images = ref<string[]>([]);
+const initImages = await useInitPageImages(50, page.value);
+images.value.push(...initImages);
 
 watch(page, async (_, oldPage) => {
 	if (oldPage !== page.value) {
 		await loadMore(false);
 	}
 });
-
-const images = ref<string[]>([]);
-const initImages = await useInitPageImages(50, page.value);
-images.value.push(...initImages);
-
 const loading = ref(false);
 async function loadMore(reset = false) {
 	if (loading.value) return;

@@ -39,7 +39,7 @@
 					<UiLink
 						to="https://github.com/Igro-Zona/sucugrafia"
 						aria-label="Abrir en GitHub"
-						class="hover:bg-muted active:bg-accented rounded-lg p-2 transition-colors lg:hidden"
+						class="hover:bg-muted hover:text-highlighted active:bg-accented rounded-lg p-2 transition-colors lg:hidden"
 						:external-icon="false"
 					>
 						<Icon name="i-simple-icons-github" />
@@ -54,7 +54,7 @@
 			<UiLink
 				to="https://github.com/Igro-Zona/sucugrafia"
 				aria-label="Abrir en GitHub"
-				class="hover:bg-muted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
+				class="hover:bg-muted hover:text-highlighted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
 				:external-icon="false"
 			>
 				<Icon name="i-simple-icons-github" />

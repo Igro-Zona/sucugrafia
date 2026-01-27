@@ -12,8 +12,6 @@
 		:img-attrs="{
 			alt: '',
 			class: 'object-cover w-full h-full',
-			fetchpriority: 'low',
-			decoding: 'async',
 		}"
 		loading="lazy"
 		sizes="389px"
