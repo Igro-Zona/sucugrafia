@@ -12,7 +12,7 @@
 			)
 		"
 		:style="
-			ariaCurrent === 'page'
+			ariaCurrent === 'page' && events === false
 				? {
 						pointerEvents: 'none',
 						cursor: 'default',
@@ -35,11 +35,13 @@ import type { NuxtLinkProps } from "#app";
 import { twMerge } from "tailwind-merge";
 
 type UiLinkProps = {
+	events?: boolean;
 	externalIcon?: boolean;
 	class?: string;
 } & NuxtLinkProps;
 
 const {
+	events = false,
 	externalIcon = true,
 	class: className = "",
 	to,
