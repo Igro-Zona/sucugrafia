@@ -18,8 +18,8 @@
 				<FooterColumn
 					v-for="(column, index) in columns"
 					:key="index"
-					:label="column.label"
-					:links="column.children"
+					:column-label="column.columnLabel"
+					:links="column.links"
 				/>
 			</nav>
 		</UiContainer>
@@ -64,10 +64,12 @@
 </template>
 
 <script setup lang="ts">
-const columns = [
+import type { FooterColumnProps } from "../footer/FooterColumn.vue";
+
+const columns: FooterColumnProps[] = [
 	{
-		label: "Navegación",
-		children: [
+		columnLabel: "Navegación",
+		links: [
 			{
 				label: "Página de Inicio",
 				to: "/",
