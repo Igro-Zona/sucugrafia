@@ -28,10 +28,5 @@
 </template>
 
 <script setup lang="ts">
-import type { ArticlesCollectionItem } from "@nuxt/content";
-
-const { data: articles } = await useAsyncData(
-	"articles-home",
-	() => queryCollection("articles").all() as Promise<ArticlesCollectionItem[]>,
-);
+const { data: articles } = await useAsyncData("articles-home", () => queryCollection("articles").all());
 </script>

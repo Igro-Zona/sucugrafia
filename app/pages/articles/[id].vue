@@ -142,18 +142,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { ArticlesCollectionItem } from "@nuxt/content";
 import { orderBy, intersection } from "lodash";
 
 const route = useRoute();
-const { data } = await useAsyncData(
-	route.path,
-	() => queryCollection("articles").path(route.path).first() as Promise<ArticlesCollectionItem>,
-);
+const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
-	const res = (await queryCollection("articles")
-		.where("path", "NOT LIKE", data.value?.path)
-		.all()) as ArticlesCollectionItem[];
+	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();
 	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
 });
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {

@@ -1,6 +1,6 @@
 import { defineContentConfig, defineCollection } from "@nuxt/content";
 import { asSitemapCollection } from "@nuxtjs/sitemap/content";
-import * as z from "zod";
+import { z } from "zod";
 
 const articleSchema = z.object({
 	meta: z.object({
