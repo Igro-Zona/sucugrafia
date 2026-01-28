@@ -1,8 +1,8 @@
 <template>
 	<NuxtPicture
 		quality="60"
-		width="389"
-		height="219"
+		width="318"
+		height="179"
 		densities="1x 2x"
 		format="avif,webp"
 		legacy-format="jpg"
@@ -14,7 +14,7 @@
 			class: 'object-cover w-full h-full',
 		}"
 		loading="lazy"
-		sizes="389px"
+		sizes="318px sm:389px"
 	/>
 </template>
 

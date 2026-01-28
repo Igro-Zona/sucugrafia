@@ -9,26 +9,6 @@
 				:description
 			/>
 			<HeroMarquee v-if="mdAndLarger" />
-			<NuxtPicture
-				v-else
-				class="md absolute inset-0 blur-lg brightness-50 grayscale-90 filter"
-				quality="40"
-				width="768"
-				height="800"
-				densities="1x 2x"
-				format="avif,webp"
-				legacy-format="jpg"
-				src="bg-green.jpg"
-				provider="cloudinary"
-				:img-attrs="{
-					alt: '',
-					class: 'object-cover w-full  h-full',
-					fetchpriority: 'high',
-					decoding: 'async',
-				}"
-				loading="eager"
-				sizes="390px sm:768px "
-			/>
 		</UiContainer>
 
 		<UiContainer class="space-y-8 lg:space-y-12">
