@@ -28,11 +28,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Article } from "./../../../content.config";
+import type { ArticlesCollectionItem } from "@nuxt/content";
 
 const { data: articles } = await useAsyncData(
 	"articles-home",
-	() => queryCollection("articles").all() as Promise<Article[]>,
+	() => queryCollection("articles").all() as Promise<ArticlesCollectionItem[]>,
 );
-console.log();
 </script>

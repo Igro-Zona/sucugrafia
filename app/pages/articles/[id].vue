@@ -142,19 +142,18 @@
 </template>
 
 <script lang="ts" setup>
-import type { Article } from "./../../../content.config";
+import type { ArticlesCollectionItem } from "@nuxt/content";
 import { orderBy, intersection } from "lodash";
 
 const route = useRoute();
-const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
-const formattedDate = computed(() => (data.value?.meta?.date ? formatDate(data.value.meta.date) : ""));
-
 const { data } = await useAsyncData(
 	route.path,
-	() => queryCollection("articles").path(route.path).first() as Promise<Article>,
+	() => queryCollection("articles").path(route.path).first() as Promise<ArticlesCollectionItem>,
 );
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
-	const res = (await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all()) as Article[];
+	const res = (await queryCollection("articles")
+		.where("path", "NOT LIKE", data.value?.path)
+		.all()) as ArticlesCollectionItem[];
 	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
 });
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
@@ -162,6 +161,10 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 		fields: ["description"],
 	});
 });
+
+const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
+const articleDate = new Date(data.value?.meta?.date ? data.value.meta.date : "");
+const formattedDate = computed(() => formatDate(articleDate));
 
 async function share() {
 	await navigator.share({ url: route.fullPath });
