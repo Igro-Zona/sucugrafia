@@ -22,6 +22,29 @@ export default defineAppConfig({
 				linkDescription: "text-left",
 			},
 		},
+		accordion: {
+			slots: {
+				root: "w-full font-latto text-2xl",
+				item: "border-b border-muted last:border-b-0",
+				header: "flex",
+				trigger:
+					"group flex-1 flex items-center gap-4 font-medium focus-visible:outline-primary min-w-0 hover:text-primary cursor-pointer",
+				content:
+					"data-[state=open]:animate-[accordion-down_200ms_ease-out] data-[state=closed]:animate-[accordion-up_200ms_ease-out] overflow-hidden focus:outline-none",
+				body: "text-lg pb-3.5",
+				leadingIcon: "shrink-0 size-5",
+				trailingIcon:
+					"shrink-0 size-6 ms-auto group-data-[state=open]:rotate-180 transition-transform duration-200",
+				label: "text-start wrap-break-words text-lg sm:text-xl",
+			},
+			variants: {
+				disabled: {
+					true: {
+						trigger: "cursor-not-allowed opacity-75",
+					},
+				},
+			},
+		},
 	},
 	icon: {
 		size: "30px",

@@ -44,7 +44,7 @@ const items = ref<NavigationMenuItem[]>([
 		class: "text-md",
 	},
 	{
-		label: "Referencias",
+		label: "FAQ",
 		icon: "i-lucide-text-select",
 		to: "/about",
 		class: "text-md",

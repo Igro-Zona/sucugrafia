@@ -1,7 +1,7 @@
 <template>
 	<UiContainer>
 		<UiSection
-			title="Nuestros articulos: "
+			title="Nuestros articulos "
 			class="mt-4"
 		>
 			<UContentSearchButton
