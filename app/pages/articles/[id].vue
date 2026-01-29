@@ -46,7 +46,7 @@
 						<UBadge
 							v-for="tag in data?.meta.tags"
 							:key="tag"
-							color="secondary"
+							color="primary"
 							variant="soft"
 							size="xl"
 							>{{ tag }}</UBadge
@@ -56,14 +56,14 @@
 						<p class="flex items-center gap-1">
 							<UIcon
 								name="material-symbols:calendar-today-rounded"
-								class="text-secondary"
+								class="text-primary"
 							/>
 							{{ formattedDate }}
 						</p>
 						<p class="flex items-center gap-1">
 							<UIcon
 								name="material-symbols:alarm-rounded"
-								class="text-secondary"
+								class="text-primary"
 							/>
 							{{ readingTimeText }}
 						</p>
@@ -74,7 +74,7 @@
 			<UContentToc
 				class="lg:hidden"
 				title="Contenido"
-				color="secondary"
+				color="primary"
 				:links="data.body.toc?.links"
 				highlight
 				:ui="{
@@ -109,7 +109,7 @@
 
 				<ContentRenderer :value="data" />
 
-				<USeparator color="secondary" />
+				<USeparator color="primary" />
 
 				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
 				<UBlogPosts>
@@ -129,7 +129,7 @@
 					/>
 				</UBlogPosts>
 
-				<USeparator color="secondary" />
+				<USeparator color="primary" />
 
 				<UContentSurround
 					prev-icon="i-lucide-chevron-left"

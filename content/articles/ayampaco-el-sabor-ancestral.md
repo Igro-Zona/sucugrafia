@@ -1,12 +1,13 @@
 ---
-title: "Consistency Is King: How to Stop Being a Weekend Warrior and Start Being a Weekday Wonder"
-date: 2025-09-01
+title: "Ayampaco: el sabor ancestral de Sucúa"
+date: 2026-01-26
 description:
-    "Learn why training consistently is important, because it actually is. Discover tips and tricks to stay healty and
-    always hit your daily goals."
-tags: [tutorial, health]
+    El ayampaco, preparado con pollo o tilapia envueltos en hojas de bijao y acompañado de yuca o plátano, es el plato
+    emblemático de Sucúa. Más que una receta, representa la tradición shuar y la identidad amazónica, convirtiéndose en
+    un símbolo de hospitalidad y orgullo cultural en Morona Santiago.
+tags: [gastronomia, receta, cultura]
 author: Timur Bikmukhametov
-thumbnail: /assets/why-you-should-train.jpeg
+thumbnail: /assets/ayampaco-el-sabor-ancestral.jpg
 ---
 
 Oh, hello there, fellow human who probably has a gym membership they use about as often as they floss (sorry, dentist!).

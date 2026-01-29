@@ -16,9 +16,9 @@ export default defineAppConfig({
 		},
 		contentSurround: {
 			slots: {
-				link: ["px-4 py-4"],
-				linkLeading: ["group-hover:bg-secondary/10 ring group-hover:ring-secondary/50"],
-				linkLeadingIcon: ["group-hover:text-secondary"],
+				link: ["px-4 py-4 bg-default"],
+				linkLeading: ["group-hover:bg-primary/10 ring group-hover:ring-primary/50"],
+				linkLeadingIcon: ["group-hover:text-primary"],
 				linkDescription: "text-left",
 			},
 		},
