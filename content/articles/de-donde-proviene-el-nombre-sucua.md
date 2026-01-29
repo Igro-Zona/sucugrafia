@@ -1,12 +1,13 @@
 ---
-title: "You Are What You Eat (So Please Don't Be a Hot Dog)"
-date: 2025-09-01
+title: "De donde proviene el nombre Sucúa?"
+date: 2025-11-13
 description:
-    Learn why eating good is important, because it actually is. Discover tips and tricks to stay healty and always hit
-    your macros and micros.
-tags: [tutorial, health]
+    El nombre de Sucúa tiene raíces históricas y culturales que reflejan la identidad amazónica y la memoria colectiva
+    de su pueblo. Este artículo explora los orígenes y significados del topónimo, mostrando cómo la tradición oral y la
+    historia local han dado forma a la denominación de este cantón.
+tags: [historia, naturaleza, cultura]
 author: Timur Bikmukhametov
-thumbnail: /assets/why-you-should-eat-good.jpeg
+thumbnail: /assets/de-donde-proviene-el-nombre-sucua.jpg
 ---
 
 Alright, beautiful humans, let's have a heart-to-heart about the fuel you're putting in your magnificent meat suit. If

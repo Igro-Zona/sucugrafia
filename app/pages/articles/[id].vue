@@ -46,7 +46,7 @@
 						<UBadge
 							v-for="tag in data?.meta.tags"
 							:key="tag"
-							color="secondary"
+							color="primary"
 							variant="soft"
 							size="xl"
 							>{{ tag }}</UBadge
@@ -56,14 +56,14 @@
 						<p class="flex items-center gap-1">
 							<UIcon
 								name="material-symbols:calendar-today-rounded"
-								class="text-secondary"
+								class="text-primary"
 							/>
 							{{ formattedDate }}
 						</p>
 						<p class="flex items-center gap-1">
 							<UIcon
 								name="material-symbols:alarm-rounded"
-								class="text-secondary"
+								class="text-primary"
 							/>
 							{{ readingTimeText }}
 						</p>
@@ -74,7 +74,7 @@
 			<UContentToc
 				class="lg:hidden"
 				title="Contenido"
-				color="secondary"
+				color="primary"
 				:links="data.body.toc?.links"
 				highlight
 				:ui="{
@@ -109,7 +109,7 @@
 
 				<ContentRenderer :value="data" />
 
-				<USeparator color="secondary" />
+				<USeparator color="primary" />
 
 				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
 				<UBlogPosts>
@@ -129,7 +129,7 @@
 					/>
 				</UBlogPosts>
 
-				<USeparator color="secondary" />
+				<USeparator color="primary" />
 
 				<UContentSurround
 					prev-icon="i-lucide-chevron-left"
@@ -142,19 +142,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { Article } from "./../../../content.config";
 import { orderBy, intersection } from "lodash";
 
 const route = useRoute();
-const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
-const formattedDate = computed(() => (data.value?.meta?.date ? formatDate(data.value.meta.date) : ""));
-
-const { data } = await useAsyncData(
-	route.path,
-	() => queryCollection("articles").path(route.path).first() as Promise<Article>,
-);
+const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
-	const res = (await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all()) as Article[];
+	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();
 	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
 });
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
@@ -162,6 +155,10 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 		fields: ["description"],
 	});
 });
+
+const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
+const articleDate = new Date(data.value?.meta?.date ? data.value.meta.date : "");
+const formattedDate = computed(() => formatDate(articleDate));
 
 async function share() {
 	await navigator.share({ url: route.fullPath });

@@ -1,12 +1,12 @@
 ---
-title: "H2O-My-God! The Ultimate Guide to Not Turning Into a Human Raisin"
-date: 2025-08-29
+title: "Navidad en Sucúa: tradición, unión y alegría en la Amazonía ecuatoriana"
+date: 2025-012-29
 description:
-    Learn why drinking water is important, because it actually is. Discover tips and tricks to stay hydrated and never
-    miss a glass of water.
-tags: [tutorial, health]
+    La Navidad en Sucúa se vive con luces, música y tradiciones que fortalecen la unión comunitaria y reflejan la
+    identidad amazónica, convirtiendo estas fechas en un tiempo de esperanza y celebración compartida.
+tags: [historia, cultura]
 author: Timur Bikmukhametov
-thumbnail: /assets/why-you-should-drink-water.jpeg
+thumbnail: /assets/navidad-en-sucua-2025.jpg
 ---
 
 Listen up, fellow humans! We need to talk about something that's literally flowing through your veins right now

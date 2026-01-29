@@ -11,16 +11,10 @@
 		>
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
+				:class="currentPage === 1 ? 'bg-muted pointer-events-none cursor-default' : ''"
 				to="/gallery?page=1"
 				:events="true"
-				:style="
-					currentPage === 1
-						? {
-								pointerEvents: 'none',
-								cursor: 'default',
-							}
-						: undefined
-				"
+				aria-label="Primera página"
 			>
 				<Icon
 					name="i-lucide-chevrons-left"
@@ -29,16 +23,10 @@
 			</UiLink>
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
+				:class="currentPage === 1 ? 'bg-muted pointer-events-none cursor-default' : ''"
 				:to="`/gallery?page=${currentPage - 1 === 0 ? currentPage : currentPage - 1}`"
 				:events="true"
-				:style="
-					currentPage === 1
-						? {
-								pointerEvents: 'none',
-								cursor: 'default',
-							}
-						: undefined
-				"
+				aria-label="Página anterior"
 			>
 				<Icon
 					name="i-lucide-chevron-left"
@@ -52,7 +40,9 @@
 					:key="index"
 					class="ring-accented text-default! bg-default hover:bg-elevated inline-flex aspect-square w-9 items-center justify-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
 					:to="`/gallery?page=${item.value}`"
-					:class="item.value === currentPage ? 'bg-primary text-inverted! ring-primary' : ''"
+					:class="
+						item.value === currentPage ? 'bg-primary text-inverted! ring-primary hover:bg-green-500' : ''
+					"
 					:events="true"
 				>
 					{{ item.value }}
@@ -72,16 +62,10 @@
 
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
+				:class="currentPage === pageCount ? 'bg-muted pointer-events-none cursor-default' : ''"
 				:to="`/gallery?page=${currentPage + 1 > pageCount ? pageCount : currentPage + 1}`"
 				:events="true"
-				:style="
-					currentPage === pageCount
-						? {
-								pointerEvents: 'none',
-								cursor: 'default',
-							}
-						: undefined
-				"
+				aria-label="Siguiente página"
 			>
 				<Icon
 					name="i-lucide-chevron-right"
@@ -90,16 +74,10 @@
 			</UiLink>
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
+				:class="currentPage === pageCount ? 'bg-muted pointer-events-none cursor-default' : ''"
 				:to="`/gallery?page=${pageCount}`"
 				:events="true"
-				:style="
-					currentPage === pageCount
-						? {
-								pointerEvents: 'none',
-								cursor: 'default',
-							}
-						: undefined
-				"
+				aria-label="Última página"
 			>
 				<Icon
 					name="i-lucide-chevrons-right"
