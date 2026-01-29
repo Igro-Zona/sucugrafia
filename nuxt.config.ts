@@ -119,6 +119,7 @@ export default defineNuxtConfig({
 				remarkPlugins: {
 					"remark-reading-time": {},
 				},
+				highlight: false,
 			},
 		},
 		renderer: {
