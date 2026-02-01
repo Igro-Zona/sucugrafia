@@ -34,19 +34,19 @@ const items = ref<NavigationMenuItem[]>([
 	{
 		label: "Galeria",
 		icon: "i-lucide-images",
-		to: "/gallery",
+		to: "/galeria",
 		class: "text-md",
 	},
 	{
 		label: "Leer",
 		icon: "i-lucide-clipboard-list",
-		to: "/articles",
+		to: "/articulos",
 		class: "text-md",
 	},
 	{
 		label: "FAQ",
 		icon: "i-lucide-text-select",
-		to: "/about",
+		to: "/ayuda",
 		class: "text-md",
 	},
 ]);

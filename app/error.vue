@@ -24,7 +24,7 @@
 					{{ error.message }}
 				</p>
 				<UiLink
-					:styled="false"
+					:events="true"
 					class="text-inverted bg-inverted hover:bg-inverted/80 active:bg-inverted/60 mt-8 flex items-center justify-center gap-2 rounded-full px-3 py-2 font-medium"
 					to="/"
 				>

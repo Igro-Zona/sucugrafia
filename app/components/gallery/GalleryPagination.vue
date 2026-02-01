@@ -12,7 +12,7 @@
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
 				:class="currentPage === 1 ? 'bg-muted pointer-events-none cursor-default' : ''"
-				to="/gallery?page=1"
+				to="/galeria?page=1"
 				:events="true"
 				aria-label="Primera página"
 			>
@@ -24,7 +24,7 @@
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
 				:class="currentPage === 1 ? 'bg-muted pointer-events-none cursor-default' : ''"
-				:to="`/gallery?page=${currentPage - 1 === 0 ? currentPage : currentPage - 1}`"
+				:to="`/galeria?page=${currentPage - 1 === 0 ? currentPage : currentPage - 1}`"
 				:events="true"
 				aria-label="Página anterior"
 			>
@@ -39,7 +39,7 @@
 					v-if="item.type === 'page'"
 					:key="index"
 					class="ring-accented text-default! bg-default hover:bg-elevated inline-flex aspect-square w-9 items-center justify-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
-					:to="`/gallery?page=${item.value}`"
+					:to="`/galeria?page=${item.value}`"
 					:class="
 						item.value === currentPage ? 'bg-primary text-inverted! ring-primary hover:bg-green-500' : ''
 					"
@@ -63,7 +63,7 @@
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
 				:class="currentPage === pageCount ? 'bg-muted pointer-events-none cursor-default' : ''"
-				:to="`/gallery?page=${currentPage + 1 > pageCount ? pageCount : currentPage + 1}`"
+				:to="`/galeria?page=${currentPage + 1 > pageCount ? pageCount : currentPage + 1}`"
 				:events="true"
 				aria-label="Siguiente página"
 			>
@@ -75,7 +75,7 @@
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
 				:class="currentPage === pageCount ? 'bg-muted pointer-events-none cursor-default' : ''"
-				:to="`/gallery?page=${pageCount}`"
+				:to="`/galeria?page=${pageCount}`"
 				:events="true"
 				aria-label="Última página"
 			>

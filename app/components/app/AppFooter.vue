@@ -76,15 +76,15 @@ const columns: FooterColumnProps[] = [
 			},
 			{
 				label: "Nuestra Galeria",
-				to: "/gallery",
+				to: "/galeria",
 			},
 			{
 				label: "Leer los Articulos",
-				to: "/articles",
+				to: "/articulos",
 			},
 			{
 				label: "Preguntas frecuentes",
-				to: "/about",
+				to: "/ayuda",
 			},
 		],
 	},
