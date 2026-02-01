@@ -8,7 +8,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 			el.classList.add("transition-transform", "duration-250", "ease-out");
 
 			const { elementX, elementY, elementWidth, elementHeight, isOutside } = useMouseInElement(el);
-
 			watch([elementX, elementY, isOutside], () => {
 				if (isOutside.value) {
 					el.style.transform = `perspective(${elementWidth.value}px) rotateX(0) rotateY(0)`;

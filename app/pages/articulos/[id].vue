@@ -143,6 +143,7 @@
 
 <script lang="ts" setup>
 import { orderBy, intersection } from "lodash";
+import useArticleActions from "~/composables/useArticleActions";
 
 const route = useRoute();
 const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
@@ -157,18 +158,7 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 });
 
 const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
-const articleDate = new Date(data.value?.meta?.date ? data.value.meta.date : "");
-const formattedDate = computed(() => formatDate(articleDate));
+const formattedDate = computed(() => formatDate(data.value?.meta.date));
 
-async function share() {
-	await navigator.share({ url: route.fullPath });
-}
-
-const url = useRequestURL();
-const isLinkCopied = ref(false);
-const fullUrl = computed(() => `${url.origin}${route.fullPath}`);
-async function copyLink() {
-	await navigator.clipboard.writeText(fullUrl.value);
-	isLinkCopied.value = true;
-}
+const { isLinkCopied, copyLink, share } = useArticleActions(route);
 </script>
