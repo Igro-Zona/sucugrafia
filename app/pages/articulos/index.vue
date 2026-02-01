@@ -13,7 +13,6 @@
 			</UContentSearchButton>
 			<ClientOnly>
 				<LazyUContentSearch
-					v-model:search-term="searchTerm"
 					:files="files"
 					shortcut="meta_k"
 					:navigation="navigation"
@@ -50,9 +49,7 @@
 <script setup lang="ts">
 const { data: articles } = await useAsyncData("articles-home", () => queryCollection("articles").all());
 const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("articles"));
-const { data: files } = useLazyAsyncData("search", () => queryCollectionSearchSections("articles"), {
+const { data: files } = await useAsyncData("search", () => queryCollectionSearchSections("articles"), {
 	server: false,
 });
-
-const searchTerm = ref("");
 </script>

@@ -21,6 +21,7 @@ export default defineContentConfig({
 				type: "page",
 				source: "articulos/**/*.md",
 				schema: articleSchema,
+				indexes: [{ columns: ["path"] }],
 			}),
 		),
 	},
