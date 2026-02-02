@@ -1,25 +1,27 @@
 <template>
-	<Primitive
-		:class="twMerge('text-primary flex items-center gap-1 text-2xl font-semibold', className)"
-		:as
-	>
+	<Primitive :class="twMerge('flex items-center gap-1 text-2xl font-semibold', props.class)">
 		<Icon
-			mode="svg"
-			name="i-sucua-book"
+			v-if="icon?.name"
+			v-bind="icon"
 			class="text-primary"
-			size="34"
 		/>
-		<span><span class="text-default">Sucu</span>grafia</span>
+		<span>Sucu<span class="text-primary">grafia</span></span>
 	</Primitive>
 </template>
 
 <script setup lang="ts">
-import type { AsTag } from "reka-ui";
-import { Primitive } from "reka-ui";
-import { twMerge } from "tailwind-merge";
+import { Primitive, type PrimitiveProps } from "reka-ui";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-const { class: className = "", as = "div" } = defineProps<{
-	class?: string;
-	as?: AsTag | Component;
-}>();
+export interface UiLogoProps extends PrimitiveProps {
+	as?: AsPropDefault;
+	icon?: IconProps;
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiLogoProps>(), {
+	as: "div",
+	icon: undefined,
+	class: undefined,
+});
 </script>

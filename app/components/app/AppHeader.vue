@@ -6,7 +6,7 @@
 		:toggle="{ color: 'primary', variant: 'link', class: 'cursor-pointer' }"
 	>
 		<template #title>
-			<UiLogo as="h1" />
+			<UiLogo v-bind="logo" />
 		</template>
 
 		<UNavigationMenu :items />
@@ -22,9 +22,18 @@
 </template>
 
 <script setup lang="ts">
+import type { UiLogoProps } from "../ui/UiLogo.vue";
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const items = ref<NavigationMenuItem[]>([
+const logo: UiLogoProps = {
+	as: "h1",
+	icon: {
+		name: "sucua:book",
+		size: 34,
+	},
+};
+
+const items: NavigationMenuItem[] = [
 	{
 		label: "Inicio",
 		icon: "i-lucide-flag",
@@ -49,5 +58,5 @@ const items = ref<NavigationMenuItem[]>([
 		to: "/ayuda",
 		class: "text-md",
 	},
-]);
+];
 </script>

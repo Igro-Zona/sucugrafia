@@ -67,6 +67,7 @@
 </template>
 
 <script setup lang="ts">
+import type { UiCardProps } from "~/components/ui/UiCard.vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
 const title = "Sucugrafia - Mejor forma para conocer a cantón Sucúa";
@@ -80,44 +81,56 @@ useSeoMeta({
 	twitterDescription: description,
 });
 
-const cards = ref([
+const cards: UiCardProps[] = [
 	{
 		title: "Galeria maravillosa",
 		description:
 			"Una colección visual única que muestra lo mejor de nuestro proyecto. Cada imagen transmite emoción y creatividad.",
-		icon: "i-lucide-image",
+		icon: {
+			name: "lucide:image",
+		},
 	},
 	{
 		title: "Moderno e Innovador",
 		description:
 			"Un sitio web con diseño actual y soluciones innovadoras. Pensado para ofrecer una experiencia fresca y atractiva.",
-		icon: "i-lucide-lightbulb",
+		icon: {
+			name: "lucide:lightbulb",
+		},
 	},
 	{
 		title: "Espiritu de la Amazonia",
 		description:
 			"Reflejamos la esencia cultural y natural de Sucúa. Un espacio que conecta con nuestras raíces amazónicas.",
-		icon: "i-lucide-leaf",
+		icon: {
+			name: "lucide:leaf",
+		},
 	},
 	{
 		title: "Veloz y facil",
 		description:
 			"Navegación rápida y sencilla para todos los usuarios. Compatible con cualquier dispositivo y pensado para la comodidad.",
-		icon: "i-lucide-rocket",
+		icon: {
+			name: "lucide:rocket",
+		},
 	},
 	{
 		title: "Informacion segura",
 		description:
 			"El contenido de nuestro sitio es confiable. Compartimos información honesta que refleja transparencia y credibilidad.",
-		icon: "i-lucide-shield-check",
+		icon: {
+			name: "lucide:shield-check",
+		},
 	},
 	{
 		title: "Mejor guia",
 		description:
 			"Un recurso claro y práctico para orientarte en cada paso. Te acompañamos con información útil y accesible.",
-		icon: "i-lucide-map",
+		icon: {
+			name: "lucide:map",
+		},
 	},
-]);
+];
 
 const breakpoints = useBreakpoints(breakpointsTailwind, {
 	ssrWidth: 767,

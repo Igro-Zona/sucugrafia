@@ -8,9 +8,14 @@
 </template>
 
 <script setup lang="ts">
+import type { ClassNameValue } from "tailwind-merge";
 import { DialogTrigger } from "reka-ui";
 
-const props = defineProps<{
-	class?: string;
-}>();
+export interface UiModalTriggerProps {
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiModalTriggerProps>(), {
+	class: undefined,
+});
 </script>

@@ -5,9 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { twMerge } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-const props = defineProps<{
-	class?: string;
-}>();
+export interface UiContainerProps {
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiContainerProps>(), {
+	class: undefined,
+});
 </script>

@@ -1,18 +1,18 @@
 <template>
-	<Separator
-		v-bind="props"
-		:class="twMerge(`w-full border-t border-${color}`, className)"
-	/>
+	<Separator :class="twMerge(`w-full border-t border-${color}`, props.class)" />
 </template>
 
 <script setup lang="ts">
 import { Separator, type SeparatorProps } from "reka-ui";
-import { twMerge } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-type MySeparatorProps = {
-	class?: string;
+export interface UiSeparatorProps extends SeparatorProps {
 	color?: string;
-} & SeparatorProps;
+	class?: ClassNameValue;
+}
 
-const { color = "default", class: className = "", ...props } = defineProps<MySeparatorProps>();
+const props = withDefaults(defineProps<UiSeparatorProps>(), {
+	color: "default",
+	class: undefined,
+});
 </script>

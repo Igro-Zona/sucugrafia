@@ -1,22 +1,21 @@
 <template>
 	<div
 		role="group"
-		:aria-label="props.title"
+		:aria-label="title"
 		:class="twMerge('bg-default border-default relative space-y-4 rounded-md border p-4 sm:p-6', props.class)"
 	>
 		<div class="flex items-center gap-4">
-			<Icon
-				v-if="props.icon"
-				:name="props.icon"
+			<UIcon
+				v-if="icon?.name"
+				v-bind="icon"
 				class="text-primary"
-				size="24"
 			/>
 
 			<Primitive
-				:as="as ? as : 'p'"
+				:as
 				class="text-highlighted font-semibold text-pretty sm:text-lg"
 			>
-				{{ props.title }}
+				{{ title }}
 			</Primitive>
 		</div>
 
@@ -24,7 +23,7 @@
 			v-if="description"
 			class="text-muted text-sm text-pretty sm:text-base"
 		>
-			{{ props.description }}
+			{{ description }}
 		</p>
 
 		<slot />
@@ -32,14 +31,21 @@
 </template>
 
 <script setup lang="ts">
-import { twMerge } from "tailwind-merge";
 import { Primitive } from "reka-ui";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-const props = defineProps<{
+export interface UiCardProps {
 	title: string;
-	class?: string;
-	icon?: string;
 	description?: string;
-	as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | Component;
-}>();
+	icon?: IconProps;
+	as?: AsPropWithHeadings;
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiCardProps>(), {
+	description: undefined,
+	icon: undefined,
+	as: "p",
+	class: undefined,
+});
 </script>

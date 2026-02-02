@@ -1,9 +1,9 @@
 <template>
 	<PaginationRoot
 		v-slot="{ page: currentPage, pageCount }"
-		v-bind="rootProps"
 		:show-edges="true"
 		:items-per-page="1"
+		@update:page="emits('update:page', $event)"
 	>
 		<PaginationList
 			v-slot="{ items }"
@@ -16,10 +16,7 @@
 				:events="true"
 				aria-label="Primera página"
 			>
-				<Icon
-					name="i-lucide-chevrons-left"
-					size="24"
-				/>
+				<Icon name="i-lucide-chevrons-left" />
 			</UiLink>
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
@@ -28,10 +25,7 @@
 				:events="true"
 				aria-label="Página anterior"
 			>
-				<Icon
-					name="i-lucide-chevron-left"
-					size="24"
-				/>
+				<Icon name="i-lucide-chevron-left" />
 			</UiLink>
 
 			<template v-for="(item, index) in items">
@@ -53,10 +47,7 @@
 					:key="item.type"
 					class="ring-accented bg-default inline-flex items-center rounded-md p-1.5 ring ring-inset"
 				>
-					<Icon
-						name="i-lucide-ellipsis"
-						size="24"
-					/>
+					<Icon name="i-lucide-ellipsis" />
 				</div>
 			</template>
 
@@ -67,10 +58,7 @@
 				:events="true"
 				aria-label="Siguiente página"
 			>
-				<Icon
-					name="i-lucide-chevron-right"
-					size="24"
-				/>
+				<Icon name="i-lucide-chevron-right" />
 			</UiLink>
 			<UiLink
 				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center rounded-md p-1.5 ring ring-inset aria-disabled:opacity-75"
@@ -79,29 +67,24 @@
 				:events="true"
 				aria-label="Última página"
 			>
-				<Icon
-					name="i-lucide-chevrons-right"
-					size="24"
-				/>
+				<Icon name="i-lucide-chevrons-right" />
 			</UiLink>
 		</PaginationList>
 	</PaginationRoot>
 </template>
 
 <script setup lang="ts">
-import { PaginationList, PaginationRoot, useForwardPropsEmits } from "reka-ui";
-import { reactivePick } from "@vueuse/core";
+import type { ClassNameValue } from "tailwind-merge";
+import { PaginationList, PaginationRoot } from "reka-ui";
 
-const emits = defineEmits(["update:page"]);
-const props = defineProps<{
+export interface GalleryPaginationProps {
 	defaultPage?: number;
 	page?: number;
 	siblingCount: number;
 	total: number;
-	class?: string;
-}>();
-const rootProps = useForwardPropsEmits(
-	reactivePick(props, "defaultPage", "page", "siblingCount", "total", "class"),
-	emits,
-);
+	class?: ClassNameValue;
+}
+
+defineProps<GalleryPaginationProps>();
+const emits = defineEmits(["update:page"]);
 </script>

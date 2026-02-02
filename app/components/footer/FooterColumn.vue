@@ -27,10 +27,13 @@ type LinkProps = {
 	label: string;
 } & NuxtLinkProps;
 
-export type FooterColumnProps = {
+export interface FooterColumnProps {
 	columnLabel?: string;
 	links?: LinkProps[];
-};
+}
 
-const { columnLabel = "", links = undefined } = defineProps<FooterColumnProps>();
+withDefaults(defineProps<FooterColumnProps>(), {
+	columnLabel: "Sin titulo",
+	links: undefined,
+});
 </script>
