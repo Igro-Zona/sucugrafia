@@ -1,9 +1,9 @@
 <template>
 	<PaginationRoot
 		v-slot="{ page: currentPage, pageCount }"
+		v-bind="data"
 		:show-edges="true"
 		:items-per-page="1"
-		@update:page="emits('update:page', $event)"
 	>
 		<PaginationList
 			v-slot="{ items }"
@@ -74,17 +74,15 @@
 </template>
 
 <script setup lang="ts">
-import type { ClassNameValue } from "tailwind-merge";
-import { PaginationList, PaginationRoot } from "reka-ui";
+import { PaginationList, PaginationRoot, useForwardPropsEmits } from "reka-ui";
 
 export interface GalleryPaginationProps {
 	defaultPage?: number;
 	page?: number;
 	siblingCount: number;
 	total: number;
-	class?: ClassNameValue;
 }
-
-defineProps<GalleryPaginationProps>();
 const emits = defineEmits(["update:page"]);
+const props = defineProps<GalleryPaginationProps>();
+const data = useForwardPropsEmits(props, emits);
 </script>
