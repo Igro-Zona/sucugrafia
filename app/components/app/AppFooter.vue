@@ -33,7 +33,10 @@
 						to="/"
 						:events="true"
 					>
-						<UiLogo />
+						<UiLogo
+							v-bind="logo"
+							class="text-highlighted"
+						/>
 					</UiLink>
 
 					<UiLink
@@ -42,7 +45,10 @@
 						class="hover:bg-muted hover:text-highlighted active:bg-accented rounded-lg p-2 transition-colors lg:hidden"
 						:external-icon="false"
 					>
-						<Icon name="i-simple-icons-github" />
+						<Icon
+							name="i-simple-icons-github"
+							:size="30"
+						/>
 					</UiLink>
 				</div>
 
@@ -57,14 +63,26 @@
 				class="hover:bg-muted hover:text-highlighted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
 				:external-icon="false"
 			>
-				<Icon name="i-simple-icons-github" />
+				<Icon
+					name="i-simple-icons-github"
+					:size="30"
+				/>
 			</UiLink>
 		</UiContainer>
 	</footer>
 </template>
 
 <script setup lang="ts">
+import type { UiLogoProps } from "../ui/UiLogo.vue";
 import type { FooterColumnProps } from "../footer/FooterColumn.vue";
+
+const logo: UiLogoProps = {
+	as: "h1",
+	icon: {
+		name: "sucua:book",
+		size: 34,
+	},
+};
 
 const columns: FooterColumnProps[] = [
 	{
@@ -76,15 +94,15 @@ const columns: FooterColumnProps[] = [
 			},
 			{
 				label: "Nuestra Galeria",
-				to: "/gallery",
+				to: "/galeria",
 			},
 			{
 				label: "Leer los Articulos",
-				to: "/articles",
+				to: "/articulos",
 			},
 			{
 				label: "Preguntas frecuentes",
-				to: "/about",
+				to: "/ayuda",
 			},
 		],
 	},

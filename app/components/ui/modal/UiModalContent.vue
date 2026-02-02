@@ -22,12 +22,18 @@
 </template>
 
 <script setup lang="ts">
-import { twMerge } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 import { DialogContent, DialogDescription, DialogTitle, VisuallyHidden } from "reka-ui";
 
-const props = defineProps<{
-	class?: string;
+export interface UiModalContentProps {
 	title?: string;
 	description?: string;
-}>();
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiModalContentProps>(), {
+	title: undefined,
+	description: undefined,
+	class: undefined,
+});
 </script>

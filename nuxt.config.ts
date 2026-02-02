@@ -69,17 +69,18 @@ export default defineNuxtConfig({
 	},
 
 	icon: {
+		provider: "iconify", //TODO: Заменить на "none" после миграции в Nuxt Ui
+		serverBundle: false,
 		clientBundle: {
-			icons: ["lucide:menu", "simple-icons:github", "lucide:chevron-down"],
 			scan: true,
 			includeCustomCollections: true,
 			sizeLimitKb: 4096,
 		},
 		customCollections: [
 			{
-				provider: "",
 				prefix: "sucua",
 				dir: "./app/assets/icons",
+				normalizeIconName: true,
 			},
 		],
 	},
@@ -125,6 +126,7 @@ export default defineNuxtConfig({
 		renderer: {
 			anchorLinks: true,
 		},
+		experimental: { sqliteConnector: "better-sqlite3" },
 	},
 
 	site: {

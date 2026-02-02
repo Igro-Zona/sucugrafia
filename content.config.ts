@@ -19,8 +19,9 @@ export default defineContentConfig({
 		articles: defineCollection(
 			asSitemapCollection({
 				type: "page",
-				source: "articles/**/*.md",
+				source: "articulos/**/*.md",
 				schema: articleSchema,
+				indexes: [{ columns: ["path"] }],
 			}),
 		),
 	},

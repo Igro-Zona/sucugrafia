@@ -1,7 +1,7 @@
 <template>
 	<section
 		:aria-label="title"
-		:class="twMerge('space-y-6', className)"
+		:class="twMerge('space-y-6', props.class)"
 	>
 		<h2 class="font-latto text-primary text-2xl font-bold sm:text-3xl">{{ title }}</h2>
 		<slot />
@@ -9,10 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import { twMerge } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-const { title = "Sin titulo", class: className = "" } = defineProps<{
-	title?: string;
-	class?: string;
-}>();
+export interface UiSectionProps {
+	title: string;
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiSectionProps>(), {
+	class: undefined,
+});
 </script>

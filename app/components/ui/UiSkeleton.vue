@@ -1,23 +1,26 @@
 <template>
 	<Primitive
-		:as="as"
 		aria-busy="true"
 		aria-label="loading"
 		aria-live="polite"
 		role="alert"
-		:class="twMerge('bg-elevated animate-pulse rounded-md', className)"
+		:class="twMerge('bg-elevated animate-pulse rounded-md', props.class)"
 	>
 		<slot />
 	</Primitive>
 </template>
 
 <script setup lang="ts">
-import type { AsTag } from "reka-ui";
-import { Primitive } from "reka-ui";
-import { twMerge } from "tailwind-merge";
+import { Primitive, type PrimitiveProps } from "reka-ui";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-const { class: className = "", as = "div" } = defineProps<{
-	class?: string;
-	as?: AsTag | Component;
-}>();
+export interface UiSkeletonProps extends PrimitiveProps {
+	as?: AsPropDefault;
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<UiSkeletonProps>(), {
+	as: "div",
+	class: undefined,
+});
 </script>

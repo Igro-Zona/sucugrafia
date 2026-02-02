@@ -14,25 +14,19 @@
 
 		<div class="flex flex-wrap items-center justify-center gap-6">
 			<UiLink
-				to="/gallery"
+				to="/galeria"
 				class="text-inverted! bg-primary hover:bg-primary/75 active:bg-primary/75 cursor-pointer items-center gap-2 rounded-md px-3 py-2"
 			>
-				<Icon
-					name="i-lucide-image"
-					size="24"
-				/>
+				<Icon name="i-lucide-image" />
 				<span>Ver galeria</span>
 			</UiLink>
 
 			<UiLink
-				to="/articles"
+				to="/articulos"
 				class="text-default! bg-muted border-accented hover:bg-muted/75 active:bg-muted/75 cursor-pointer items-center gap-2 rounded-md border px-3 py-2"
 			>
 				<span>Leer articulos</span>
-				<Icon
-					name="i-lucide-arrow-right"
-					size="24"
-				/>
+				<Icon name="i-lucide-arrow-right" />
 			</UiLink>
 		</div>
 	</section>

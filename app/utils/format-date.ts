@@ -1,5 +1,9 @@
-export default function (dateInput: Date) {
-	const date = new Date(dateInput);
+export default function (dateInput?: Date | string) {
+	if (!dateInput) {
+		return "Fecha inválida";
+	}
+
+	const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
 
 	if (isNaN(date.getTime())) {
 		return "Fecha inválida";

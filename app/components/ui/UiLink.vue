@@ -3,67 +3,48 @@
 		v-bind="props"
 		:external="external ?? isExternal"
 		:target="target ?? (external || isExternal ? '_blank' : undefined)"
-		:to
 		:aria-current="ariaCurrent"
-		:class="
+		:class="[
 			twMerge(
 				'inline-flex gap-0.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white',
-				className,
-			)
-		"
-		:style="
-			ariaCurrent === 'page' && events === false
-				? {
-						pointerEvents: 'none',
-						cursor: 'default',
-					}
-				: undefined
-		"
+				props.class,
+			),
+			ariaCurrent === 'page' && !(events ? events : false) && 'pointer-events-none cursor-default',
+		]"
 	>
 		<slot />
-
 		<Icon
 			v-if="(external || isExternal) && externalIcon"
-			name="i-lucide-arrow-up-right"
-			size="15"
+			v-bind="icon"
 		/>
 	</NuxtLink>
 </template>
 
 <script setup lang="ts">
 import type { NuxtLinkProps } from "#app";
-import { twMerge } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-type UiLinkProps = {
+export interface UiLinkProps extends Omit<NuxtLinkProps, "noPrefetch"> {
 	events?: boolean;
 	externalIcon?: boolean;
-	class?: string;
-} & NuxtLinkProps;
+	icon?: IconProps;
+	class?: ClassNameValue;
+}
 
-const {
-	events = false,
-	externalIcon = true,
-	class: className = "",
-	to,
-	external,
-	target,
-	noPrefetch,
-	...props
-} = defineProps<UiLinkProps>();
-
-const EXTERNAL_REGEX = /^(https?:)?\/\//;
-const isExternal = computed(() => {
-	return EXTERNAL_REGEX.test(to?.toString() ?? "");
+const props = withDefaults(defineProps<UiLinkProps>(), {
+	events: false,
+	externalIcon: true,
+	icon: () => ({ name: "lucide:arrow-up-right", size: 16 }),
+	class: undefined,
 });
+
+const isExternal = computed(() => isExternalUrl(props.to?.toString()));
 
 const route = useRoute();
 const ariaCurrent = computed(() => {
-	const currentPath = route.path;
-	const targetPath = to?.toString();
+	const targetPath = props.to?.toString();
 	if (!targetPath) return undefined;
-
-	if (currentPath === targetPath) return "page";
-	if (currentPath.startsWith(targetPath)) return "step";
-	return undefined;
+	if (route.path === targetPath) return "page";
+	return route.path.startsWith(targetPath) ? "step" : undefined;
 });
 </script>
