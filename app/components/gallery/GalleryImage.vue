@@ -6,7 +6,7 @@
 		densities="1x 2x"
 		format="avif,webp"
 		legacy-format="jpg"
-		:src
+		:src="src"
 		provider="cloudinary"
 		class="block aspect-video w-full"
 		:img-attrs="{
@@ -19,7 +19,9 @@
 </template>
 
 <script setup lang="ts">
-const { src } = defineProps<{
+export interface GalleryImageProps {
 	src: string;
-}>();
+}
+
+defineProps<GalleryImageProps>();
 </script>

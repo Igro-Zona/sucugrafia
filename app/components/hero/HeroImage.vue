@@ -6,7 +6,7 @@
 		densities="1x 2x"
 		format="avif,webp"
 		legacy-format="jpg"
-		:src
+		:src="src"
 		provider="cloudinary"
 		class="block aspect-video w-115"
 		:img-attrs="{
@@ -18,7 +18,9 @@
 </template>
 
 <script setup lang="ts">
-const { src } = defineProps<{
+export interface HeroImageProps {
 	src: string;
-}>();
+}
+
+defineProps<HeroImageProps>();
 </script>

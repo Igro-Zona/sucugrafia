@@ -1,6 +1,6 @@
 <template>
 	<footer
-		class="border-primary border-t"
+		:class="twMerge('border-primary border-t', props.class)"
 		aria-labelledby="footer-label"
 	>
 		<h2
@@ -75,6 +75,15 @@
 <script setup lang="ts">
 import type { UiLogoProps } from "../ui/UiLogo.vue";
 import type { FooterColumnProps } from "../footer/FooterColumn.vue";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
+
+export interface AppFooterProps {
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<AppFooterProps>(), {
+	class: undefined,
+});
 
 const logo: UiLogoProps = {
 	as: "h1",

@@ -10,9 +10,13 @@
 </template>
 
 <script setup lang="ts">
-import { twMerge } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
-const props = defineProps<{
-	class?: string;
-}>();
+export interface AppMainProps {
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<AppMainProps>(), {
+	class: undefined,
+});
 </script>

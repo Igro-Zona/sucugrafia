@@ -12,11 +12,12 @@
 import { twMerge, type ClassNameValue } from "tailwind-merge";
 
 export interface UiSectionProps {
-	title: string;
+	title?: string;
 	class?: ClassNameValue;
 }
 
 const props = withDefaults(defineProps<UiSectionProps>(), {
+	title: "Sin titulo",
 	class: undefined,
 });
 </script>

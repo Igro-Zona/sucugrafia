@@ -82,6 +82,7 @@ export interface GalleryPaginationProps {
 	siblingCount: number;
 	total: number;
 }
+
 const emits = defineEmits(["update:page"]);
 const props = defineProps<GalleryPaginationProps>();
 const data = useForwardPropsEmits(props, emits);
