@@ -1,6 +1,6 @@
 <template>
 	<NuxtLink
-		v-bind="props"
+		v-bind="linkProps"
 		:external="external ?? isExternal"
 		:target="target ?? (external || isExternal ? '_blank' : undefined)"
 		:aria-current="ariaCurrent"
@@ -37,6 +37,7 @@ const props = withDefaults(defineProps<UiLinkProps>(), {
 	icon: () => ({ name: "lucide:arrow-up-right", size: 16 }),
 	class: undefined,
 });
+const { events, externalIcon, icon, class: _class, ...linkProps } = props;
 
 const isExternal = computed(() => isExternalUrl(props.to?.toString()));
 
