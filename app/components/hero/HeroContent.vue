@@ -33,8 +33,10 @@
 </template>
 
 <script setup lang="ts">
-const { title, description } = defineProps<{
-	title: string;
-	description: string;
-}>();
+export interface HeroContentProps {
+	title?: string;
+	description?: string;
+}
+
+defineProps<HeroContentProps>();
 </script>

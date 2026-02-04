@@ -21,12 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import type { NuxtLinkProps } from "#app";
-
-type LinkProps = {
-	label: string;
-} & NuxtLinkProps;
-
 export interface FooterColumnProps {
 	columnLabel?: string;
 	links?: LinkProps[];

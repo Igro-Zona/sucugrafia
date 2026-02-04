@@ -45,7 +45,9 @@
 import type { NuxtError } from "#app";
 import { es } from "@nuxt/ui/locale";
 
-const { error } = defineProps<{
+export interface ErrorRouteProps {
 	error: NuxtError;
-}>();
+}
+
+defineProps<ErrorRouteProps>();
 </script>

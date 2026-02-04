@@ -35,7 +35,7 @@ import { Primitive } from "reka-ui";
 import { twMerge, type ClassNameValue } from "tailwind-merge";
 
 export interface UiCardProps {
-	title: string;
+	title?: string;
 	description?: string;
 	icon?: IconProps;
 	as?: AsPropWithHeadings;
@@ -43,6 +43,7 @@ export interface UiCardProps {
 }
 
 const props = withDefaults(defineProps<UiCardProps>(), {
+	title: "Sin titulo",
 	description: undefined,
 	icon: undefined,
 	as: "p",

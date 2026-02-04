@@ -1,4 +1,5 @@
 import type { AsTag } from "reka-ui";
+import type { NuxtLinkProps } from "#app";
 
 declare global {
 	interface IconProps {
@@ -10,4 +11,19 @@ declare global {
 
 	type AsPropDefault = AsTag | Component;
 	type AsPropWithHeadings = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | Component;
+
+	type LinkProps = {
+		label: string;
+	} & NuxtLinkProps;
+	type SemanticColor =
+		| "default"
+		| "primary"
+		| "secondary"
+		| "accent"
+		| "muted"
+		| "highlight"
+		| "success"
+		| "warning"
+		| "error"
+		| "info";
 }

@@ -7,7 +7,7 @@ import { Separator, type SeparatorProps } from "reka-ui";
 import { twMerge, type ClassNameValue } from "tailwind-merge";
 
 export interface UiSeparatorProps extends SeparatorProps {
-	color?: string;
+	color?: SemanticColor;
 	class?: ClassNameValue;
 }
 
