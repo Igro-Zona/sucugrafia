@@ -38,5 +38,9 @@
 </template>
 
 <script setup lang="ts">
-const images = await useImages(8);
+export interface HeroMarqueeProps {
+	images: string[];
+}
+
+defineProps<HeroMarqueeProps>();
 </script>

@@ -8,7 +8,10 @@
 				:title
 				:description
 			/>
-			<HeroMarquee v-if="mdAndLarger" />
+			<HeroMarquee
+				v-if="mdAndLarger"
+				:images
+			/>
 		</UiContainer>
 
 		<UiContainer class="space-y-8 lg:space-y-12">
@@ -136,4 +139,13 @@ const breakpoints = useBreakpoints(breakpointsTailwind, {
 	ssrWidth: 767,
 });
 const mdAndLarger = computed(() => breakpoints.isGreaterOrEqual("md"));
+const images = ref<string[]>([]);
+
+let fetched = false;
+watchEffect(async () => {
+	if (mdAndLarger.value && !fetched) {
+		images.value = await useImages(8);
+		fetched = true;
+	}
+});
 </script>
