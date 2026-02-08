@@ -37,6 +37,7 @@
 		"@iconify-json/simple-icons": "^1.2.70",
 		"@nuxt/content": "^3.11.2",
 		"@nuxt/eslint": "^1.13.0",
+		"@types/lodash-es": "^4.17.12",
 		"eslint": "^9.39.2",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.2.6",
