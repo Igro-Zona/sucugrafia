@@ -1,5 +1,6 @@
 import type { AsTag } from "reka-ui";
 import type { NuxtLinkProps } from "#app";
+export {};
 
 declare global {
 	interface IconProps {

@@ -38,5 +38,5 @@
 </template>
 
 <script setup lang="ts">
-const images = Array.from({ length: 6 }, (_, i) => `img${i + 1}.jpg`);
+const images = await useImages(8);
 </script>
