@@ -25,6 +25,6 @@ const props = withDefaults(defineProps<UiAccordionItemProps>(), {
 	as: "div",
 	class: undefined,
 	disabled: false,
-	unmountOnHide: false,
+	unmountOnHide: true,
 });
 </script>
