@@ -1,4 +1,5 @@
 import type { AsTag } from "reka-ui";
+import type { ClassNameValue } from "tailwind-merge";
 import type { NuxtLinkProps } from "#app";
 export {};
 
@@ -8,6 +9,7 @@ declare global {
 		mode?: "svg" | "css";
 		size?: string | number;
 		customize?: (content: string, name?: string, prefix?: string, provider?: string) => string;
+		class?: ClassNameValue;
 	}
 
 	type AsPropDefault = AsTag | Component;

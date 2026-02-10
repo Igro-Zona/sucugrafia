@@ -144,7 +144,7 @@ const images = ref<string[]>([]);
 let fetched = false;
 watchEffect(async () => {
 	if (mdAndLarger.value && !fetched) {
-		images.value = await useImages(8);
+		images.value = await useImages(6);
 		fetched = true;
 	}
 });

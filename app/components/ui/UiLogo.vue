@@ -1,5 +1,8 @@
 <template>
-	<Primitive :class="twMerge('flex items-center gap-1 text-2xl font-semibold', props.class)">
+	<Primitive
+		:as="as"
+		:class="twMerge('flex items-center gap-1 text-2xl font-semibold', props.class)"
+	>
 		<Icon
 			v-if="icon?.name"
 			v-bind="icon"
