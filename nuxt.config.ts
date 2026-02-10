@@ -26,6 +26,9 @@ export default defineNuxtConfig({
 				lodash: "lodash-es",
 			},
 		},
+		optimizeDeps: {
+			include: ["nuxt-aos > aos"],
+		},
 	},
 
 	css: ["~/assets/css/main.css"],
