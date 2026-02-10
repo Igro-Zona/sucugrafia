@@ -38,5 +38,9 @@
 </template>
 
 <script setup lang="ts">
-const images = Array.from({ length: 6 }, (_, i) => `img${i + 1}.jpg`);
+export interface HeroMarqueeProps {
+	images: string[];
+}
+
+defineProps<HeroMarqueeProps>();
 </script>
