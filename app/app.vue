@@ -1,4 +1,8 @@
 <template>
+	<NuxtLoadingIndicator
+		color="#00dc82"
+		:height="4"
+	/>
 	<UApp :locale="es">
 		<AppOverlay />
 		<AppHeader

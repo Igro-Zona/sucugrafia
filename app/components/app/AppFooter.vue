@@ -33,10 +33,7 @@
 						to="/"
 						:events="true"
 					>
-						<UiLogo
-							v-bind="logo"
-							class="text-highlighted"
-						/>
+						<UiLogo v-bind="logo" />
 					</UiLink>
 
 					<UiLink

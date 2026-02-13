@@ -3,7 +3,7 @@
 		v-bind="props"
 		:class="
 			twMerge(
-				'overflow-hidden focus:outline-none data-[state=closed]:animate-[accordion-animation-up_200ms_ease-out] data-[state=open]:animate-[accordion-animation-down_200ms_ease-out]',
+				'overflow-hidden data-[state=closed]:animate-[accordion-animation-up_200ms_ease-out] data-[state=open]:animate-[accordion-animation-down_200ms_ease-out]',
 				props.class,
 			)
 		"

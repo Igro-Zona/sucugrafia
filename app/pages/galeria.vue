@@ -22,7 +22,7 @@
 
 			<GalleryPagination
 				v-model:page="page"
-				class="flex justify-center"
+				class="mb-2 flex justify-center"
 				:default-page="queryPage"
 				:sibling-count="1"
 				:total="pagesMax"

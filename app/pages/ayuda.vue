@@ -1,26 +1,54 @@
 <template>
 	<UiContainer>
 		<UiSection
-			title="Preguntas frecuentes "
+			:title="title"
 			class="mt-4"
 		>
-			<p class="mt-2 sm:text-lg">
-				En esta sección encontrarás respuestas claras y directas a las preguntas más comunes que nuestros
-				usuarios suelen tener. La idea es que puedas resolver tus dudas rápidamente y sentir confianza al usar
-				nuestra plataforma, sin necesidad de buscar en otros apartados. Además, queremos que este espacio sea tu
-				punto de referencia: un lugar donde cada explicación esté pensada para ser sencilla, útil y accesible,
-				ayudándote a aprovechar al máximo todas las posibilidades que ofrecemos.
+			<p
+				class="mt-2 sm:text-lg"
+				data-aos="fade-left"
+			>
+				En esta sección encontrarás <b class="text-primary">respuestas claras</b> y directas a las preguntas más
+				comunes que nuestros usuarios suelen tener. La idea es que puedas
+				<b class="text-primary">resolver tus dudas</b> rápidamente y sentir confianza al usar nuestra
+				plataforma, sin necesidad de buscar en otros apartados. Además, queremos que este espacio sea tu punto
+				de referencia: un lugar donde cada explicación esté pensada para ser
+				<b class="text-primary">sencilla, útil y accesible</b>, ayudándote a aprovechar al máximo todas las
+				posibilidades que ofrecemos con nuestra
+				<UiLink
+					class="text-highlighted hover:text-primary font-semibold"
+					to="/galeria"
+					>galeria</UiLink
+				>.
 			</p>
 
-			<HelpAccordion :items="items" />
+			<HelpAccordion
+				:items="items"
+				data-aos="zoom-in-up"
+			/>
 
-			<p class="mt-4 sm:text-lg">
-				Visión de Sucugrafía - Ser el espejo visual de Sucúa: un espacio digital donde las imágenes capturan la
-				esencia de su gente, paisajes y cultura. Unir técnica y emoción: cada fotografía y cada línea de código
-				trabajan juntas para ofrecer una experiencia estética impecable y accesible. Inspirar orgullo local y
-				curiosidad global: mostrar al mundo la riqueza visual de Sucúa, mientras conecta a la comunidad con su
-				propia identidad. Convertir visitas en experiencias memorables: que cada usuario sienta que no solo vio
-				imágenes, sino que vivió un relato visual envolvente.
+			<p
+				class="mt-4 sm:text-lg"
+				data-aos="fade-right"
+			>
+				Visión de
+				<UiLink
+					class="text-highlighted hover:text-primary font-semibold"
+					to="/"
+					>Sucugrafia</UiLink
+				>
+				- Ser el espejo visual de Sucúa: un espacio digital donde las imágenes capturan la
+				<b class="text-primary">esencia</b> de su gente, paisajes y cultura. Unir
+				<b class="text-primary">técnica y emoción</b>: cada fotografía y cada línea de código trabajan juntas
+				para ofrecer una experiencia estética impecable y accesible. Inspirar orgullo local y
+				<b class="text-primary">curiosidad global</b>: mostrar al mundo la riqueza visual de Sucúa, mientras
+				conecta a la comunidad con su propia identidad. Convertir visitas en experiencias memorables: que cada
+				usuario sienta que no solo vio <b class="text-primary">imágenes</b> y
+				<UiLink
+					class="text-highlighted hover:text-primary font-semibold"
+					to="/articulos"
+					>articulos</UiLink
+				>, sino que vivió un relato visual envolvente.
 			</p>
 		</UiSection>
 	</UiContainer>
@@ -29,17 +57,28 @@
 <script setup lang="ts">
 import type { HelpAccordionItem } from "~/components/help/HelpAccordion.vue";
 
+const title = "Preguntas frecuentes";
+const description =
+	"En esta sección encontrarás respuestas claras y directas a las preguntas más comunes que nuestros usuarios suelen tener. La idea es que puedas resolver tus dudas rápidamente y sentir confianza al usar nuestra plataforma, sin necesidad de buscar en otros apartados.";
+
+useSeoMeta({
+	description,
+	ogTitle: title,
+	twitterTitle: title,
+	twitterDescription: description,
+});
+
 const items: HelpAccordionItem[] = [
 	{
-		label: "¿Qué es Sucugrafía?",
+		label: "¿Qué es Sucugrafia?",
 		icon: {
 			name: "lucide:image",
 		},
 		content:
-			"Sucugrafía es una galería digital inspirada en el cantón Sucúa. Su propósito es mostrar imágenes que reflejan la esencia de su gente, paisajes y cultura, combinando técnica y emoción para crear una experiencia visual única.",
+			"Sucugrafia es una galería digital inspirada en el cantón Sucúa. Su propósito es mostrar imágenes que reflejan la esencia de su gente, paisajes y cultura, combinando técnica y emoción para crear una experiencia visual única.",
 	},
 	{
-		label: "¿Por qué el nombre Sucugrafía?",
+		label: "¿Por qué el nombre Sucugrafia?",
 		icon: {
 			name: "lucide:type",
 		},
@@ -47,7 +86,7 @@ const items: HelpAccordionItem[] = [
 			"El nombre nace de la unión entre 'Sucúa' y 'grafía', que significa escritura o representación. Es nuestra manera de decir que cada imagen es una forma de escribir la historia visual del cantón.",
 	},
 	{
-		label: "¿Sucugrafía es accesible para todos?",
+		label: "¿Sucugrafia es accesible para todos?",
 		icon: {
 			name: "lucide:eye",
 		},
@@ -64,7 +103,7 @@ const items: HelpAccordionItem[] = [
 	},
 
 	{
-		label: "¿Qué hace diferente a Sucugrafía de otras galerías?",
+		label: "¿Qué hace diferente a Sucugrafia de otras galerías?",
 		icon: {
 			name: "lucide:star",
 		},
@@ -72,7 +111,7 @@ const items: HelpAccordionItem[] = [
 			"No buscamos solo mostrar fotos bonitas. Cada imagen está pensada para transmitir identidad, emoción y pertenencia, convirtiendo la galería en un relato visual de la comunidad.",
 	},
 	{
-		label: "¿Sucugrafía es solo para la gente de Sucúa?",
+		label: "¿Sucugrafia es solo para la gente de Sucúa?",
 		icon: {
 			name: "lucide:globe",
 		},
@@ -80,7 +119,7 @@ const items: HelpAccordionItem[] = [
 			"No. Aunque nace en Sucúa, la galería está pensada para que cualquier persona, en cualquier parte del mundo, pueda descubrir y apreciar la riqueza visual de nuestra tierra.",
 	},
 	{
-		label: "¿Qué emociones busca despertar Sucugrafía?",
+		label: "¿Qué emociones busca despertar Sucugrafia?",
 		icon: {
 			name: "lucide:heart",
 		},
@@ -88,7 +127,7 @@ const items: HelpAccordionItem[] = [
 			"Queremos que cada visitante sienta orgullo, curiosidad y cercanía. Que no solo vea imágenes, sino que viva un relato que lo conecte con la cultura y la naturaleza de Sucúa.",
 	},
 	{
-		label: "¿Qué sueña lograr Sucugrafía en el futuro?",
+		label: "¿Qué sueña lograr Sucugrafia en el futuro?",
 		icon: {
 			name: "lucide:sparkles",
 		},
