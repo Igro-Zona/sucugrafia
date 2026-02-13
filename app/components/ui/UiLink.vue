@@ -5,10 +5,7 @@
 		:target="target ?? (external || isExternal ? '_blank' : undefined)"
 		:aria-current="ariaCurrent"
 		:class="[
-			twMerge(
-				'inline-flex gap-0.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white',
-				props.class,
-			),
+			twMerge('inline-flex gap-0.5 rounded-md', props.class),
 			ariaCurrent === 'page' && !(events ? events : false) && 'pointer-events-none cursor-default',
 		]"
 	>

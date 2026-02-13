@@ -11,6 +11,15 @@
 	--ui-radius: 0.5rem;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+*:focus-visible {
+	@apply outline-primary outline-2 outline-offset-4;
+	transition: outline-color 0s;
+}
+
 .router-link-active,
 .router-link-active-exact {
 	@apply text-primary;

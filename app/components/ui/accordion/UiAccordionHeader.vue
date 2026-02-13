@@ -4,7 +4,7 @@
 		:class="twMerge('flex', props.class)"
 	>
 		<AccordionTrigger
-			class="group focus-visible:outline-primary hover:text-primary flex min-w-0 flex-1 cursor-pointer items-center gap-4 py-3.5 font-medium"
+			class="group hover:text-primary flex min-w-0 flex-1 cursor-pointer items-center gap-4 py-3.5 font-medium"
 			:class="{ 'opacity-75': disabled }"
 			:disabled="disabled"
 		>

@@ -1,4 +1,8 @@
 <template>
+	<NuxtLoadingIndicator
+		color="#00dc82"
+		:height="4"
+	/>
 	<UApp :locale="es">
 		<AppOverlay />
 		<AppHeader />
@@ -6,19 +10,19 @@
 		<AppMain class="flex items-center justify-center">
 			<div class="flex max-w-200 flex-col items-center justify-center p-4">
 				<p
-					v-if="error.statusCode"
+					v-if="error.status"
 					class="text-primary text-base font-semibold"
 				>
-					{{ error.statusCode }}
+					{{ error.status }}
 				</p>
 				<h2
-					v-if="error.statusMessage"
+					v-if="error.statusText"
 					class="text-highlighted mt-2 text-center text-4xl font-bold sm:text-5xl"
 				>
-					{{ error.statusMessage }}
+					{{ error.statusText }}
 				</h2>
 				<p
-					v-if="error.message && error.message !== error.statusMessage"
+					v-if="error.message && error.message !== error.statusText"
 					class="text-muted mt-4 text-center text-lg"
 				>
 					{{ error.message }}
