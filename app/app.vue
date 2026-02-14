@@ -2,7 +2,7 @@
 	<AppRoot :locale="es">
 		<AppHeader
 			class="transition-transform"
-			:class="{ '-translate-y-full': footerIsVisible }"
+			:class="footerIsVisible ? '-translate-y-full' : undefined"
 		/>
 
 		<AppMain>
