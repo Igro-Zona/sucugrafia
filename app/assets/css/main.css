@@ -21,7 +21,9 @@ html {
 }
 
 .router-link-active,
-.router-link-active-exact {
+.router-link-active-exact,
+.router-link-active .menu-icon,
+.router-link-active-exact .menu-icon {
 	@apply text-primary;
 }
 
