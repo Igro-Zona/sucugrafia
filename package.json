@@ -17,7 +17,7 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
-		"@nuxt/fonts": "^0.13.0",
+		"@nuxt/fonts": "^0.14.0",
 		"@nuxt/image": "^2.0.0",
 		"@nuxt/ui": "^4.4.0",
 		"@nuxtjs/seo": "^3.4.0",
@@ -50,7 +50,7 @@
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.28",
 		"vue-tsc": "^3.2.4",
-		"wrangler": "^4.64.0",
+		"wrangler": "^4.65.0",
 		"zod": "^4.3.6"
 	},
 	"lint-staged": {
