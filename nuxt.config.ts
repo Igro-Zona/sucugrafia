@@ -48,6 +48,7 @@ export default defineNuxtConfig({
 	],
 
 	nitro: {
+		sourceMap: false,
 		preset: "cloudflare_module",
 		cloudflare: {
 			deployConfig: true,
@@ -137,4 +138,6 @@ export default defineNuxtConfig({
 		name: "Sucugrafia",
 		defaultLocale: "es-EC",
 	},
+
+	ogImage: false,
 });

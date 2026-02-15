@@ -1,13 +1,8 @@
 <template>
-	<NuxtLoadingIndicator
-		color="#00dc82"
-		:height="4"
-	/>
-	<UApp :locale="es">
-		<AppOverlay />
+	<AppRoot :locale="es">
 		<AppHeader
 			class="transition-transform"
-			:class="{ '-translate-y-full': footerIsVisible }"
+			:class="footerIsVisible ? '-translate-y-full' : undefined"
 		/>
 
 		<AppMain>
@@ -15,7 +10,7 @@
 		</AppMain>
 
 		<AppFooter ref="footer" />
-	</UApp>
+	</AppRoot>
 </template>
 
 <script setup lang="ts">

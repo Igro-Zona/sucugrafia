@@ -1,10 +1,5 @@
 <template>
-	<NuxtLoadingIndicator
-		color="#00dc82"
-		:height="4"
-	/>
-	<UApp :locale="es">
-		<AppOverlay />
+	<AppRoot :locale="es">
 		<AppHeader />
 
 		<AppMain class="flex items-center justify-center">
@@ -42,7 +37,7 @@
 		</AppMain>
 
 		<AppFooter />
-	</UApp>
+	</AppRoot>
 </template>
 
 <script setup lang="ts">

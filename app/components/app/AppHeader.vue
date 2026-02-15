@@ -1,29 +1,80 @@
 <template>
-	<UHeader
-		title="Sucugrafia"
-		class="border-primary shadow-primary/40 shadow-2xl backdrop-blur-xs"
-		mode="slideover"
-		:toggle="{ color: 'primary', variant: 'link', class: 'cursor-pointer' }"
+	<header
+		aria-label="Encabezado"
+		v-bind="$attrs"
+		:class="
+			twMerge(
+				'bg-default/75 border-primary shadow-primary/40 sticky top-0 z-50 h-(--ui-header-height) border-b shadow-2xl backdrop-blur-xs transition-transform',
+				props.class,
+			)
+		"
 	>
-		<template #title>
+		<UiContainer class="flex h-full items-center justify-between gap-3">
+			<div class="flex items-center gap-1.5 lg:flex-1">
+				<UiLink
+					to="/"
+					:events="true"
+				>
+					<UiLogo v-bind="logo" />
+				</UiLink>
+			</div>
+
+			<div class="hidden lg:flex">
+				<HeaderMenu :items />
+			</div>
+
+			<div class="flex items-center justify-end gap-1.5 lg:flex-1">
+				<UButton
+					color="primary"
+					variant="link"
+					:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
+					:icon="open ? 'lucide:x' : 'lucide:menu'"
+					class="-me-1.5 cursor-pointer lg:hidden"
+					@click="toggleOpen"
+				/>
+			</div>
+		</UiContainer>
+	</header>
+	<HeaderSlideover
+		v-model:open="open"
+		title="Sucugrafia"
+		description="lol"
+	>
+		<div class="flex h-(--ui-header-height) items-center justify-between gap-3 px-4 sm:px-6">
 			<UiLogo v-bind="logo" />
-		</template>
 
-		<UNavigationMenu :items />
+			<UButton
+				color="primary"
+				variant="link"
+				:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
+				:icon="open ? 'lucide:x' : 'lucide:menu'"
+				class="-me-1.5 cursor-pointer lg:hidden"
+				@click="toggleOpen"
+			/>
+		</div>
 
-		<template #body>
-			<UNavigationMenu
+		<div class="overflow-y-auto p-4 sm:p-6">
+			<HeaderMenu
 				:items
 				orientation="vertical"
 				class="-mx-2.5"
 			/>
-		</template>
-	</UHeader>
+		</div>
+	</HeaderSlideover>
 </template>
 
 <script setup lang="ts">
 import type { UiLogoProps } from "../ui/UiLogo.vue";
-import type { NavigationMenuItem } from "@nuxt/ui";
+import type { HeaderMenuItem } from "../header/HeaderMenu.vue";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
+
+export interface AppHeaderProps {
+	class?: ClassNameValue;
+}
+
+const props = withDefaults(defineProps<AppHeaderProps>(), {
+	class: undefined,
+});
 
 const logo: UiLogoProps = {
 	as: "h1",
@@ -33,30 +84,43 @@ const logo: UiLogoProps = {
 	},
 };
 
-const items: NavigationMenuItem[] = [
+const items: HeaderMenuItem[] = [
 	{
 		label: "Inicio",
-		icon: "i-lucide-flag",
+		icon: {
+			name: "lucide:flag",
+		},
 		to: "/",
 		class: "text-md",
 	},
 	{
 		label: "Galeria",
-		icon: "i-lucide-images",
+		icon: {
+			name: "lucide:images",
+		},
 		to: "/galeria",
 		class: "text-md",
 	},
 	{
 		label: "Leer",
-		icon: "i-lucide-clipboard-list",
+		icon: {
+			name: "lucide:clipboard-list",
+		},
 		to: "/articulos",
 		class: "text-md",
 	},
 	{
 		label: "FAQ",
-		icon: "i-lucide-text-select",
+		icon: {
+			name: "lucide:text-select",
+		},
 		to: "/ayuda",
 		class: "text-md",
 	},
 ];
+
+const open = defineModel("open", { type: Boolean, ...{ default: false } });
+function toggleOpen() {
+	open.value = !open.value;
+}
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<DialogTrigger
 		as-child
-		:class="props.class"
+		v-bind="props"
 	>
 		<slot />
 	</DialogTrigger>

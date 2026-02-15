@@ -1,5 +1,8 @@
 <template>
-	<DialogRoot v-slot="{ open, close }">
+	<DialogRoot
+		v-slot="{ open, close }"
+		v-bind="props"
+	>
 		<slot
 			:open="open"
 			:close="close"
@@ -15,7 +18,7 @@ export interface UiModalRootProps {
 	modal?: boolean;
 }
 
-withDefaults(defineProps<UiModalRootProps>(), {
+const props = withDefaults(defineProps<UiModalRootProps>(), {
 	defaultOpen: false,
 	modal: true,
 });

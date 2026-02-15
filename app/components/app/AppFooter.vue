@@ -83,7 +83,7 @@ const props = withDefaults(defineProps<AppFooterProps>(), {
 });
 
 const logo: UiLogoProps = {
-	as: "h1",
+	as: "div",
 	icon: {
 		name: "sucua:book",
 		size: 34,

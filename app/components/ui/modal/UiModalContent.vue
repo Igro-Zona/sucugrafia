@@ -1,8 +1,9 @@
 <template>
 	<DialogContent
+		v-bind="props"
 		:class="
 			twMerge(
-				'bg-default flexmax-h-[calc(100dvh-1rem)] ring-default fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 flex-col shadow-lg ring data-[state=closed]:animate-[scale-out_200ms_ease-in] data-[state=open]:animate-[scale-in_200ms_ease-out] sm:w-[calc(100vw-2rem)]',
+				'bg-default ring-default fixed top-1/2 left-1/2 flex max-h-[calc(100dvh-1rem)] w-full -translate-x-1/2 -translate-y-1/2 flex-col shadow-lg ring data-[state=closed]:animate-[scale-out_200ms_ease-in] data-[state=open]:animate-[scale-in_200ms_ease-out] sm:w-[calc(100vw-2rem)]',
 				props.class,
 			)
 		"

@@ -1,6 +1,7 @@
 <template>
 	<NuxtLink
 		v-bind="linkProps"
+		:data-active="isActive"
 		:external="external ?? isExternal"
 		:target="target ?? (external || isExternal ? '_blank' : undefined)"
 		:aria-current="ariaCurrent"
@@ -44,5 +45,12 @@ const ariaCurrent = computed(() => {
 	if (!targetPath) return undefined;
 	if (route.path === targetPath) return "page";
 	return route.path.startsWith(targetPath) ? "step" : undefined;
+});
+const isActive = computed(() => {
+	const targetPath = props.to?.toString();
+	if (!targetPath) return false;
+	const exact = route.path === targetPath;
+	const active = route.path.startsWith(targetPath);
+	return exact && active;
 });
 </script>
