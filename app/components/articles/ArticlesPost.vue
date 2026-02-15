@@ -1,11 +1,9 @@
 <template>
 	<UiLink
 		v-bind="link"
-		class="group focus-visible:outline-offset-1!"
+		class="group focus-visible:ring-primary ring-default overflow-hidden rounded-lg ring transition focus-visible:ring-2 focus-visible:outline-none"
 	>
-		<article
-			class="bg-default ring-default hover:bg-elevated/50 relative flex flex-col overflow-hidden rounded-lg ring transition"
-		>
+		<article class="bg-default hover:bg-elevated/50 relative flex flex-col">
 			<div
 				v-if="image"
 				class="overflow-hidden"

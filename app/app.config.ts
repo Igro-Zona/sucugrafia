@@ -5,15 +5,6 @@ export default defineAppConfig({
 			secondary: "yellow",
 			neutral: "neutral",
 		},
-		navigationMenu: {
-			variants: {
-				disabled: {
-					true: {
-						link: "cursor-default opacity-75",
-					},
-				},
-			},
-		},
 		contentSurround: {
 			slots: {
 				link: ["px-4 py-4 bg-default"],

@@ -29,4 +29,27 @@ declare global {
 		| "warning"
 		| "error"
 		| "info";
+	type KbdKey =
+		| "meta"
+		| "option"
+		| "shift"
+		| "ctrl"
+		| "alt"
+		| "win"
+		| "command"
+		| "control"
+		| "enter"
+		| "delete"
+		| "backspace"
+		| "escape"
+		| "tab"
+		| "capslock"
+		| "arrowup"
+		| "arrowright"
+		| "arrowdown"
+		| "arrowleft"
+		| "pageup"
+		| "pagedown"
+		| "home"
+		| "end";
 }

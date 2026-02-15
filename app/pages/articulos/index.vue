@@ -4,13 +4,21 @@
 			title="Nuestros articulos "
 			class="mt-4"
 		>
-			<UContentSearchButton
-				variant="subtle"
-				:collapsed="false"
-				class="p2 cursor-pointer text-lg"
+			<button
+				type="button"
+				class="ring-accented font-latto bg-muted hover:bg-default/75 active:bg-muted/75 focus-visible:ring-primary inline-flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 text-lg font-normal ring transition-colors ring-inset focus:outline-none focus-visible:ring-2"
+				@click="open = true"
 			>
+				<Icon
+					name="lucide:search"
+					size="20"
+				/>
 				Buscar
-			</UContentSearchButton>
+				<span class="inline-flex items-center">
+					<ArticleKbd value="meta" />
+					<ArticleKbd value="k" />
+				</span>
+			</button>
 			<ClientOnly>
 				<LazyUContentSearch
 					:files="files"
@@ -44,6 +52,7 @@
 </template>
 
 <script setup lang="ts">
+const { open } = useSearch();
 const { data: articles } = await useAsyncData("articles-home", () => queryCollection("articles").all());
 const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("articles"));
 const { data: files } = await useAsyncData("search", () => queryCollectionSearchSections("articles"), {
