@@ -1,5 +1,5 @@
 <template>
-	<DialogPortal>
+	<DialogPortal v-bind="props">
 		<slot />
 	</DialogPortal>
 </template>
@@ -14,7 +14,7 @@ export interface UiModalPortalProps {
 	defer?: boolean;
 }
 
-withDefaults(defineProps<UiModalPortalProps>(), {
+const props = withDefaults(defineProps<UiModalPortalProps>(), {
 	to: "body",
 	forceMount: false,
 	disabled: false,
