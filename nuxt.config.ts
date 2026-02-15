@@ -27,7 +27,14 @@ export default defineNuxtConfig({
 			},
 		},
 		optimizeDeps: {
-			include: ["nuxt-aos > aos"],
+			include: [
+				"nuxt-aos > aos",
+				"@vue/devtools-core",
+				"@vue/devtools-kit",
+				"@vueuse/core",
+				"tailwind-merge",
+				"reka-ui",
+			],
 		},
 	},
 
