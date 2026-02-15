@@ -35,38 +35,32 @@
 			</div>
 		</UiContainer>
 	</header>
-
-	<USlideover
+	<HeaderSlideover
 		v-model:open="open"
 		title="Sucugrafia"
-		:ui="{
-			overlay: 'lg:hidden',
-			content: 'lg:hidden',
-		}"
+		description="lol"
 	>
-		<template #content>
-			<div class="flex h-(--ui-header-height) items-center justify-between gap-3 px-4 sm:px-6">
-				<UiLogo v-bind="logo" />
+		<div class="flex h-(--ui-header-height) items-center justify-between gap-3 px-4 sm:px-6">
+			<UiLogo v-bind="logo" />
 
-				<UButton
-					color="primary"
-					variant="link"
-					:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
-					:icon="open ? 'lucide:x' : 'lucide:menu'"
-					class="-me-1.5 cursor-pointer lg:hidden"
-					@click="toggleOpen"
-				/>
-			</div>
+			<UButton
+				color="primary"
+				variant="link"
+				:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
+				:icon="open ? 'lucide:x' : 'lucide:menu'"
+				class="-me-1.5 cursor-pointer lg:hidden"
+				@click="toggleOpen"
+			/>
+		</div>
 
-			<div class="overflow-y-auto p-4 sm:p-6">
-				<HeaderMenu
-					:items
-					orientation="vertical"
-					class="-mx-2.5"
-				/>
-			</div>
-		</template>
-	</USlideover>
+		<div class="overflow-y-auto p-4 sm:p-6">
+			<HeaderMenu
+				:items
+				orientation="vertical"
+				class="-mx-2.5"
+			/>
+		</div>
+	</HeaderSlideover>
 </template>
 
 <script setup lang="ts">
