@@ -6,7 +6,7 @@ description:
     identidad amazónica, convirtiendo estas fechas en un tiempo de esperanza y celebración compartida.
 tags: [historia, cultura]
 author: Timur Bikmukhametov
-thumbnail: /assets/navidad-en-sucua-2025.jpg
+thumbnail: img3
 ---
 
 Listen up, fellow humans! We need to talk about something that's literally flowing through your veins right now

@@ -7,7 +7,7 @@ description:
     un símbolo de hospitalidad y orgullo cultural en Morona Santiago.
 tags: [gastronomia, receta, cultura]
 author: Timur Bikmukhametov
-thumbnail: /assets/ayampaco-el-sabor-ancestral.jpg
+thumbnail: img1
 ---
 
 Oh, hello there, fellow human who probably has a gym membership they use about as often as they floss (sorry, dentist!).

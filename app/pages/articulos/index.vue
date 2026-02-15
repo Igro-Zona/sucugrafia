@@ -19,16 +19,14 @@
 					:fuse="{ resultLimit: 42 }"
 				/>
 			</ClientOnly>
-			<UiGrid>
-				<UBlogPost
+			<UiGrid class="mb-2">
+				<ArticlesPost
 					v-for="article in articles"
 					:key="article.id"
 					:title="article.title"
 					:description="article.description"
 					:date="article.meta.date"
-					:badge="
-						isNew(article.meta.date) ? { label: 'Nuevo', color: 'primary', variant: 'solid' } : undefined
-					"
+					:new="isNew(article.meta.date)"
 					:image="article.meta.thumbnail"
 					:authors="[
 						{
@@ -36,7 +34,9 @@
 							description: 'Creador',
 						},
 					]"
-					:to="article.path"
+					:link="{
+						to: article.path,
+					}"
 				/>
 			</UiGrid>
 		</UiSection>
