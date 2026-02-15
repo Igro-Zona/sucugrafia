@@ -19,18 +19,15 @@
 					:fuse="{ resultLimit: 42 }"
 				/>
 			</ClientOnly>
-			<UBlogPosts>
+			<UiGrid>
 				<UBlogPost
 					v-for="article in articles"
 					:key="article.id"
-					class="hover:bg-muted"
 					:title="article.title"
 					:description="article.description"
 					:date="article.meta.date"
 					:badge="
-						Math.abs(new Date().getTime() - new Date(article.meta.date).getTime()) < 8.64e7 * 7
-							? { label: 'Nuevo', color: 'primary', variant: 'solid' }
-							: undefined
+						isNew(article.meta.date) ? { label: 'Nuevo', color: 'primary', variant: 'solid' } : undefined
 					"
 					:image="article.meta.thumbnail"
 					:authors="[
@@ -41,7 +38,7 @@
 					]"
 					:to="article.path"
 				/>
-			</UBlogPosts>
+			</UiGrid>
 		</UiSection>
 	</UiContainer>
 </template>
