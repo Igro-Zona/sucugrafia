@@ -14,19 +14,17 @@
 					size="20"
 				/>
 				Buscar
-				<span class="inline-flex items-center">
-					<ArticleKbd value="meta" />
-					<ArticleKbd value="k" />
+				<span class="inline-flex items-center gap-1">
+					<ArticlesKbd value="meta" />
+					<ArticlesKbd value="k" />
 				</span>
 			</button>
-			<ClientOnly>
-				<LazyUContentSearch
-					:files="files"
-					shortcut="meta_k"
-					:navigation="navigation"
-					:fuse="{ resultLimit: 42 }"
-				/>
-			</ClientOnly>
+			<LazyArticlesSearch
+				:files="files"
+				:navigation="navigation"
+				:fuse="{ resultLimit: 42 }"
+			/>
+
 			<UiGrid class="mb-2">
 				<ArticlesPost
 					v-for="article in articles"

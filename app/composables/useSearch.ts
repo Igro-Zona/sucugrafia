@@ -1,14 +1,33 @@
-import { useAppConfig } from "#imports";
-import type { ContentNavigationItem } from "@nuxt/content";
-import type { ContentSearchFile, ContentSearchItem } from "@nuxt/ui";
-const open = ref(false);
+import type { CommandPaletteItem } from "@nuxt/ui";
+import type { UiLinkProps } from "~/components/ui/UiLink.vue";
 
+interface ContentSearchFile {
+	id: string;
+	title: string;
+	titles: string[];
+	level: number;
+	content: string;
+}
+interface ContentSearchItem extends Omit<UiLinkProps, "icon">, Omit<CommandPaletteItem, "class"> {
+	level?: number;
+	icon?: IconProps["name"];
+}
+export interface ContentNavigationItem {
+	title: string;
+	path: string;
+	stem?: string;
+	children?: ContentNavigationItem[];
+	page?: false;
+	icon?: IconProps["name"];
+	[key: string]: unknown;
+}
+
+const open = ref(false);
 export default function () {
-	const appConfig = useAppConfig();
 	function mapFile(
 		file: ContentSearchFile,
 		link: ContentNavigationItem,
-		parent: ContentNavigationItem,
+		parent?: ContentNavigationItem,
 	): ContentSearchItem {
 		const prefix = [...new Set([parent?.title, ...file.titles].filter(Boolean))];
 		return {
@@ -16,14 +35,15 @@ export default function () {
 			label: file.id === link.path ? link.title : file.title,
 			suffix: file.content.replaceAll("<", "&lt;").replaceAll(">", "&gt;"),
 			to: file.id,
-			icon: link.icon || parent?.icon || (file.level > 1 ? appConfig.ui.icons.hash : appConfig.ui.icons.file),
+			icon: link.icon || parent?.icon || (file.level > 1 ? "lucide:hash" : "lucide:file"),
 			level: file.level,
 		};
 	}
+
 	function mapNavigationItems(
 		children: ContentNavigationItem[],
 		files: ContentSearchFile[],
-		parent: ContentNavigationItem,
+		parent?: ContentNavigationItem,
 	): ContentSearchItem[] {
 		return children.flatMap((link) => {
 			if (link.children?.length) {
@@ -36,6 +56,7 @@ export default function () {
 			);
 		});
 	}
+
 	function postFilter(query: string, items: ContentSearchItem[]): ContentSearchItem[] {
 		if (!query) {
 			return items?.filter((item) => item.level === 1);

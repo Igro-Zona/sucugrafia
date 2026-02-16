@@ -1,10 +1,11 @@
 <template>
 	<DialogRoot
-		v-slot="{ open, close }"
+		v-slot="{ open: _open, close }"
 		v-bind="props"
+		@update:open="updateOpen"
 	>
 		<slot
-			:open="open"
+			:open="_open"
 			:close="close"
 		/>
 	</DialogRoot>
@@ -16,10 +17,20 @@ import { DialogRoot } from "reka-ui";
 export interface UiModalRootProps {
 	defaultOpen?: boolean;
 	modal?: boolean;
+	open?: boolean;
 }
 
 const props = withDefaults(defineProps<UiModalRootProps>(), {
 	defaultOpen: false,
 	modal: true,
+	open: false,
 });
+
+const emit = defineEmits<{
+	(e: "update:open", value: boolean): void;
+}>();
+
+function updateOpen(value: boolean) {
+	emit("update:open", value);
+}
 </script>
