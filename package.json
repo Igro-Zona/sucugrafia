@@ -43,7 +43,7 @@
 		"lint-staged": "^16.2.6",
 		"nitro-cloudflare-dev": "^0.2.2",
 		"nitropack": "^2.13.1",
-		"nuxt-aos": "^1.2.5",
+		"nuxt-aos": "^1.2.6",
 		"prettier": "^3.8.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"typescript": "^5.9.3",
