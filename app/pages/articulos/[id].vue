@@ -3,35 +3,36 @@
 		<UPage v-if="data">
 			<template #right>
 				<UPageAside class="border-l-default border-l">
-					<UContentToc
+					<!-- <UContentToc
 						class="top-0"
 						title="Contenido"
 						color="secondary"
 						:links="data.body.toc?.links"
-					/>
+					/> -->
 
 					<div class="flex flex-col justify-between gap-2">
-						<UButton
-							class="w-full hover:cursor-pointer"
-							icon="material-symbols:share"
-							variant="subtle"
-							color="neutral"
-							size="xl"
+						<button
+							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
 							@click="share"
-							>Compartir</UButton
 						>
+							<Icon name="lucide:share" />
+							<span>Compartir</span>
+						</button>
 
-						<UButton
-							class="w-full hover:cursor-pointer"
-							icon="mdi:link-variant"
-							variant="subtle"
-							color="neutral"
-							size="xl"
-							:trailing-icon="isLinkCopied ? 'i-lucide-check' : undefined"
+						<button
+							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
 							@click="copyLink"
 						>
-							{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
-						>
+							<span class="inline-flex items-center gap-2">
+								<Icon name="lucide:link" />
+								<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
+							</span>
+
+							<Icon
+								v-if="isLinkCopied"
+								name="lucide:check"
+							/>
+						</button>
 					</div>
 				</UPageAside>
 			</template>
@@ -71,7 +72,7 @@
 				</div>
 			</UPageHeader>
 
-			<UContentToc
+			<!-- <UContentToc
 				class="lg:hidden"
 				title="Contenido"
 				color="primary"
@@ -80,56 +81,53 @@
 				:ui="{
 					container: 'border-solid',
 				}"
-			/>
+			/> -->
 
 			<UPageBody>
 				<div class="flex gap-2 lg:hidden">
-					<UButton
-						class="hover:cursor-pointer"
-						icon="material-symbols:share"
-						variant="subtle"
-						color="neutral"
-						size="xl"
+					<button
+						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
 						@click="share"
-						>Compartir</UButton
 					>
+						<Icon name="lucide:share" />
+						<span>Compartir</span>
+					</button>
 
-					<UButton
-						class="hover:cursor-pointer"
-						icon="mdi:link-variant"
-						variant="subtle"
-						color="neutral"
-						size="xl"
-						:trailing-icon="isLinkCopied ? 'i-lucide-check' : undefined"
+					<button
+						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
 						@click="copyLink"
 					>
-						{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
-					>
+						<span class="inline-flex items-center gap-2">
+							<Icon name="lucide:link" />
+							<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
+						</span>
+
+						<Icon
+							v-if="isLinkCopied"
+							name="lucide:check"
+						/>
+					</button>
 				</div>
 
 				<ContentRenderer :value="data" />
 
-				<USeparator color="primary" />
+				<UiSeparator color="primary" />
 
 				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
-				<UBlogPosts>
-					<UBlogPost
+				<UiGrid>
+					<ArticlesPost
 						v-for="article in links"
 						:key="article.id"
 						:title="article.title"
 						:image="article.meta.thumbnail"
-						:badge="
-							Math.abs(new Date().getTime() - new Date(article?.meta.date).getTime()) < 8.64e7 * 7
-								? { label: 'New', color: 'primary' }
-								: undefined
-						"
+						:new="isNew(article.meta.date)"
 						:date="article.meta.date"
 						:to="article.path"
-						variant="outline"
+						class="justify-start"
 					/>
-				</UBlogPosts>
+				</UiGrid>
 
-				<USeparator color="primary" />
+				<UiSeparator color="primary" />
 
 				<UContentSurround
 					prev-icon="i-lucide-chevron-left"

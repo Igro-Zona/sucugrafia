@@ -11,7 +11,7 @@
 				<ArticlesPostImage :src="image" />
 			</div>
 
-			<div class="flex min-w-0 flex-1 flex-col justify-between p-4 sm:p-6">
+			<div :class="twMerge('flex min-w-0 flex-1 flex-col justify-between p-4 sm:p-6', props.class)">
 				<div
 					v-if="date || props.new"
 					class="mb-2 flex items-center gap-2"
@@ -70,6 +70,7 @@
 
 <script setup lang="ts">
 import type { UiLinkProps } from "../ui/UiLink.vue";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
 export type AuthorType = {
 	name: string;
@@ -83,6 +84,7 @@ export interface ArticlesPostProps {
 	authors?: AuthorType[];
 	link?: UiLinkProps;
 	image?: string;
+	class?: ClassNameValue;
 }
 
 const props = defineProps<ArticlesPostProps>();
