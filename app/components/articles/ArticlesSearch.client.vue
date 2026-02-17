@@ -8,13 +8,14 @@
 				description="bla"
 				class="bg-default divide-default ring-default fixed top-1/2 left-1/2 flex h-full max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col divide-y overflow-hidden rounded-lg shadow-lg ring focus:outline-none sm:h-112 sm:max-h-[calc(100dvh-4rem)] sm:max-w-3xl"
 			>
-				<UCommandPalette
-					v-model:search-term="searchTerm"
-					:fuse="fuse"
-					:groups="groups"
-					@update:model-value="onSelect"
-					@update:open="open = $event"
-				/>
+				<!-- <UCommandPalette
+			v-model:search-term="searchTerm"
+			:fuse="fuse"
+			:groups="groups"
+			@update:model-value="onSelect"
+			@update:open="open = $event"
+			/> -->
+				WIP
 			</UiModalContent>
 		</UiModalPortal>
 	</UiModalRoot>
@@ -73,8 +74,10 @@ const mappedNavigationGroups = computed(() => {
 		return [{ id: "docs", items: mapNavigationItems(props.navigation, props.files || []), postFilter }];
 	}
 });
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const groups = computed(() => mappedNavigationGroups.value);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function onSelect() {
 	open.value = false;
 	searchTerm.value = "";
