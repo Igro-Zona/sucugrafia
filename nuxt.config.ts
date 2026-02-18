@@ -1,3 +1,5 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
@@ -7,7 +9,6 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 		"@nuxt/icon",
 		"@nuxt/fonts",
-		"@nuxt/ui",
 		"@nuxt/content",
 		"@nuxt/image",
 		"@nuxtjs/seo",
@@ -18,9 +19,18 @@ export default defineNuxtConfig({
 		cloudinaryApiKey: "",
 		cloudinaryApiSecret: "",
 		cloudinaryCloudName: "",
+		public: {
+			mdc: {
+				components: {
+					prose: false,
+				},
+			},
+		},
 	},
 
 	vite: {
+		// @ts-expect-error - Vite Plugin type mismatch between @tailwindcss/vite and @nuxt/vite-builder
+		plugins: [tailwindcss()],
 		resolve: {
 			alias: {
 				lodash: "lodash-es",
@@ -29,10 +39,24 @@ export default defineNuxtConfig({
 		optimizeDeps: {
 			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui"],
 		},
+		build: {
+			rollupOptions: {
+				output: {
+					manualChunks: {
+						vue: ["vue"],
+						lodash: ["lodash-es"],
+						reka: ["reka-ui"],
+					},
+				},
+			},
+		},
 	},
 
 	css: ["~/assets/css/main.css"],
 	app: {
+		rootAttrs: {
+			class: "isolate",
+		},
 		head: {
 			htmlAttrs: {
 				class: "dark",
@@ -73,7 +97,7 @@ export default defineNuxtConfig({
 	},
 
 	icon: {
-		provider: "iconify", //TODO: Заменить на "none" после миграции в Nuxt Ui
+		provider: "none",
 		serverBundle: false,
 		clientBundle: {
 			scan: true,
@@ -142,5 +166,11 @@ export default defineNuxtConfig({
 	ogImage: false,
 	sitemap: {
 		zeroRuntime: true,
+	},
+
+	mdc: {
+		components: {
+			prose: false,
+		},
 	},
 });

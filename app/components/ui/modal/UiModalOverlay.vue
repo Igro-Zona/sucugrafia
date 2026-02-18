@@ -3,7 +3,7 @@
 		v-bind="props"
 		:class="
 			twMerge(
-				'bg-elevated/75 fixed inset-0 data-[state=closed]:animate-[fade-out_200ms_ease-in] data-[state=open]:animate-[fade-in_200ms_ease-out]',
+				'bg-elevated/75 fixed inset-0 data-[state=closed]:animate-[fade-animation-out_200ms_ease-in] data-[state=open]:animate-[fade-animation-in_200ms_ease-out]',
 				props.class,
 			)
 		"

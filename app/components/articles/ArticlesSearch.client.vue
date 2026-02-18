@@ -1,5 +1,8 @@
 <template>
-	<UiModalRoot v-model:open="open">
+	<UiModalRoot
+		v-bind="emits"
+		v-model:open="open"
+	>
 		<UiModalPortal>
 			<UiModalOverlay />
 
@@ -7,6 +10,7 @@
 				title="Buscar articulos"
 				description="bla"
 				class="bg-default divide-default ring-default fixed top-1/2 left-1/2 flex h-full max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col divide-y overflow-hidden rounded-lg shadow-lg ring focus:outline-none sm:h-112 sm:max-h-[calc(100dvh-4rem)] sm:max-w-3xl"
+				:open="undefined"
 			>
 				<!-- <UCommandPalette
 			v-model:search-term="searchTerm"
@@ -16,6 +20,7 @@
 			@update:open="open = $event"
 			/> -->
 				WIP
+				{{ open }}
 			</UiModalContent>
 		</UiModalPortal>
 	</UiModalRoot>
@@ -58,6 +63,7 @@ onBeforeUnmount(() => {
 	window.removeEventListener("keydown", handleShortcut);
 });
 
+const emits = defineEmits(["update:open"]);
 const { open, mapNavigationItems, postFilter } = useSearch();
 const mappedNavigationGroups = computed(() => {
 	if (!props.navigation?.length) {

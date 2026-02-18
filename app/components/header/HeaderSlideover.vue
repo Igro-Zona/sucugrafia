@@ -4,9 +4,7 @@
 		v-bind="rootProps"
 	>
 		<UiModalPortal>
-			<UiModalOverlay
-				class="bg-elevated/75 fixed inset-0 data-[state=closed]:animate-[fade-animation-out_200ms_ease-in] data-[state=open]:animate-[fade-animation-in_200ms_ease-out] lg:hidden"
-			/>
+			<UiModalOverlay class="lg:hidden" />
 
 			<UiModalContent
 				v-bind="{ ...props, open: undefined }"
