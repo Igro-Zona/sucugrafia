@@ -1,5 +1,5 @@
 <template>
-	<AppRoot :locale="es">
+	<AppRoot>
 		<AppHeader
 			class="transition-transform"
 			:class="footerIsVisible ? '-translate-y-full' : undefined"
@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { es } from "@nuxt/ui/locale";
 import { useIntersectionObserver } from "@vueuse/core";
 
 useHead({
