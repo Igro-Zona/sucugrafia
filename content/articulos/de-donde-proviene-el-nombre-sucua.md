@@ -7,7 +7,7 @@ description:
     historia local han dado forma a la denominación de este cantón.
 tags: [historia, naturaleza, cultura]
 author: Timur Bikmukhametov
-thumbnail: /assets/de-donde-proviene-el-nombre-sucua.jpg
+thumbnail: img2
 ---
 
 Alright, beautiful humans, let's have a heart-to-heart about the fuel you're putting in your magnificent meat suit. If

@@ -3,7 +3,7 @@
 		v-bind="props"
 		:class="
 			twMerge(
-				'bg-default ring-default fixed top-1/2 left-1/2 flex max-h-[calc(100dvh-1rem)] w-full -translate-x-1/2 -translate-y-1/2 flex-col shadow-lg ring data-[state=closed]:animate-[scale-out_200ms_ease-in] data-[state=open]:animate-[scale-in_200ms_ease-out] sm:w-[calc(100vw-2rem)]',
+				'bg-default ring-default fixed top-1/2 left-1/2 flex max-h-[calc(100dvh-1rem)] w-full -translate-x-1/2 -translate-y-1/2 flex-col shadow-lg ring data-[state=closed]:animate-[scale-animation-out_200ms_ease-in] data-[state=open]:animate-[scale-animation-in_200ms_ease-out] sm:w-[calc(100vw-2rem)]',
 				props.class,
 			)
 		"
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { twMerge, type ClassNameValue } from "tailwind-merge";
-import { DialogContent, DialogDescription, DialogTitle, VisuallyHidden } from "reka-ui";
+import { DialogContent, DialogDescription, DialogTitle, injectDialogRootContext, VisuallyHidden } from "reka-ui";
 
 export interface UiModalContentProps {
 	title?: string;
@@ -36,5 +36,10 @@ const props = withDefaults(defineProps<UiModalContentProps>(), {
 	title: undefined,
 	description: undefined,
 	class: undefined,
+});
+
+const rootContext = injectDialogRootContext();
+watchEffect(() => {
+	console.log(rootContext.open.value);
 });
 </script>

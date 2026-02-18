@@ -1,67 +1,81 @@
 <template>
 	<UiContainer>
-		<UPage v-if="data">
+		<ArticlePage v-if="data">
 			<template #right>
-				<UPageAside class="border-l-default border-l">
-					<UContentToc
+				<aside
+					class="border-l-default hidden overflow-y-auto border-l py-8 lg:sticky lg:top-(--ui-header-height) lg:-ms-4 lg:block lg:max-h-[calc(100vh-var(--ui-header-height))] lg:ps-4 lg:pe-6.5"
+				>
+					<div class="relative">
+						<!-- <UContentToc
 						class="top-0"
 						title="Contenido"
 						color="secondary"
 						:links="data.body.toc?.links"
-					/>
+					/> -->
+						<div class="flex flex-col justify-between gap-2">
+							<button
+								class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+								@click="share"
+							>
+								<Icon name="lucide:share" />
+								<span>Compartir</span>
+							</button>
 
-					<div class="flex flex-col justify-between gap-2">
-						<UButton
-							class="w-full hover:cursor-pointer"
-							icon="material-symbols:share"
-							variant="subtle"
-							color="neutral"
-							size="xl"
-							@click="share"
-							>Compartir</UButton
-						>
+							<button
+								class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+								@click="copyLink"
+							>
+								<span class="inline-flex items-center gap-2">
+									<Icon name="lucide:link" />
+									<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
+								</span>
 
-						<UButton
-							class="w-full hover:cursor-pointer"
-							icon="mdi:link-variant"
-							variant="subtle"
-							color="neutral"
-							size="xl"
-							:trailing-icon="isLinkCopied ? 'i-lucide-check' : undefined"
-							@click="copyLink"
-						>
-							{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
-						>
+								<Icon
+									v-if="isLinkCopied"
+									name="lucide:check"
+								/>
+							</button>
+						</div>
 					</div>
-				</UPageAside>
+				</aside>
 			</template>
 
-			<UPageHeader
-				class="text-center"
-				:title="data?.title"
-				:description="data?.description"
-			>
+			<div class="border-default relative border-b py-8">
+				<div
+					v-if="data.title"
+					class="flex flex-col items-center justify-center gap-4 lg:flex-row"
+				>
+					<h2 class="text-highlighted font-latto text-4xl font-bold text-pretty sm:text-5xl">
+						{{ data.title }}
+					</h2>
+				</div>
+
+				<div
+					v-if="data.description"
+					class="text-muted font-latto mt-4 text-lg text-pretty"
+				>
+					{{ data.description }}
+				</div>
+
 				<div class="mt-4 flex flex-wrap items-center justify-between gap-4">
 					<div class="flex flex-wrap items-center gap-2">
-						<UBadge
+						<span
 							v-for="tag in data?.meta.tags"
 							:key="tag"
-							color="primary"
-							variant="soft"
-							size="xl"
-							>{{ tag }}</UBadge
+							class="bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-base font-medium"
+							>{{ tag }}</span
 						>
 					</div>
 					<div class="flex gap-4">
 						<p class="flex items-center gap-1">
-							<UIcon
+							<Icon
 								name="material-symbols:calendar-today-rounded"
 								class="text-primary"
 							/>
 							{{ formattedDate }}
 						</p>
 						<p class="flex items-center gap-1">
-							<UIcon
+							<Icon
 								name="material-symbols:alarm-rounded"
 								class="text-primary"
 							/>
@@ -69,9 +83,9 @@
 						</p>
 					</div>
 				</div>
-			</UPageHeader>
+			</div>
 
-			<UContentToc
+			<!-- <UContentToc
 				class="lg:hidden"
 				title="Contenido"
 				color="primary"
@@ -80,64 +94,61 @@
 				:ui="{
 					container: 'border-solid',
 				}"
-			/>
+			/> -->
 
-			<UPageBody>
+			<div class="mt-8 space-y-12 pb-24">
 				<div class="flex gap-2 lg:hidden">
-					<UButton
-						class="hover:cursor-pointer"
-						icon="material-symbols:share"
-						variant="subtle"
-						color="neutral"
-						size="xl"
+					<button
+						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
 						@click="share"
-						>Compartir</UButton
 					>
+						<Icon name="lucide:share" />
+						<span>Compartir</span>
+					</button>
 
-					<UButton
-						class="hover:cursor-pointer"
-						icon="mdi:link-variant"
-						variant="subtle"
-						color="neutral"
-						size="xl"
-						:trailing-icon="isLinkCopied ? 'i-lucide-check' : undefined"
+					<button
+						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
 						@click="copyLink"
 					>
-						{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</UButton
-					>
+						<span class="inline-flex items-center gap-2">
+							<Icon name="lucide:link" />
+							<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
+						</span>
+
+						<Icon
+							v-if="isLinkCopied"
+							name="lucide:check"
+						/>
+					</button>
 				</div>
 
 				<ContentRenderer :value="data" />
 
-				<USeparator color="primary" />
+				<UiSeparator color="primary" />
 
 				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
-				<UBlogPosts>
-					<UBlogPost
+				<UiGrid>
+					<ArticlesPost
 						v-for="article in links"
 						:key="article.id"
 						:title="article.title"
 						:image="article.meta.thumbnail"
-						:badge="
-							Math.abs(new Date().getTime() - new Date(article?.meta.date).getTime()) < 8.64e7 * 7
-								? { label: 'New', color: 'primary' }
-								: undefined
-						"
+						:new="isNew(article.meta.date)"
 						:date="article.meta.date"
 						:to="article.path"
-						variant="outline"
+						class="justify-start"
 					/>
-				</UBlogPosts>
+				</UiGrid>
 
-				<USeparator color="primary" />
+				<!-- <UiSeparator color="primary" />
 
 				<UContentSurround
 					prev-icon="i-lucide-chevron-left"
 					next-icon="i-lucide-chevron-right"
 					:surround="surround"
-				/>
-			</UPageBody>
-		</UPage>
+				/> -->
+			</div>
+		</ArticlePage>
 	</UiContainer>
 </template>
 
@@ -151,11 +162,11 @@ const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();
 	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
 });
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-	return queryCollectionItemSurroundings("articles", route.path, {
-		fields: ["description"],
-	});
-});
+// const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
+// 	return queryCollectionItemSurroundings("articles", route.path, {
+// 		fields: ["description"],
+// 	});
+// });
 
 const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
 const formattedDate = computed(() => formatDate(data.value?.meta.date));

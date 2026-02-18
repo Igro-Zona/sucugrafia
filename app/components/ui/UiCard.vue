@@ -5,7 +5,7 @@
 		:class="twMerge('bg-default border-default relative space-y-4 rounded-md border p-4 sm:p-6', props.class)"
 	>
 		<div class="flex items-center gap-4">
-			<UIcon
+			<Icon
 				v-if="icon?.name"
 				v-bind="icon"
 				class="text-primary"

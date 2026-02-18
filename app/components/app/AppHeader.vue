@@ -24,14 +24,17 @@
 			</div>
 
 			<div class="flex items-center justify-end gap-1.5 lg:flex-1">
-				<UButton
-					color="primary"
-					variant="link"
+				<button
+					type="button"
+					class="text-primary hover:text-primary/75 active:text-primary/75 -me-1.5 inline-flex cursor-pointer rounded-md p-1.5 transition-colors focus-visible:outline-offset-0! lg:hidden"
 					:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
-					:icon="open ? 'lucide:x' : 'lucide:menu'"
-					class="-me-1.5 cursor-pointer lg:hidden"
 					@click="toggleOpen"
-				/>
+				>
+					<Icon
+						:name="open ? 'lucide:x' : 'lucide:menu'"
+						:size="24"
+					/>
+				</button>
 			</div>
 		</UiContainer>
 	</header>
@@ -43,14 +46,17 @@
 		<div class="flex h-(--ui-header-height) items-center justify-between gap-3 px-4 sm:px-6">
 			<UiLogo v-bind="logo" />
 
-			<UButton
-				color="primary"
-				variant="link"
+			<button
+				type="button"
+				class="text-primary hover:text-primary/75 active:text-primary/75 -me-1.5 inline-flex cursor-pointer rounded-md p-1.5 transition-colors focus-visible:outline-offset-0!"
 				:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
-				:icon="open ? 'lucide:x' : 'lucide:menu'"
-				class="-me-1.5 cursor-pointer lg:hidden"
 				@click="toggleOpen"
-			/>
+			>
+				<Icon
+					:name="open ? 'lucide:x' : 'lucide:menu'"
+					:size="24"
+				/>
+			</button>
 		</div>
 
 		<div class="overflow-y-auto p-4 sm:p-6">

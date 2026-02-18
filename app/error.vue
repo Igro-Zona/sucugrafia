@@ -1,5 +1,5 @@
 <template>
-	<AppRoot :locale="es">
+	<AppRoot>
 		<AppHeader />
 
 		<AppMain class="flex items-center justify-center">
@@ -42,7 +42,6 @@
 
 <script setup lang="ts">
 import type { NuxtError } from "#app";
-import { es } from "@nuxt/ui/locale";
 
 export interface ErrorRouteProps {
 	error: NuxtError;
