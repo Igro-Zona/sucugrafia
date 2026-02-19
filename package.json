@@ -13,7 +13,7 @@
 		"format": "prettier --write .",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"pre-commit": " npx nuxt typecheck && npm run format",
+		"pre-commit": "npx nuxt typecheck",
 		"prepare": "husky"
 	},
 	"dependencies": {
@@ -54,6 +54,9 @@
 		"zod": "^4.3.6"
 	},
 	"lint-staged": {
-		"*.{js,mjs,ts,mts,vue}": "npm run lint:fix"
+		"*.{js,ts,vue,css,md,json}": [
+			"eslint --fix",
+			"prettier --write"
+		]
 	}
 }

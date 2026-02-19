@@ -39,6 +39,7 @@ export default defineNuxtConfig({
 			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui"],
 		},
 		build: {
+			sourcemap: false,
 			rollupOptions: {
 				output: {
 					manualChunks: {
