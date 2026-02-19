@@ -1,4 +1,3 @@
-import type { CommandPaletteItem } from "@nuxt/ui";
 import type { UiLinkProps } from "~/components/ui/UiLink.vue";
 
 interface ContentSearchFile {
@@ -8,7 +7,8 @@ interface ContentSearchFile {
 	level: number;
 	content: string;
 }
-interface ContentSearchItem extends Omit<UiLinkProps, "icon">, Omit<CommandPaletteItem, "class"> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface ContentSearchItem extends Omit<UiLinkProps, "icon">, Omit<any, "class"> {
 	level?: number;
 	icon?: IconProps["name"];
 }

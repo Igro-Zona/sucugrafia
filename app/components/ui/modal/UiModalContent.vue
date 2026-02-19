@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { twMerge, type ClassNameValue } from "tailwind-merge";
-import { DialogContent, DialogDescription, DialogTitle, injectDialogRootContext, VisuallyHidden } from "reka-ui";
+import { DialogContent, DialogDescription, DialogTitle, VisuallyHidden } from "reka-ui";
 
 export interface UiModalContentProps {
 	title?: string;
@@ -36,10 +36,5 @@ const props = withDefaults(defineProps<UiModalContentProps>(), {
 	title: undefined,
 	description: undefined,
 	class: undefined,
-});
-
-const rootContext = injectDialogRootContext();
-watchEffect(() => {
-	console.log(rootContext.open.value);
 });
 </script>

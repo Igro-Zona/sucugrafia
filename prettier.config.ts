@@ -1,11 +1,6 @@
-// @ts-check
-
-import plugins from "./plugins.js";
-
-/** @type {import("./types.js").Settings} */
-const settings = {
-	plugins: plugins,
-
+import type { Config } from "prettier";
+const config: Config = {
+	plugins: ["prettier-plugin-tailwindcss"],
 	arrowParens: "always",
 	bracketSameLine: false,
 	bracketSpacing: true,
@@ -30,4 +25,4 @@ const settings = {
 	useTabs: true,
 	vueIndentScriptAndStyle: false,
 };
-export default settings;
+export default config;

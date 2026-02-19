@@ -56,7 +56,7 @@
 	},
 
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"prettier.configPath": "prettier.config.mjs",
+	"prettier.configPath": "prettier.config.ts",
 	"prettier.documentSelectors": ["**/*.astro"],
 	"prettier.enable": true,
 	"prettier.enableDebugLogs": true,

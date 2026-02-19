@@ -1,6 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
@@ -40,6 +39,7 @@ export default defineNuxtConfig({
 			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui"],
 		},
 		build: {
+			sourcemap: false,
 			rollupOptions: {
 				output: {
 					manualChunks: {
@@ -128,7 +128,6 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		domains: ["sucugrafia.sucua.workers.dev", "res.cloudinary.com"],
 		cloudinary: {
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
 		},
