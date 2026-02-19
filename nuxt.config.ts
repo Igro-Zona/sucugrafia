@@ -128,7 +128,6 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		domains: ["sucugrafia.sucua.workers.dev", "res.cloudinary.com"],
 		cloudinary: {
 			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
 		},

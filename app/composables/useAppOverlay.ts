@@ -1,9 +1,7 @@
-import type { ComponentProps } from "vue-component-type-helpers";
-
 type Overlay = {
 	isMounted: boolean;
 	component: Component | null;
-	props: ComponentProps<Component>;
+	props: ExtractPropTypes<Component>;
 };
 
 const overlay = reactive<Overlay>({
@@ -13,7 +11,7 @@ const overlay = reactive<Overlay>({
 });
 
 export default function () {
-	function open(component: Component, props?: ComponentProps<Component>) {
+	function open(component: Component, props?: ExtractPropTypes<Component>) {
 		overlay.component = markRaw(component);
 		overlay.props = { ...props };
 		overlay.isMounted = true;
@@ -23,7 +21,7 @@ export default function () {
 		overlay.component = null;
 		overlay.props = {};
 	}
-	function patch(props: Partial<ComponentProps<Component>>) {
+	function patch(props: Partial<ExtractPropTypes<Component>>) {
 		overlay.props = { ...overlay.props, ...props };
 	}
 	return {
