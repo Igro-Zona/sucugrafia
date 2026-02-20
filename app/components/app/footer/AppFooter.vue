@@ -1,27 +1,7 @@
 <template>
-	<footer
-		:class="twMerge('border-primary border-t', props.class)"
-		aria-labelledby="footer-label"
-	>
-		<h2
-			id="footer-label"
-			class="sr-only"
-		>
-			Pie de página
-		</h2>
-
+	<footer class="border-primary border-t">
 		<UiContainer>
-			<nav
-				aria-label="Navegación"
-				class="grid grid-cols-1 gap-8 py-8 text-sm sm:grid-cols-2 lg:grid-cols-3 lg:py-12"
-			>
-				<FooterColumn
-					v-for="(column, index) in columns"
-					:key="index"
-					:column-label="column.columnLabel"
-					:links="column.links"
-				/>
-			</nav>
+			<AppFooterMenu :columns="columns" />
 		</UiContainer>
 
 		<UiSeparator color="muted" />
@@ -70,17 +50,8 @@
 </template>
 
 <script setup lang="ts">
-import type { UiLogoProps } from "../ui/UiLogo.vue";
-import type { FooterColumnProps } from "../footer/FooterColumn.vue";
-import { twMerge, type ClassNameValue } from "tailwind-merge";
-
-export interface AppFooterProps {
-	class?: ClassNameValue;
-}
-
-const props = withDefaults(defineProps<AppFooterProps>(), {
-	class: undefined,
-});
+import type { UiLogoProps } from "~/components/ui/UiLogo.vue";
+import type { FooterColumn } from "./AppFooterMenu.vue";
 
 const logo: UiLogoProps = {
 	as: "div",
@@ -90,7 +61,7 @@ const logo: UiLogoProps = {
 	},
 };
 
-const columns: FooterColumnProps[] = [
+const columns: FooterColumn[] = [
 	{
 		columnLabel: "Navegación",
 		links: [
