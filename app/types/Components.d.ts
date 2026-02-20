@@ -2,6 +2,9 @@ import type { AsTag } from "reka-ui";
 import type { ClassNameValue } from "tailwind-merge";
 import type { NuxtLinkProps } from "#app";
 export {};
+export interface StyledComponentProps {
+	unstyled?: boolean;
+}
 
 declare global {
 	interface IconProps {
@@ -11,7 +14,6 @@ declare global {
 		customize?: (content: string, name?: string, prefix?: string, provider?: string) => string;
 		class?: ClassNameValue;
 	}
-
 	type AsPropDefault = AsTag | Component;
 	type AsPropWithHeadings = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | Component;
 
