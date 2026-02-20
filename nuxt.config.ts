@@ -36,7 +36,14 @@ export default defineNuxtConfig({
 			},
 		},
 		optimizeDeps: {
-			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui"],
+			include: [
+				"@vue/devtools-core",
+				"@vue/devtools-kit",
+				"@vueuse/core",
+				"tailwind-merge",
+				"reka-ui",
+				"tailwindcss/colors",
+			],
 		},
 		build: {
 			sourcemap: false,
