@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 		"@nuxt/icon",
 		"@nuxt/fonts",
+		"reka-ui/nuxt",
 		"@nuxt/content",
 		"@nuxt/image",
 		"@nuxtjs/seo",

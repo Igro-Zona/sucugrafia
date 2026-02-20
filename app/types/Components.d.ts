@@ -5,6 +5,11 @@ export {};
 export interface StyledComponentProps {
 	unstyled?: boolean;
 }
+export interface PrimitiveComponentProps {
+	as?: AsPropDefault;
+	asChild?: boolean;
+}
+export interface StyledPrimitiveComponentProps extends StyledComponentProps, PrimitiveComponentProps {}
 
 declare global {
 	interface IconProps {

@@ -1,11 +1,15 @@
 <template>
-	<div :class="{ 'mx-auto w-full max-w-(--ui-container) px-4 sm:px-6 lg:px-8': !unstyled }">
+	<Primitive
+		:as="as"
+		:as-child="asChild"
+		:class="{ 'mx-auto w-full max-w-(--ui-container) px-4 sm:px-6 lg:px-8': !unstyled }"
+	>
 		<slot />
-	</div>
+	</Primitive>
 </template>
 
 <script setup lang="ts">
-import type { StyledComponentProps } from "~/types/Components";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-defineProps<StyledComponentProps>();
+defineProps<StyledPrimitiveComponentProps>();
 </script>
