@@ -1,18 +1,20 @@
 <template>
-	<Separator :class="twMerge(`w-full border-t border-${color}`, props.class)" />
+	<Separator
+		:as="as"
+		:as-child="asChild"
+		:decorative="decorative"
+		:orientation="orientation"
+		:class="{ 'w-full border-t': !unstyled }"
+	/>
 </template>
 
 <script setup lang="ts">
-import { Separator, type SeparatorProps } from "reka-ui";
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiSeparatorProps extends SeparatorProps {
-	color?: SemanticColor;
-	class?: ClassNameValue;
+export interface UiSeparatorProps extends StyledPrimitiveComponentProps {
+	decorative?: boolean;
+	orientation?: "vertical" | "horizontal";
 }
 
-const props = withDefaults(defineProps<UiSeparatorProps>(), {
-	color: "default",
-	class: undefined,
-});
+defineProps<UiSeparatorProps>();
 </script>
