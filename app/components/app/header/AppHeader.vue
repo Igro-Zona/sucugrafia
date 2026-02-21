@@ -7,17 +7,17 @@
 		}"
 	>
 		<UiContainer class="flex h-full items-center justify-between gap-3">
-			<div class="flex-1">
+			<div class="flex flex-1 items-center">
 				<AppLogo :as="$route.path === '/' ? 'h1' : 'p'" />
 			</div>
 
-			<div class="hidden lg:block">
+			<div class="hidden items-center lg:flex">
 				<AppHeaderMenu :links="links" />
 			</div>
 
-			<div class="lg:flex-1">
+			<div class="flex items-center lg:flex-1">
 				<UiButton
-					class="text-primary hover:text-primary/75 active:text-primary/75 -me-1.5 focus:outline-offset-0! lg:hidden"
+					class="text-primary hover:text-primary/75 active:text-primary/75 -me-2 focus:outline-offset-0! lg:hidden"
 					:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
 					aria-controls="slideover"
 					:aria-expanded="open"
@@ -36,7 +36,7 @@
 	>
 		<div class="flex h-(--ui-header-height) flex-row-reverse items-center justify-between gap-3 px-4 sm:px-6">
 			<UiButton
-				class="text-primary hover:text-primary/75 active:text-primary/75 -me-1.5 focus:outline-offset-0! lg:hidden"
+				class="text-primary hover:text-primary/75 active:text-primary/75 focus:outline-offset-0! lg:hidden"
 				:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
 				aria-controls="slideover"
 				:aria-expanded="open"
