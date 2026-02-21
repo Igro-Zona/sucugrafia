@@ -7,25 +7,23 @@
 		<div
 			v-for="(column, columnIndex) in columns"
 			:key="columnIndex"
-			class="font-latto"
 		>
 			<h3
 				v-if="column.columnLabel"
-				class="mb-4 text-lg font-bold"
+				class="font-latto mb-4 font-bold"
 			>
 				{{ column.columnLabel }}
 			</h3>
 
-			<ul class="text-muted space-y-2">
+			<ul class="text-muted space-y-2 text-sm">
 				<li
-					v-for="({ label, ...linkProps }, index) in column.links"
+					v-for="(link, index) in column.links"
 					:key="index"
 				>
 					<UiLink
-						v-bind="linkProps"
-						class="hover:text-default cursor-pointer transition-colors"
-						>{{ label }}</UiLink
-					>
+						v-bind="link"
+						class="rounded-sm"
+					/>
 				</li>
 			</ul>
 		</div>
@@ -33,9 +31,11 @@
 </template>
 
 <script setup lang="ts">
+import type { UiLinkProps } from "~/components/ui/UiLink.vue";
+
 export type FooterColumn = {
 	columnLabel?: string;
-	links: LinkProps[];
+	links: UiLinkProps[];
 };
 
 defineProps<{

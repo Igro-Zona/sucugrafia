@@ -4,62 +4,42 @@
 			<AppFooterMenu :columns="columns" />
 		</UiContainer>
 
-		<UiSeparator color="muted" />
+		<UiSeparator class="border-muted" />
 
 		<UiContainer class="flex flex-col items-center justify-between gap-3 py-4 lg:flex-row">
-			<div class="flex flex-col items-center gap-3 lg:flex-row">
-				<div class="flex items-center gap-6">
-					<UiLink
-						to="/"
-						:events="true"
-					>
-						<UiLogo v-bind="logo" />
-					</UiLink>
+			<div class="flex items-center gap-6 lg:gap-3">
+				<AppLogo as="div" />
 
-					<UiLink
-						to="https://github.com/Igro-Zona/sucugrafia"
-						aria-label="Abrir en GitHub"
-						class="hover:bg-muted hover:text-highlighted active:bg-accented rounded-lg p-2 transition-colors lg:hidden"
-						:external-icon="false"
-					>
-						<Icon
-							name="i-simple-icons-github"
-							:size="30"
-						/>
-					</UiLink>
-				</div>
-
-				<p class="text-muted text-[13px] sm:text-sm">
+				<p class="text-muted hidden text-center text-sm lg:inline">
 					Copyright © {{ new Date().getFullYear() }} | Todos los derechos reservados.
 				</p>
+
+				<UiLink
+					to="https://github.com/Igro-Zona/sucugrafia"
+					aria-label="Abrir en GitHub"
+					class="hover:bg-muted active:text-highlighted! text-muted hover:text-default! p-2 transition-colors focus-visible:outline-offset-0! lg:hidden"
+					:icon="{ name: 'simple-icons:github', size: 30, class: 'transition-colors' }"
+					:external-icon="false"
+				/>
 			</div>
+
+			<p class="text-muted text-center text-sm lg:hidden">
+				Copyright © {{ new Date().getFullYear() }} | Todos los derechos reservados.
+			</p>
 
 			<UiLink
 				to="https://github.com/Igro-Zona/sucugrafia"
 				aria-label="Abrir en GitHub"
-				class="hover:bg-muted hover:text-highlighted active:bg-accented hidden rounded-lg p-2 transition-colors lg:inline-flex"
+				class="hover:bg-muted active:text-highlighted! text-muted hover:text-default! hidden! p-2 transition-colors focus-visible:outline-offset-0! lg:inline-flex!"
+				:icon="{ name: 'simple-icons:github', size: 30, class: 'transition-colors' }"
 				:external-icon="false"
-			>
-				<Icon
-					name="i-simple-icons-github"
-					:size="30"
-				/>
-			</UiLink>
+			/>
 		</UiContainer>
 	</footer>
 </template>
 
 <script setup lang="ts">
-import type { UiLogoProps } from "~/components/ui/UiLogo.vue";
 import type { FooterColumn } from "./AppFooterMenu.vue";
-
-const logo: UiLogoProps = {
-	as: "div",
-	icon: {
-		name: "sucua:book",
-		size: 34,
-	},
-};
 
 const columns: FooterColumn[] = [
 	{
