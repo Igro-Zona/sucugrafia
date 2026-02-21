@@ -10,12 +10,12 @@
 				>
 					{{ error.status }}
 				</p>
-				<h2
+				<h1
 					v-if="error.statusText"
 					class="text-highlighted font-latto mt-2 text-center text-4xl font-bold sm:text-5xl"
 				>
 					{{ error.statusText }}
-				</h2>
+				</h1>
 				<p
 					v-if="error.message && error.message !== error.statusText"
 					class="text-muted mt-4 text-lg"

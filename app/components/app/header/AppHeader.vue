@@ -8,7 +8,7 @@
 	>
 		<UiContainer class="flex h-full items-center justify-between gap-3">
 			<div class="flex flex-1 items-center">
-				<AppLogo :as="$route.path === '/' ? 'h1' : 'p'" />
+				<AppLogo :as="$route.path === '/' ? 'h1' : 'div'" />
 			</div>
 
 			<div class="hidden items-center lg:flex">
@@ -44,7 +44,7 @@
 				@click="toggleOpen"
 			/>
 
-			<AppLogo :as="$route.path === '/' ? 'h1' : 'p'" />
+			<AppLogo :as="$route.path === '/' ? 'h1' : 'div'" />
 		</div>
 
 		<div class="overflow-y-auto p-4 sm:p-6">
