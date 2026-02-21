@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { useForwardPropsEmits } from "reka-ui";
-import type { UiModalContentProps } from "../ui/modal/UiModalContent.vue";
+import type { UiModalContentProps } from "~/components/ui/modal/UiModalContent.vue";
 
 export interface HeaderSlideoverProps extends UiModalContentProps {
 	open?: boolean;

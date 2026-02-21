@@ -1,9 +1,6 @@
 <template>
 	<AppRoot>
-		<AppHeader
-			class="transition-transform"
-			:class="isFooterVisible ? '-translate-y-full' : undefined"
-		/>
+		<AppHeader :class="{ '-translate-y-full': isFooterVisible }" />
 
 		<AppMain>
 			<NuxtPage />

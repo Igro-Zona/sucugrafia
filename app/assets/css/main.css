@@ -12,7 +12,6 @@
 
 html {
 	scroll-behavior: smooth;
-	scrollbar-gutter: stable;
 }
 
 *:focus-visible {
