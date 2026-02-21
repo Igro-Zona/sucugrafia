@@ -10,10 +10,6 @@
 	--ui-container: 80rem;
 }
 
-:root {
-	--ui-radius: 0.5rem;
-}
-
 html {
 	scroll-behavior: smooth;
 	scrollbar-gutter: stable;
