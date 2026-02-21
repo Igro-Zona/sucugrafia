@@ -1,23 +1,27 @@
 <template>
 	<section
 		:aria-label="title"
-		:class="twMerge('space-y-6', props.class)"
+		:class="{ 'space-y-6': !unstyled }"
 	>
-		<h2 class="font-latto text-primary text-2xl font-bold sm:text-3xl">{{ title }}</h2>
+		<slot name="title">
+			<h2
+				v-if="title"
+				class="font-latto text-primary text-2xl font-bold sm:text-3xl"
+			>
+				{{ title }}
+			</h2>
+		</slot>
+
 		<slot />
 	</section>
 </template>
 
 <script setup lang="ts">
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledComponentProps } from "~/types/Components";
 
-export interface UiSectionProps {
+export interface UiSectionProps extends StyledComponentProps {
 	title?: string;
-	class?: ClassNameValue;
 }
 
-const props = withDefaults(defineProps<UiSectionProps>(), {
-	title: "Sin titulo",
-	class: undefined,
-});
+defineProps<UiSectionProps>();
 </script>
