@@ -1,52 +1,51 @@
 <template>
-	<div
-		role="group"
+	<Primitive
+		:as="as"
+		:as-child="asChild"
 		:aria-label="title"
-		:class="twMerge('bg-default border-default relative space-y-4 rounded-md border p-4 sm:p-6', props.class)"
+		:class="{ 'bg-default border-default space-y-4 rounded-md border p-4 sm:p-6': !unstyled }"
+		role="group"
 	>
 		<div class="flex items-center gap-4">
-			<Icon
-				v-if="icon?.name"
-				v-bind="icon"
-				class="text-primary"
-			/>
+			<slot name="icon">
+				<Icon
+					v-if="icon"
+					v-bind="iconProps"
+					class="text-primary"
+				/>
+			</slot>
 
-			<Primitive
-				:as
-				class="text-highlighted font-semibold text-pretty sm:text-lg"
-			>
-				{{ title }}
-			</Primitive>
+			<slot name="title">
+				<h3
+					v-if="title"
+					class="text-highlighted font-bold text-pretty sm:text-lg"
+				>
+					{{ title }}
+				</h3>
+			</slot>
 		</div>
 
-		<p
-			v-if="description"
-			class="text-muted text-sm text-pretty sm:text-base"
-		>
-			{{ description }}
-		</p>
-
-		<slot />
-	</div>
+		<slot>
+			<p
+				v-if="description"
+				class="text-muted text-sm text-pretty sm:text-base"
+			>
+				{{ description }}
+			</p>
+		</slot>
+	</Primitive>
 </template>
 
 <script setup lang="ts">
 import { Primitive } from "reka-ui";
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiCardProps {
+export interface UiCardProps extends StyledPrimitiveComponentProps {
 	title?: string;
 	description?: string;
-	icon?: IconProps;
-	as?: AsPropWithHeadings;
-	class?: ClassNameValue;
+	icon?: string | IconProps;
 }
 
-const props = withDefaults(defineProps<UiCardProps>(), {
-	title: "Sin titulo",
-	description: undefined,
-	icon: undefined,
-	as: "p",
-	class: undefined,
-});
+const props = defineProps<UiCardProps>();
+const { iconProps } = useIcon(props.icon);
 </script>
