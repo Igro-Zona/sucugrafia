@@ -19,10 +19,10 @@
 				class="text-pretty sm:text-lg lg:text-xl"
 				data-aos="fade-up"
 			>
-				<b class="text-primary">Sucugrafia</b> es una plataforma digital dedicada a difundir el patrimonio
-				cultural, histórico y natural de Sucúa. Nuestro sitio ofrece contenidos
-				<b class="text-primary">cuidadosamente elaborados</b> que permiten al visitante conocer de manera
-				organizada y confiable la riqueza de la región amazónica. Cada publicación está orientada a resaltar la
+				<b class="text-primary">Sucugrafia</b> es una plataforma digital dedicada a difundir el patrimonio cultural, histórico y
+				natural de Sucúa. Nuestro sitio ofrece contenidos <b class="text-primary">cuidadosamente elaborados</b> que permiten al
+				visitante conocer de manera organizada y confiable la riqueza de la región amazónica. Cada publicación está orientada a
+				resaltar la
 				<b class="text-primary">identidad local</b>
 				y a proyectar el valor de la comunidad hacia un público más amplio.
 			</p>
@@ -47,23 +47,21 @@
 				data-aos="fade-left"
 			>
 				El contenido de Sucugrafia abarca
-				<b class="text-primary">relatos, fotografías, artículos y proyectos</b> que documentan tradiciones,
-				paisajes y expresiones artísticas propias de Sucúa. La presentación se realiza con criterios
-				profesionales de comunicación y diseño, garantizando una
-				<b class="text-primary">experiencia informativa y visualmente atractiva</b>. De esta manera, el usuario
-				accede a información relevante y de calidad que refleja la autenticidad de la región.
+				<b class="text-primary">relatos, fotografías, artículos y proyectos</b> que documentan tradiciones, paisajes y expresiones
+				artísticas propias de Sucúa. La presentación se realiza con criterios profesionales de comunicación y diseño, garantizando
+				una <b class="text-primary">experiencia informativa y visualmente atractiva</b>. De esta manera, el usuario accede a
+				información relevante y de calidad que refleja la autenticidad de la región.
 			</p>
 
 			<p
 				class="text-pretty sm:text-lg lg:text-xl"
 				data-aos="fade-right"
 			>
-				<b class="text-primary">Sucugrafia</b> se consolida como un espacio de referencia para la preservación y
-				difusión de la memoria colectiva. Al destacar la historia, las costumbres y las manifestaciones
-				culturales de Sucúa, nuestro sitio contribuye a fortalecer la
-				<b class="text-primary">identidad amazónica</b> y a transmitirla a nuevas generaciones. Así, se
-				convierte en una herramienta que une tradición y conocimiento, proyectando el legado cultural de la
-				comunidad <b class="text-primary">hacia el futuro</b>.
+				<b class="text-primary">Sucugrafia</b> se consolida como un espacio de referencia para la preservación y difusión de la
+				memoria colectiva. Al destacar la historia, las costumbres y las manifestaciones culturales de Sucúa, nuestro sitio
+				contribuye a fortalecer la <b class="text-primary">identidad amazónica</b> y a transmitirla a nuevas generaciones. Así, se
+				convierte en una herramienta que une tradición y conocimiento, proyectando el legado cultural de la comunidad
+				<b class="text-primary">hacia el futuro</b>.
 			</p>
 		</UiContainer>
 	</div>
@@ -87,24 +85,21 @@ useSeoMeta({
 const cards: UiCardProps[] = [
 	{
 		title: "Galeria maravillosa",
-		description:
-			"Una colección visual única que muestra lo mejor de nuestro proyecto. Cada imagen transmite emoción y creatividad.",
+		description: "Una colección visual única que muestra lo mejor de nuestro proyecto. Cada imagen transmite emoción y creatividad.",
 		icon: {
 			name: "lucide:image",
 		},
 	},
 	{
 		title: "Moderno e Innovador",
-		description:
-			"Un sitio web con diseño actual y soluciones innovadoras. Pensado para ofrecer una experiencia fresca y atractiva.",
+		description: "Un sitio web con diseño actual y soluciones innovadoras. Pensado para ofrecer una experiencia fresca y atractiva.",
 		icon: {
 			name: "lucide:lightbulb",
 		},
 	},
 	{
 		title: "Espiritu de la Amazonia",
-		description:
-			"Reflejamos la esencia cultural y natural de Sucúa. Un espacio que conecta con nuestras raíces amazónicas.",
+		description: "Reflejamos la esencia cultural y natural de Sucúa. Un espacio que conecta con nuestras raíces amazónicas.",
 		icon: {
 			name: "lucide:leaf",
 		},
@@ -127,8 +122,7 @@ const cards: UiCardProps[] = [
 	},
 	{
 		title: "Mejor guia",
-		description:
-			"Un recurso claro y práctico para orientarte en cada paso. Te acompañamos con información útil y accesible.",
+		description: "Un recurso claro y práctico para orientarte en cada paso. Te acompañamos con información útil y accesible.",
 		icon: {
 			name: "lucide:map",
 		},

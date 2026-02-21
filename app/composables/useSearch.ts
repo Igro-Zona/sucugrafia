@@ -24,11 +24,7 @@ export interface ContentNavigationItem {
 
 const open = ref(false);
 export default function () {
-	function mapFile(
-		file: ContentSearchFile,
-		link: ContentNavigationItem,
-		parent?: ContentNavigationItem,
-	): ContentSearchItem {
+	function mapFile(file: ContentSearchFile, link: ContentNavigationItem, parent?: ContentNavigationItem): ContentSearchItem {
 		const prefix = [...new Set([parent?.title, ...file.titles].filter(Boolean))];
 		return {
 			prefix: prefix?.length ? prefix.join(" > ") + " >" : void 0,

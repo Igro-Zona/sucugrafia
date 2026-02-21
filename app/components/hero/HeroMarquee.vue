@@ -14,9 +14,7 @@
 			/>
 		</UiMarquee>
 
-		<UiMarquee
-			class="absolute -top-80 left-152 h-200 w-115 rotate-x-35 rotate-y-20 rotate-z-30 brightness-40 filter transform-3d"
-		>
+		<UiMarquee class="absolute -top-80 left-152 h-200 w-115 rotate-x-35 rotate-y-20 rotate-z-30 brightness-40 filter transform-3d">
 			<HeroImage
 				v-for="src in images"
 				:key="src"

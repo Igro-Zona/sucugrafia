@@ -22,9 +22,7 @@ const kbdKeysMap = {
 	home: "\u2196",
 	end: "\u2198",
 };
-const macOS = computed(
-	() => import.meta.client && navigator && navigator.userAgent && navigator.userAgent.match(/Macintosh;/),
-);
+const macOS = computed(() => import.meta.client && navigator && navigator.userAgent && navigator.userAgent.match(/Macintosh;/));
 export default function () {
 	const kbdKeysSpecificMap = reactive({
 		meta: " ",

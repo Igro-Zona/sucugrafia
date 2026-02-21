@@ -8,13 +8,12 @@
 				class="mt-2 sm:text-lg"
 				data-aos="fade-left"
 			>
-				En esta sección encontrarás <b class="text-primary">respuestas claras</b> y directas a las preguntas más
-				comunes que nuestros usuarios suelen tener. La idea es que puedas
-				<b class="text-primary">resolver tus dudas</b> rápidamente y sentir confianza al usar nuestra
-				plataforma, sin necesidad de buscar en otros apartados. Además, queremos que este espacio sea tu punto
-				de referencia: un lugar donde cada explicación esté pensada para ser
-				<b class="text-primary">sencilla, útil y accesible</b>, ayudándote a aprovechar al máximo todas las
-				posibilidades que ofrecemos con nuestra
+				En esta sección encontrarás <b class="text-primary">respuestas claras</b> y directas a las preguntas más comunes que
+				nuestros usuarios suelen tener. La idea es que puedas <b class="text-primary">resolver tus dudas</b> rápidamente y sentir
+				confianza al usar nuestra plataforma, sin necesidad de buscar en otros apartados. Además, queremos que este espacio sea tu
+				punto de referencia: un lugar donde cada explicación esté pensada para ser
+				<b class="text-primary">sencilla, útil y accesible</b>, ayudándote a aprovechar al máximo todas las posibilidades que
+				ofrecemos con nuestra
 				<UiLink
 					class="text-highlighted hover:text-primary font-semibold"
 					to="/galeria"
@@ -38,12 +37,11 @@
 					>Sucugrafia</UiLink
 				>
 				- Ser el espejo visual de Sucúa: un espacio digital donde las imágenes capturan la
-				<b class="text-primary">esencia</b> de su gente, paisajes y cultura. Unir
-				<b class="text-primary">técnica y emoción</b>: cada fotografía y cada línea de código trabajan juntas
-				para ofrecer una experiencia estética impecable y accesible. Inspirar orgullo local y
-				<b class="text-primary">curiosidad global</b>: mostrar al mundo la riqueza visual de Sucúa, mientras
-				conecta a la comunidad con su propia identidad. Convertir visitas en experiencias memorables: que cada
-				usuario sienta que no solo vio <b class="text-primary">imágenes</b> y
+				<b class="text-primary">esencia</b> de su gente, paisajes y cultura. Unir <b class="text-primary">técnica y emoción</b>:
+				cada fotografía y cada línea de código trabajan juntas para ofrecer una experiencia estética impecable y accesible. Inspirar
+				orgullo local y <b class="text-primary">curiosidad global</b>: mostrar al mundo la riqueza visual de Sucúa, mientras conecta
+				a la comunidad con su propia identidad. Convertir visitas en experiencias memorables: que cada usuario sienta que no solo
+				vio <b class="text-primary">imágenes</b> y
 				<UiLink
 					class="text-highlighted hover:text-primary font-semibold"
 					to="/articulos"

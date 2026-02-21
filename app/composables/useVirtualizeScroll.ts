@@ -4,10 +4,7 @@ import type { CSSProperties } from "vue";
 type MaybeRef<T> = T | Ref<T>;
 export type VirtualScrollOptions = {
 	viewportWidth?: unknown;
-	virtualizerOptions: Omit<
-		VirtualizerOptions<Element, Element>,
-		"observeElementRect" | "observeElementOffset" | "scrollToFn"
-	>;
+	virtualizerOptions: Omit<VirtualizerOptions<Element, Element>, "observeElementRect" | "observeElementOffset" | "scrollToFn">;
 };
 
 export default function (options: MaybeRef<VirtualScrollOptions>) {
@@ -50,9 +47,7 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 		const laneSize = `calc((100% - ${(lanes.value - 1) * gap.value}px) / ${lanes.value})`;
 
 		const lanePosition =
-			lanes.value > 1 && virtualItem.lane !== undefined
-				? `calc(${virtualItem.lane} * ((${laneSize}) + ${gap.value}px))`
-				: 0;
+			lanes.value > 1 && virtualItem.lane !== undefined ? `calc(${virtualItem.lane} * ((${laneSize}) + ${gap.value}px))` : 0;
 
 		return {
 			position: "absolute",

@@ -6,13 +6,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 			if (!window.matchMedia("(hover: hover)").matches) return;
 
 			const spotlightDiv = document.createElement("div");
-			spotlightDiv.classList.add(
-				"pointer-events-none",
-				"absolute",
-				"inset-0",
-				"transition-opacity",
-				"duration-300",
-			);
+			spotlightDiv.classList.add("pointer-events-none", "absolute", "inset-0", "transition-opacity", "duration-300");
 			el.classList.add("relative");
 			el.appendChild(spotlightDiv);
 
