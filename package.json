@@ -34,8 +34,8 @@
 		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.92",
-		"@iconify-json/material-symbols": "^1.2.56",
+		"@iconify-json/lucide": "^1.2.93",
+		"@iconify-json/material-symbols": "^1.2.57",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify-json/simple-icons": "^1.2.71",
 		"@nuxt/content": "^3.11.2",
@@ -52,7 +52,7 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.4",
 		"vue": "^3.5.28",
-		"vue-tsc": "^3.2.4",
+		"vue-tsc": "^3.2.5",
 		"wrangler": "^4.67.0",
 		"zod": "^4.3.6"
 	},
