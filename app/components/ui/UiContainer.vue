@@ -2,7 +2,7 @@
 	<Primitive
 		:as="as"
 		:as-child="asChild"
-		:class="{ 'mx-auto w-full max-w-(--ui-container) px-4 sm:px-6 lg:px-8': !unstyled }"
+		:class="!unstyled && 'mx-auto w-full max-w-(--ui-container) px-4 sm:px-6 lg:px-8'"
 	>
 		<slot />
 	</Primitive>

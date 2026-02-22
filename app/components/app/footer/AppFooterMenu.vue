@@ -38,7 +38,5 @@ export type FooterColumn = {
 	links: UiLinkProps[];
 };
 
-defineProps<{
-	columns: FooterColumn[];
-}>();
+defineProps<{ columns: FooterColumn[] }>();
 </script>

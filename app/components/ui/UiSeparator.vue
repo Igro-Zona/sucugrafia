@@ -4,7 +4,7 @@
 		:as-child="asChild"
 		:decorative="decorative"
 		:orientation="orientation"
-		:class="{ 'w-full border-t': !unstyled }"
+		:class="!unstyled && 'w-full border-t'"
 	/>
 </template>
 

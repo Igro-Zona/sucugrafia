@@ -5,11 +5,11 @@
 		:external="external ?? isExternal"
 		:target="target ?? (external || isExternal ? '_blank' : undefined)"
 		:aria-current="resolveAriaCurrent"
-		:class="{
-			'group hover:text-highlighted focus-visible:text-default inline-flex cursor-pointer gap-1.5 rounded-md transition-colors':
-				!unstyled,
-			'pointer-events-none cursor-default': resolveAriaCurrent === 'page' && !events,
-		}"
+		:class="[
+			!unstyled &&
+				'group hover:text-highlighted focus-visible:text-default inline-flex cursor-pointer gap-1.5 rounded-md transition-colors',
+			resolveAriaCurrent === 'page' && !events && 'pointer-events-none cursor-default',
+		]"
 	>
 		<slot name="icon">
 			<Icon
@@ -46,9 +46,9 @@
 </template>
 
 <script setup lang="ts">
+import type { StyledComponentProps } from "~/types/Components";
 import type { NuxtLinkProps } from "#app";
 import type { AriaAttributes } from "vue";
-import type { StyledComponentProps } from "~/types/Components";
 import { reactiveOmit } from "@vueuse/core";
 
 export interface UiLinkProps extends Omit<NuxtLinkProps, "noPrefetch">, StyledComponentProps {

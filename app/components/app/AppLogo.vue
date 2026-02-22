@@ -20,7 +20,5 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-	as?: AsPropDefault;
-}>();
+defineProps<{ as?: AsPropDefault }>();
 </script>

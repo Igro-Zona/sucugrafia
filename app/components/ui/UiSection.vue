@@ -1,7 +1,7 @@
 <template>
 	<section
 		:aria-label="title"
-		:class="{ 'space-y-6': !unstyled }"
+		:class="!unstyled && 'space-y-6'"
 	>
 		<slot name="title">
 			<h2

@@ -4,11 +4,11 @@
 		v-bind="rootProps"
 	>
 		<UiModalPortal>
-			<UiModalOverlay class="lg:hidden" />
+			<UiModalOverlay />
 
 			<UiModalContent
 				v-bind="{ ...props, open: undefined }"
-				class="bg-default divide-default ring-default fixed top-0 right-0 bottom-0 left-auto flex w-full max-w-md translate-x-0 translate-y-0 flex-col divide-y shadow-none focus:outline-none data-[state=closed]:animate-[slide-animation-out-to-right_200ms_ease-in-out] data-[state=open]:animate-[slide-animation-in-from-right_200ms_ease-in-out] sm:shadow-lg sm:ring lg:hidden"
+				class="bg-default divide-default ring-default fixed top-0 right-0 bottom-0 left-auto flex w-full max-w-md translate-x-0 translate-y-0 flex-col divide-y shadow-none focus:outline-none data-[state=closed]:animate-[slide-animation-out-to-right_200ms_ease-in-out] data-[state=open]:animate-[slide-animation-in-from-right_200ms_ease-in-out] sm:shadow-lg sm:ring"
 			>
 				<slot :close="close" />
 			</UiModalContent>

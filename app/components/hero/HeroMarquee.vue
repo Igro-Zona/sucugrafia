@@ -36,9 +36,5 @@
 </template>
 
 <script setup lang="ts">
-export interface HeroMarqueeProps {
-	images: string[];
-}
-
-defineProps<HeroMarqueeProps>();
+defineProps<{ images: string[] }>();
 </script>

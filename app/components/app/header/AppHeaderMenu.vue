@@ -2,13 +2,13 @@
 	<nav>
 		<ul
 			class="flex items-center gap-1"
-			:class="{ 'flex-col': orientation === 'vertical' }"
+			:class="orientation === 'vertical' && 'flex-col'"
 		>
 			<li
 				v-for="(link, index) in links"
 				:key="index"
 				class="w-full"
-				:class="{ 'py-2': orientation === 'horizontal' }"
+				:class="orientation === 'horizontal' && 'py-2'"
 			>
 				<UiLink
 					v-bind="link"

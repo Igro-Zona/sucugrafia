@@ -3,7 +3,7 @@
 		:as="as"
 		:as-child="asChild"
 		:aria-label="title"
-		:class="{ 'bg-default border-default space-y-4 rounded-md border p-4 sm:p-6': !unstyled }"
+		:class="!unstyled && 'bg-default border-default space-y-4 rounded-md border p-4 sm:p-6'"
 		role="group"
 	>
 		<div class="flex items-center gap-4">
@@ -37,7 +37,6 @@
 </template>
 
 <script setup lang="ts">
-import { Primitive } from "reka-ui";
 import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
 export interface UiCardProps extends StyledPrimitiveComponentProps {

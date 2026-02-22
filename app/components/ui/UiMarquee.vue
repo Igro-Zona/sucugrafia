@@ -2,13 +2,13 @@
 	<Primitive
 		:as="as"
 		:as-child="asChild"
-		:class="{ 'flex flex-col items-center gap-8': !unstyled }"
+		:class="!unstyled && 'flex flex-col items-center gap-8'"
 	>
 		<div
 			v-for="i in repeat ?? 2"
 			:key="i"
 			class="flex h-fit min-w-max shrink-0 animate-[marquee-animation_40s_linear_infinite] flex-col items-center justify-around gap-8 backface-hidden"
-			:class="{ '[animation-direction:reverse]': reverse }"
+			:class="reverse && '[animation-direction:reverse]'"
 		>
 			<slot />
 		</div>

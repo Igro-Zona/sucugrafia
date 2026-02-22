@@ -4,23 +4,14 @@
 		aria-label="loading"
 		aria-live="polite"
 		role="alert"
-		:class="twMerge('bg-elevated animate-pulse rounded-md', props.class)"
+		:class="!unstyled && 'bg-elevated animate-pulse rounded-md'"
 	>
 		<slot />
 	</Primitive>
 </template>
 
 <script setup lang="ts">
-import { Primitive, type PrimitiveProps } from "reka-ui";
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiSkeletonProps extends PrimitiveProps {
-	as?: AsPropDefault;
-	class?: ClassNameValue;
-}
-
-const props = withDefaults(defineProps<UiSkeletonProps>(), {
-	as: "div",
-	class: undefined,
-});
+defineProps<StyledPrimitiveComponentProps>();
 </script>

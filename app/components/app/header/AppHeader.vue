@@ -1,10 +1,10 @@
 <template>
 	<header
 		v-bind="$attrs"
-		:class="{
-			'bg-default/80 border-primary shadow-primary/40 sticky top-0 z-2 h-(--ui-header-height) border-b shadow-2xl backdrop-blur-xs transition-transform':
-				!unstyled,
-		}"
+		:class="
+			!unstyled &&
+			'bg-default/80 border-primary shadow-primary/40 sticky top-0 z-2 h-(--ui-header-height) border-b shadow-2xl backdrop-blur-xs transition-transform'
+		"
 	>
 		<UiContainer class="flex h-full items-center justify-between gap-3">
 			<div class="flex flex-1 items-center">
@@ -36,7 +36,7 @@
 	>
 		<div class="flex h-(--ui-header-height) flex-row-reverse items-center justify-between gap-3 px-4 sm:px-6">
 			<UiButton
-				class="text-primary hover:text-primary/75 active:text-primary/75 focus:outline-offset-0! lg:hidden"
+				class="text-primary hover:text-primary/75 active:text-primary/75 focus:outline-offset-0!"
 				:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
 				aria-controls="slideover"
 				:aria-expanded="open"
