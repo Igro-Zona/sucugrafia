@@ -26,10 +26,7 @@ const props = withDefaults(defineProps<UiModalRootProps>(), {
 	open: false,
 });
 
-const emit = defineEmits<{
-	(e: "update:open", value: boolean): void;
-}>();
-
+const emit = defineEmits(["update:open"]);
 function updateOpen(value: boolean) {
 	emit("update:open", value);
 }

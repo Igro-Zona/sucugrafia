@@ -28,33 +28,37 @@
 		</UiContainer>
 	</header>
 
-	<AppHeaderSlideover
+	<UiModal
 		id="slideover"
 		v-model:open="open"
-		title="Sucugrafia"
+		title="Menú"
 		description="lol"
+		unstyled
+		class="bg-default divide-default ring-default fixed top-0 right-0 bottom-0 left-auto flex w-full max-w-md flex-col divide-y data-[state=closed]:animate-[slide-animation-out-to-right_200ms_ease-in-out] data-[state=open]:animate-[slide-animation-in-from-right_200ms_ease-in-out] sm:shadow-lg sm:ring"
 	>
-		<div class="flex h-(--ui-header-height) flex-row-reverse items-center justify-between gap-3 px-4 sm:px-6">
-			<UiButton
-				class="text-primary hover:text-primary/75 active:text-primary/75 focus:outline-offset-0!"
-				:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
-				aria-controls="slideover"
-				:aria-expanded="open"
-				:icon="open ? 'lucide:x' : 'lucide:menu'"
-				@click="toggleOpen"
-			/>
+		<aside>
+			<div class="flex h-(--ui-header-height) flex-row-reverse items-center justify-between gap-3 px-4 sm:px-6">
+				<UiButton
+					class="text-primary hover:text-primary/75 active:text-primary/75 focus:outline-offset-0!"
+					:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
+					aria-controls="slideover"
+					:aria-expanded="open"
+					:icon="open ? 'lucide:x' : 'lucide:menu'"
+					@click="toggleOpen"
+				/>
 
-			<AppLogo :as="$route.path === '/' ? 'h1' : 'div'" />
-		</div>
+				<AppLogo :as="$route.path === '/' ? 'h1' : 'div'" />
+			</div>
 
-		<div class="overflow-y-auto p-4 sm:p-6">
-			<AppHeaderMenu
-				:links="links"
-				orientation="vertical"
-				class="-mx-2.5"
-			/>
-		</div>
-	</AppHeaderSlideover>
+			<div class="overflow-y-auto p-4 sm:p-6">
+				<AppHeaderMenu
+					:links="links"
+					orientation="vertical"
+					class="-mx-2.5"
+				/>
+			</div>
+		</aside>
+	</UiModal>
 </template>
 
 <script setup lang="ts">
