@@ -1,6 +1,6 @@
 <template>
 	<AppRoot>
-		<AppHeader :class="{ '-translate-y-full': isFooterVisible }" />
+		<AppHeader :class="isFooterVisible && '-translate-y-full'" />
 
 		<AppMain class="flex flex-col items-center justify-center">
 			<UiContainer class="box-border flex flex-col items-center p-10">
@@ -39,11 +39,7 @@
 <script setup lang="ts">
 import type { NuxtError } from "#app";
 
-export interface ErrorRouteProps {
-	error: NuxtError;
-}
-
-defineProps<ErrorRouteProps>();
+defineProps<{ error: NuxtError }>();
 
 const footer = useTemplateRef("footer");
 const { isVisible: isFooterVisible } = useElementVisibility(footer);

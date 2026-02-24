@@ -23,7 +23,7 @@
 				natural de Sucúa. Nuestro sitio ofrece
 				<UiLink
 					to="/galeria"
-					class="text-highlighted! hover:text-primary! active:hover:text-primary/75! rounded-sm! font-bold focus-visible:outline-offset-0!"
+					class="text-highlighted hover:text-primary active:hover:text-primary/75 rounded-xs font-bold"
 				>
 					contenidos
 				</UiLink>
@@ -56,7 +56,7 @@
 					>relatos, fotografías,
 					<UiLink
 						to="/articulos"
-						class="text-highlighted! hover:text-primary! active:hover:text-primary/75! rounded-sm! font-bold focus-visible:outline-offset-0!"
+						class="text-highlighted hover:text-primary active:hover:text-primary/75 rounded-xs font-bold"
 					>
 						artículos
 					</UiLink>
@@ -66,7 +66,7 @@
 				profesionales de
 				<UiLink
 					to="/ayuda"
-					class="text-highlighted! hover:text-primary! active:hover:text-primary/75! rounded-sm! font-bold focus-visible:outline-offset-0!"
+					class="text-highlighted hover:text-primary active:hover:text-primary/75 rounded-xs font-bold"
 				>
 					comunicación
 				</UiLink>

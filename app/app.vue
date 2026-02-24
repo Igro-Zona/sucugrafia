@@ -1,6 +1,6 @@
 <template>
 	<AppRoot>
-		<AppHeader :class="{ '-translate-y-full': isFooterVisible }" />
+		<AppHeader :class="isFooterVisible && '-translate-y-full'" />
 
 		<AppMain>
 			<NuxtPage />
