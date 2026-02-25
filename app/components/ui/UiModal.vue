@@ -19,6 +19,8 @@
 			/>
 
 			<DialogContent
+				:as="as"
+				:as-child="asChild"
 				:class="[
 					!unstyled &&
 						'bg-default ring-default fixed top-1/2 left-1/2 flex max-h-[calc(100dvh-1rem)] w-full -translate-x-1/2 -translate-y-1/2 flex-col shadow-lg ring data-[state=closed]:animate-[scale-animation-out_200ms_ease-in] data-[state=open]:animate-[scale-animation-in_200ms_ease-out] sm:w-[calc(100vw-2rem)]',
@@ -50,9 +52,9 @@
 
 <script setup lang="ts">
 import type { PointerDownOutsideEvent } from "reka-ui";
-import type { StyledComponentProps } from "~/types/Components";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiModalProps extends StyledComponentProps {
+export interface UiModalProps extends StyledPrimitiveComponentProps {
 	open?: boolean;
 	defaultOpen?: boolean;
 	modal?: boolean;

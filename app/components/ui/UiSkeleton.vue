@@ -1,5 +1,7 @@
 <template>
 	<Primitive
+		:as="as"
+		:as-child="asChild"
 		aria-busy="true"
 		aria-label="loading"
 		aria-live="polite"
