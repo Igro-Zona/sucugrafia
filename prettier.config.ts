@@ -11,7 +11,7 @@ const config: Config = {
 	insertPragma: false,
 	jsxSingleQuote: false,
 	objectWrap: "preserve",
-	printWidth: 120,
+	printWidth: 140,
 	proseWrap: "always",
 	quoteProps: "consistent",
 	rangeEnd: Infinity,

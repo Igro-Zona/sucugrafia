@@ -1,22 +1,16 @@
 <template>
 	<main
 		v-spotlight
-		:class="twMerge('box-border min-h-[calc(100vh-var(--ui-header-height)+1px)] pb-8', props.class)"
+		:class="!unstyled && 'box-border min-h-[calc(100vh-var(--ui-header-height)+1px)] pb-4 sm:pb-8'"
 	>
-		<div class="relative z-9 overflow-hidden">
+		<div class="relative z-1 overflow-hidden">
 			<slot />
 		</div>
 	</main>
 </template>
 
 <script setup lang="ts">
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledComponentProps } from "~/types/Components";
 
-export interface AppMainProps {
-	class?: ClassNameValue;
-}
-
-const props = withDefaults(defineProps<AppMainProps>(), {
-	class: undefined,
-});
+defineProps<StyledComponentProps>();
 </script>

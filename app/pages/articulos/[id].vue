@@ -135,8 +135,9 @@
 						:image="article.meta.thumbnail"
 						:new="isNew(article.meta.date)"
 						:date="article.meta.date"
-						:to="article.path"
-						class="justify-start"
+						:link="{
+							to: article.path,
+						}"
 					/>
 				</UiGrid>
 

@@ -1,90 +1,105 @@
 <template>
-	<UiLink
-		v-bind="link"
-		class="group focus-visible:ring-primary ring-default overflow-hidden rounded-lg ring transition focus-visible:ring-2 focus-visible:outline-none"
+	<article
+		:class="
+			!unstyled &&
+			'bg-default group ring-default hover:bg-default/50 active:bg-muted/75 focus-within:ring-primary! relative flex flex-col overflow-hidden rounded-lg ring transition focus-within:ring-3!'
+		"
 	>
-		<article class="bg-default hover:bg-elevated/50 relative flex flex-col">
+		<div
+			v-if="image"
+			class="overflow-hidden"
+		>
+			<ArticlesPostImage
+				:src="image"
+				:index="index"
+			/>
+		</div>
+
+		<div class="flex flex-1 flex-col p-4 sm:p-6">
 			<div
-				v-if="image"
-				class="overflow-hidden"
+				v-if="date || props.new"
+				class="mb-2 flex items-center gap-2"
 			>
-				<ArticlesPostImage :src="image" />
+				<span
+					v-if="props.new"
+					class="bg-primary text-inverted inline-flex items-center gap-1 truncate rounded-lg px-2 py-1 text-sm font-medium"
+				>
+					Nuevo
+				</span>
+
+				<time
+					v-if="date"
+					class="text-toned text-sm"
+					:datetime="datetime"
+				>
+					{{ formatDate(date) }}
+				</time>
 			</div>
 
-			<div :class="twMerge('flex min-w-0 flex-1 flex-col justify-between p-4 sm:p-6', props.class)">
-				<div
-					v-if="date || props.new"
-					class="mb-2 flex items-center gap-2"
-				>
-					<span
-						v-if="props.new"
-						class="bg-primary text-inverted inline-flex items-center gap-1 truncate rounded-lg px-2 py-1 text-sm font-medium"
+			<div>
+				<h3 class="text-highlighted text-xl font-semibold text-pretty">
+					<UiLink
+						v-if="link?.to"
+						v-bind="link"
+						class="relative z-10 focus-visible:outline-none!"
 					>
-						Nuevo
-					</span>
-
-					<time
-						v-if="date"
-						class="text-toned text-sm"
-						:datetime="datetime"
-					>
-						{{ formatDate(date) }}
-					</time>
-				</div>
-
-				<div>
-					<h3 class="text-highlighted text-xl font-semibold text-pretty">
+						<template #icon>
+							{{ title }}
+						</template>
+					</UiLink>
+					<span v-else>
 						{{ title }}
-					</h3>
+					</span>
+				</h3>
 
-					<p
-						v-if="description"
-						class="text-muted mt-1 text-base text-pretty"
-					>
-						{{ description }}
-					</p>
-				</div>
-
-				<div
-					v-if="authors"
-					class="flex flex-wrap gap-x-3 gap-y-1.5 pt-4"
+				<p
+					v-if="description"
+					class="text-muted mt-1 text-base text-pretty"
 				>
-					<div
-						v-for="(author, index) in authors"
-						:key="index"
-						class="relative flex flex-col"
-					>
-						<p class="text-highlighted text-sm font-medium">{{ author.name }}</p>
-						<p
-							v-if="author.description"
-							class="text-muted text-xs"
-						>
-							{{ author.description }}
-						</p>
-					</div>
-				</div>
+					{{ description }}
+				</p>
 			</div>
-		</article>
-	</UiLink>
+
+			<div
+				v-if="author?.name"
+				class="relative mt-auto flex flex-col pt-4"
+			>
+				<p class="text-highlighted text-sm font-medium">{{ author.name }}</p>
+				<p
+					v-if="author.description"
+					class="text-muted text-xs"
+				>
+					{{ author.description }}
+				</p>
+			</div>
+		</div>
+		<UiLink
+			v-if="link?.to"
+			v-bind="link"
+			aria-hidden="true"
+			tabindex="-1"
+			class="absolute inset-0 z-0"
+		/>
+	</article>
 </template>
 
 <script setup lang="ts">
+import type { StyledComponentProps } from "~/types/Components";
 import type { UiLinkProps } from "../ui/UiLink.vue";
-import { twMerge, type ClassNameValue } from "tailwind-merge";
 
 export type AuthorType = {
 	name: string;
 	description?: string;
 };
-export interface ArticlesPostProps {
+export interface ArticlesPostProps extends StyledComponentProps {
 	date?: string;
 	new?: boolean;
 	title: string;
 	description?: string;
-	authors?: AuthorType[];
+	author?: AuthorType;
 	link?: UiLinkProps;
 	image?: string;
-	class?: ClassNameValue;
+	index?: number;
 }
 
 const props = defineProps<ArticlesPostProps>();
@@ -95,7 +110,7 @@ const datetime = computed(() => {
 	try {
 		return new Date(props.date)?.toISOString();
 	} catch {
-		return void 0;
+		return undefined;
 	}
 });
 </script>

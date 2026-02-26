@@ -1,17 +1,15 @@
 <template>
-	<div :class="twMerge('mx-auto w-full max-w-(--ui-container) px-4 sm:px-6 lg:px-8', props.class)">
+	<Primitive
+		:as="as"
+		:as-child="asChild"
+		:class="!unstyled && 'mx-auto w-full max-w-(--ui-container) px-4 sm:px-6 lg:px-8'"
+	>
 		<slot />
-	</div>
+	</Primitive>
 </template>
 
 <script setup lang="ts">
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiContainerProps {
-	class?: ClassNameValue;
-}
-
-const props = withDefaults(defineProps<UiContainerProps>(), {
-	class: undefined,
-});
+defineProps<StyledPrimitiveComponentProps>();
 </script>

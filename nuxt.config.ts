@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 		"@nuxt/icon",
 		"@nuxt/fonts",
+		"reka-ui/nuxt",
 		"@nuxt/content",
 		"@nuxt/image",
 		"@nuxtjs/seo",
@@ -36,7 +37,7 @@ export default defineNuxtConfig({
 			},
 		},
 		optimizeDeps: {
-			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui"],
+			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui", "tailwindcss/colors"],
 		},
 		build: {
 			sourcemap: false,
@@ -115,6 +116,7 @@ export default defineNuxtConfig({
 
 	fonts: {
 		defaults: {
+			weights: ["400 700"],
 			styles: ["normal"],
 			subsets: ["latin-ext", "latin"],
 		},

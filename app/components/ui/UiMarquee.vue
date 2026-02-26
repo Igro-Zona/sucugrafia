@@ -1,7 +1,11 @@
 <template>
-	<Primitive :class="twMerge('flex flex-col items-center gap-8', props.class)">
+	<Primitive
+		:as="as"
+		:as-child="asChild"
+		:class="!unstyled && 'flex flex-col items-center gap-8'"
+	>
 		<div
-			v-for="i in repeat"
+			v-for="i in repeat ?? 2"
 			:key="i"
 			class="flex h-fit min-w-max shrink-0 animate-[marquee-animation_40s_linear_infinite] flex-col items-center justify-around gap-8 backface-hidden"
 			:class="reverse && '[animation-direction:reverse]'"
@@ -12,20 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import { Primitive, type PrimitiveProps } from "reka-ui";
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiMarqueeProps extends PrimitiveProps {
-	as?: AsPropDefault;
+export interface UiMarqueeProps extends StyledPrimitiveComponentProps {
 	repeat?: number;
 	reverse?: boolean;
-	class?: ClassNameValue;
 }
 
-const props = withDefaults(defineProps<UiMarqueeProps>(), {
-	as: "div",
-	repeat: 2,
-	reverse: false,
-	class: undefined,
-});
+defineProps<UiMarqueeProps>();
 </script>

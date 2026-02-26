@@ -1,48 +1,52 @@
 <template>
-	<UiContainer>
+	<UiContainer class="py-4">
 		<UiSection
-			title="Nuestros articulos "
-			class="mt-4"
+			title="Nuestros articulos"
+			data-aos="zoom-in"
 		>
-			<button
-				type="button"
-				class="ring-accented font-latto bg-muted hover:bg-default/75 active:bg-muted/75 focus-visible:ring-primary inline-flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 text-lg font-normal ring transition-colors ring-inset focus:outline-none focus-visible:ring-2"
+			<UiButton
+				class="bg-default ring-muted focus-visible:bg-muted hover:bg-default/50 active:bg-muted items-center px-2.5 text-lg ring focus-visible:outline-offset-0!"
+				:icon="{ name: 'lucide:search', size: 20 }"
+				label="Buscar"
 				@click="open = true"
 			>
-				<Icon
-					name="lucide:search"
-					size="20"
-				/>
-				Buscar
-				<span class="inline-flex items-center gap-1">
-					<ArticlesKbd value="meta" />
-					<ArticlesKbd value="k" />
-				</span>
-			</button>
+				<template #trailingIcon>
+					<UiKbd
+						:value="['meta', 'k']"
+						aria-describedby="shortcut-desc"
+					/>
+					<p
+						id="shortcut-desc"
+						class="hidden"
+					>
+						Presiona Ctrl + K para abrir el menú de busqueda
+					</p>
+				</template>
+			</UiButton>
+
 			<LazyArticlesSearch
 				:files="files"
 				:navigation="navigation"
 				:fuse="{ resultLimit: 42 }"
 			/>
 
-			<UiGrid class="mb-2">
+			<UiGrid>
 				<ArticlesPost
-					v-for="article in articles"
+					v-for="(article, index) in articles"
 					:key="article.id"
 					:title="article.title"
 					:description="article.description"
 					:date="article.meta.date"
 					:new="isNew(article.meta.date)"
 					:image="article.meta.thumbnail"
-					:authors="[
-						{
-							name: article.meta.author,
-							description: 'Creador',
-						},
-					]"
+					:author="{
+						name: article.meta.author,
+						description: 'Creador',
+					}"
 					:link="{
 						to: article.path,
 					}"
+					:index="index"
 				/>
 			</UiGrid>
 		</UiSection>

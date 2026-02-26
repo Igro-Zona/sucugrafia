@@ -1,17 +1,15 @@
 <template>
-	<div :class="twMerge('grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3', props.class)">
+	<Primitive
+		:as="as"
+		:as-child="asChild"
+		:class="!unstyled && 'grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'"
+	>
 		<slot />
-	</div>
+	</Primitive>
 </template>
 
 <script setup lang="ts">
-import { twMerge, type ClassNameValue } from "tailwind-merge";
+import type { StyledPrimitiveComponentProps } from "~/types/Components";
 
-export interface UiGridProps {
-	class?: ClassNameValue;
-}
-
-const props = withDefaults(defineProps<UiGridProps>(), {
-	class: undefined,
-});
+defineProps<StyledPrimitiveComponentProps>();
 </script>

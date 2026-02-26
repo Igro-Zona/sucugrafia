@@ -34,9 +34,7 @@
 					:key="index"
 					class="ring-accented text-default! bg-default hover:bg-elevated inline-flex aspect-square w-9 items-center justify-center p-1.5 ring ring-inset aria-disabled:opacity-75"
 					:to="`/galeria?page=${item.value}`"
-					:class="
-						item.value === currentPage ? 'bg-primary text-inverted! ring-primary hover:bg-green-500' : ''
-					"
+					:class="item.value === currentPage ? 'bg-primary text-inverted! ring-primary hover:bg-green-500' : ''"
 					:events="true"
 				>
 					{{ item.value }}

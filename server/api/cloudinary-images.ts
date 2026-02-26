@@ -10,9 +10,7 @@ export default defineEventHandler(async (event) => {
 		{
 			method: "GET",
 			headers: {
-				Authorization:
-					"Basic " +
-					Buffer.from(`${config.cloudinaryApiKey}:${config.cloudinaryApiSecret}`).toString("base64"),
+				Authorization: "Basic " + Buffer.from(`${config.cloudinaryApiKey}:${config.cloudinaryApiSecret}`).toString("base64"),
 			},
 			query: {
 				asset_folder: `gallery/${page}`,

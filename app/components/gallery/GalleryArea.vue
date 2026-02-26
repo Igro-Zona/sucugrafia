@@ -134,8 +134,7 @@ const virtualScrollOptions = computed<VirtualScrollOptions>(() => ({
 		overscan: 6,
 	},
 }));
-const { getVirtualItemStyle, measureElement, virtualItems, virtualViewportStyle } =
-	useVirtualizeScroll(virtualScrollOptions);
+const { getVirtualItemStyle, measureElement, virtualItems, virtualViewportStyle } = useVirtualizeScroll(virtualScrollOptions);
 
 const { open } = useAppOverlay();
 function openImageModal(src: string) {

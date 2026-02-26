@@ -18,9 +18,5 @@
 </template>
 
 <script setup lang="ts">
-export interface HeroImageProps {
-	src: string;
-}
-
-defineProps<HeroImageProps>();
+defineProps<{ src: string }>();
 </script>

@@ -1,9 +1,6 @@
 <template>
 	<AppRoot>
-		<AppHeader
-			class="transition-transform"
-			:class="footerIsVisible ? '-translate-y-full' : undefined"
-		/>
+		<AppHeader :class="isFooterVisible && '-translate-y-full'" />
 
 		<AppMain>
 			<NuxtPage />
@@ -14,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { useIntersectionObserver } from "@vueuse/core";
-
 useHead({
 	link: [
 		{
@@ -52,9 +47,5 @@ useHead({
 });
 
 const footer = useTemplateRef("footer");
-const footerIsVisible = ref(false);
-
-useIntersectionObserver(footer, ([entry], _) => {
-	footerIsVisible.value = entry?.isIntersecting || false;
-});
+const { isVisible: isFooterVisible } = useElementVisibility(footer);
 </script>
