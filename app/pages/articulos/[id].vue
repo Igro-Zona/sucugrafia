@@ -138,7 +138,6 @@
 						:link="{
 							to: article.path,
 						}"
-						class="justify-start"
 					/>
 				</UiGrid>
 

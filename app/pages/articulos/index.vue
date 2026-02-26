@@ -1,6 +1,9 @@
 <template>
 	<UiContainer class="py-4">
-		<UiSection title="Nuestros articulos ">
+		<UiSection
+			title="Nuestros articulos"
+			data-aos="zoom-in"
+		>
 			<UiButton
 				class="bg-default ring-muted focus-visible:bg-muted hover:bg-default/50 active:bg-muted items-center px-2.5 text-lg ring focus-visible:outline-offset-0!"
 				:icon="{ name: 'lucide:search', size: 20 }"
@@ -29,22 +32,21 @@
 
 			<UiGrid>
 				<ArticlesPost
-					v-for="article in articles"
+					v-for="(article, index) in articles"
 					:key="article.id"
 					:title="article.title"
 					:description="article.description"
 					:date="article.meta.date"
 					:new="isNew(article.meta.date)"
 					:image="article.meta.thumbnail"
-					:authors="[
-						{
-							name: article.meta.author,
-							description: 'Creador',
-						},
-					]"
+					:author="{
+						name: article.meta.author,
+						description: 'Creador',
+					}"
 					:link="{
 						to: article.path,
 					}"
+					:index="index"
 				/>
 			</UiGrid>
 		</UiSection>
