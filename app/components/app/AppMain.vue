@@ -3,7 +3,7 @@
 		v-spotlight
 		:class="!unstyled && 'box-border min-h-[calc(100vh-var(--ui-header-height)+1px)] pb-4 sm:pb-8'"
 	>
-		<div class="relative z-1 overflow-hidden">
+		<div class="relative z-1">
 			<slot />
 		</div>
 	</main>

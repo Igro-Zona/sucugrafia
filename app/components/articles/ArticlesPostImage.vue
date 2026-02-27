@@ -1,6 +1,6 @@
 <template>
 	<NuxtPicture
-		quality="40"
+		quality="60"
 		width="482"
 		height="271"
 		densities="1x 2x"
@@ -13,7 +13,7 @@
 			alt: '',
 			class: 'object-cover w-full  h-full',
 		}"
-		:loading="index == null ? 'lazy' : index <= 6 ? undefined : 'lazy'"
+		:loading="index === undefined ? 'lazy' : index <= 6 ? undefined : 'lazy'"
 		sizes="482px"
 	/>
 </template>

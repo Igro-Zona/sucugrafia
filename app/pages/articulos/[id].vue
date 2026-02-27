@@ -2,42 +2,38 @@
 	<UiContainer>
 		<ArticlePage v-if="data">
 			<template #right>
-				<aside
-					class="border-l-default hidden overflow-y-auto border-l py-8 lg:sticky lg:top-(--ui-header-height) lg:-ms-4 lg:block lg:max-h-[calc(100vh-var(--ui-header-height))] lg:ps-4 lg:pe-6.5"
-				>
-					<div class="relative">
-						<!-- <UContentToc
+				<div class="sticky top-[calc(var(--ui-header-height)+2rem)] right-0">
+					<!-- <UContentToc
 						class="top-0"
 						title="Contenido"
 						color="secondary"
 						:links="data.body.toc?.links"
 					/> -->
-						<div class="flex flex-col justify-between gap-2">
-							<button
-								class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
-								@click="share"
-							>
-								<Icon name="lucide:share" />
-								<span>Compartir</span>
-							</button>
+					<div class="flex flex-col justify-between gap-2">
+						<button
+							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+							@click="share"
+						>
+							<Icon name="lucide:share" />
+							<span>Compartir</span>
+						</button>
 
-							<button
-								class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
-								@click="copyLink"
-							>
-								<span class="inline-flex items-center gap-2">
-									<Icon name="lucide:link" />
-									<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
-								</span>
+						<button
+							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+							@click="copyLink"
+						>
+							<span class="inline-flex items-center gap-2">
+								<Icon name="lucide:link" />
+								<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
+							</span>
 
-								<Icon
-									v-if="isLinkCopied"
-									name="lucide:check"
-								/>
-							</button>
-						</div>
+							<Icon
+								v-if="isLinkCopied"
+								name="lucide:check"
+							/>
+						</button>
 					</div>
-				</aside>
+				</div>
 			</template>
 
 			<div class="border-default relative border-b py-8">
