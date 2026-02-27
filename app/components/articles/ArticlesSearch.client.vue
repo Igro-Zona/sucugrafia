@@ -1,32 +1,25 @@
 <template>
-	<UiModalRoot
-		v-bind="emits"
+	<UiModal
 		v-model:open="open"
+		title="Buscar articulos"
+		description="bla"
+		class="w-full rounded-none md:max-w-200 md:rounded-lg"
 	>
-		<UiModalPortal>
-			<UiModalOverlay />
-
-			<UiModalContent
-				title="Buscar articulos"
-				description="bla"
-				class="bg-default divide-default ring-default fixed top-1/2 left-1/2 flex h-full max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col divide-y overflow-hidden rounded-lg shadow-lg ring focus:outline-none sm:h-112 sm:max-h-[calc(100dvh-4rem)] sm:max-w-3xl"
-				:open="undefined"
-			>
-				<!-- <UCommandPalette
+		WIP
+		{{ open }}
+		<!-- <UCommandPalette
 			v-model:search-term="searchTerm"
 			:fuse="fuse"
 			:groups="groups"
 			@update:model-value="onSelect"
 			@update:open="open = $event"
 			/> -->
-				WIP
-				{{ open }}
-			</UiModalContent>
-		</UiModalPortal>
-	</UiModalRoot>
+	</UiModal>
 </template>
 
 <script setup lang="ts">
+import { onKeyStroke } from "@vueuse/core";
+
 type File = {
 	id: string;
 	title: string;
@@ -45,25 +38,18 @@ export interface ArticlesSearchProps {
 }
 
 const props = defineProps<ArticlesSearchProps>();
-const searchTerm = defineModel("searchTerm", { type: String, ...{ default: "" } });
+const searchTerm = defineModel<string>("searchTerm", { default: "" });
 
 function toggleOpen() {
 	open.value = !open.value;
 }
-function handleShortcut(e: KeyboardEvent) {
+onKeyStroke((e: KeyboardEvent) => {
 	if (e.ctrlKey && e.key.toLowerCase() === "k") {
 		e.preventDefault();
 		toggleOpen();
 	}
-}
-onMounted(() => {
-	window.addEventListener("keydown", handleShortcut);
-});
-onBeforeUnmount(() => {
-	window.removeEventListener("keydown", handleShortcut);
 });
 
-const emits = defineEmits(["update:open"]);
 const { open, mapNavigationItems, postFilter } = useSearch();
 const mappedNavigationGroups = computed(() => {
 	if (!props.navigation?.length) {
