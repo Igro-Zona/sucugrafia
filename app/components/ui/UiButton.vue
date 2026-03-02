@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import type { StyledComponentProps } from "~/types/Components";
 
-export interface UiLinkProps extends StyledComponentProps {
+export interface UiButtonProps extends StyledComponentProps {
 	type?: "button" | "submit" | "reset";
 	label?: string;
 	icon?: string | IconProps;
@@ -42,5 +42,5 @@ export interface UiLinkProps extends StyledComponentProps {
 }
 
 const { normalizeIconProps } = useIcon();
-defineProps<UiLinkProps>();
+defineProps<UiButtonProps>();
 </script>
