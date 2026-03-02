@@ -27,7 +27,6 @@
 			<LazyArticlesSearch
 				:files="files"
 				:navigation="navigation"
-				:fuse="{ resultLimit: 42 }"
 			/>
 
 			<UiGrid>

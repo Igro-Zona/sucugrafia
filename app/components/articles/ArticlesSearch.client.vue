@@ -3,17 +3,16 @@
 		v-model:open="open"
 		title="Buscar articulos"
 		description="bla"
-		class="w-full rounded-none md:max-w-200 md:rounded-lg"
+		class="h-1/5 w-full rounded-none md:max-w-200 md:rounded-lg"
 	>
-		WIP
-		{{ open }}
-		<!-- <UCommandPalette
+		<ArticleCommandPalette
 			v-model:search-term="searchTerm"
-			:fuse="fuse"
-			:groups="groups"
+			:label="mappedNavigationGroup.label"
+			:items="mappedNavigationGroup.items"
+			:post-filter="mappedNavigationGroup.postFilter"
 			@update:model-value="onSelect"
 			@update:open="open = $event"
-			/> -->
+		/>
 	</UiModal>
 </template>
 
@@ -27,12 +26,7 @@ type File = {
 	level: number;
 	content: string;
 };
-interface UseFuseOptions {
-	resultLimit?: number;
-	matchAllWhenSearchEmpty?: boolean;
-}
 export interface ArticlesSearchProps {
-	fuse?: UseFuseOptions;
 	navigation?: ContentNavigationItem[];
 	files?: File[];
 }
@@ -51,25 +45,17 @@ onKeyStroke((e: KeyboardEvent) => {
 });
 
 const { open, mapNavigationItems, postFilter } = useSearch();
-const mappedNavigationGroups = computed(() => {
-	if (!props.navigation?.length) {
-		return [];
-	}
-	if (props.navigation.some((link) => !!link.children?.length)) {
-		return props.navigation.map((group) => ({
-			id: group.path,
-			label: group.title,
-			items: mapNavigationItems(group.children || [], props.files || []),
-			postFilter,
-		}));
-	} else {
-		return [{ id: "docs", items: mapNavigationItems(props.navigation, props.files || []), postFilter }];
-	}
-});
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const groups = computed(() => mappedNavigationGroups.value);
+const mappedNavigationGroup = computed(() => {
+	if (!props.navigation?.length) return {};
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	if (props.navigation.some((link) => !!link.children?.length)) {
+		const group = props.navigation[0];
+		return { label: group?.title, items: mapNavigationItems(group?.children || [], props.files || []), postFilter };
+	}
+
+	return {};
+});
+
 function onSelect() {
 	open.value = false;
 	searchTerm.value = "";
