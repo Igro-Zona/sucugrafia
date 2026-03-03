@@ -19,13 +19,6 @@ export default defineNuxtConfig({
 		cloudinaryApiKey: "",
 		cloudinaryApiSecret: "",
 		cloudinaryCloudName: "",
-		public: {
-			mdc: {
-				components: {
-					prose: false,
-				},
-			},
-		},
 	},
 
 	vite: {
@@ -109,7 +102,6 @@ export default defineNuxtConfig({
 			{
 				prefix: "sucua",
 				dir: "./app/assets/icons",
-				normalizeIconName: true,
 			},
 		],
 	},
@@ -120,13 +112,6 @@ export default defineNuxtConfig({
 			styles: ["normal"],
 			subsets: ["latin-ext", "latin"],
 		},
-	},
-
-	ui: {
-		experimental: {
-			componentDetection: true,
-		},
-		colorMode: false,
 	},
 
 	image: {
@@ -155,7 +140,6 @@ export default defineNuxtConfig({
 		renderer: {
 			anchorLinks: true,
 		},
-		experimental: { sqliteConnector: "better-sqlite3" },
 	},
 
 	site: {
@@ -165,13 +149,8 @@ export default defineNuxtConfig({
 	},
 
 	ogImage: false,
+
 	sitemap: {
 		zeroRuntime: true,
-	},
-
-	mdc: {
-		components: {
-			prose: false,
-		},
 	},
 });
