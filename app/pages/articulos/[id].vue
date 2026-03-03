@@ -150,7 +150,6 @@
 </template>
 
 <script lang="ts" setup>
-import { orderBy, intersection } from "lodash";
 import useArticleActions from "~/composables/useArticleActions";
 
 const route = useRoute();

@@ -24,11 +24,6 @@ export default defineNuxtConfig({
 	vite: {
 		// @ts-expect-error - Vite Plugin type mismatch between @tailwindcss/vite and @nuxt/vite-builder
 		plugins: [tailwindcss()],
-		resolve: {
-			alias: {
-				lodash: "lodash-es",
-			},
-		},
 		optimizeDeps: {
 			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui", "tailwindcss/colors"],
 		},
@@ -38,7 +33,6 @@ export default defineNuxtConfig({
 				output: {
 					manualChunks: {
 						vue: ["vue"],
-						lodash: ["lodash-es"],
 						reka: ["reka-ui"],
 					},
 				},
