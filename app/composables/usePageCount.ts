@@ -1,14 +1,15 @@
-export default async function () {
-	const maxPagesCookie = useCookie<number | null>("pages_max", {
-		default: () => null,
-		maxAge: 86400,
-	});
-	const maxPagesCount = ref(maxPagesCookie.value);
-	if (!maxPagesCount.value) {
-		const { data } = await useFetch("/api/cloudinary-folders");
-		maxPagesCount.value = data.value ?? 1;
-		maxPagesCookie.value = maxPagesCount.value;
-	}
+export default function () {
+	const pageCountCookie = useCookie<number | null>("pages_max", { default: () => null, maxAge: 86400 });
 
-	return maxPagesCount as Ref<number>;
+	const { data, pending, error, refresh, status, clear } = useFetch("/api/cloudinary-folders", {
+		default: () => 1,
+		immediate: !pageCountCookie.value,
+	});
+
+	watch(data, (newPageCount) => {
+		if (newPageCount) pageCountCookie.value = newPageCount;
+	});
+
+	const pageCount = computed(() => pageCountCookie.value ?? data.value ?? 1);
+	return { pageCount, pending, error, refresh, status, clear };
 }
