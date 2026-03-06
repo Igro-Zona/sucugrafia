@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 		build: { sourcemap: false, rollupOptions: { output: { manualChunks: { vue: ["vue"], reka: ["reka-ui"] } } } },
 	},
 
-	app: { rootAttrs: { class: "isolate" } },
+	app: { rootAttrs: { class: "isolate" }, head: { htmlAttrs: { class: "dark" } } },
 	css: ["~/assets/css/main.css"],
 	components: [{ path: "~/components", pathPrefix: false }],
 	fonts: { defaults: { weights: ["400 700"], styles: ["normal"], subsets: ["latin-ext", "latin"] } },
