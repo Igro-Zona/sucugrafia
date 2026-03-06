@@ -1,14 +1,11 @@
 @import "tailwindcss";
-@import "./index.css";
+@import "./theme.css";
 @import "./keyframes.css";
 
 @theme {
 	--default-font-family: var(--font-main);
 	--font-main: "Inter", "sans-serif";
 	--font-latto: "Lato", system-ui, sans-serif;
-
-	/* TODO: organize css files */
-	--ui-container: 80rem;
 }
 
 html {
