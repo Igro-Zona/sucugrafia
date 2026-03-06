@@ -17,7 +17,7 @@
 				<article
 					v-for="(image, index) in images"
 					:key="index"
-					class="focus-within:ring-primary relative aspect-video w-full overflow-hidden rounded-xs filter transition-[filter] focus-within:ring-2 hover:brightness-120"
+					class="relative aspect-video w-full overflow-hidden rounded-xs filter transition-[filter] focus-within:brightness-50 hover:brightness-120"
 				>
 					<h3 class="sr-only">Imagen {{ index + 1 }} de la galeria</h3>
 					<UiButton
@@ -64,7 +64,7 @@
 					:ref="measureElement"
 					:style="getVirtualItemStyle(virtualItem)"
 					:data-index="virtualItem.index"
-					class="focus-within:ring-primary relative overflow-hidden rounded-xs filter transition-[filter] focus-within:ring-2 hover:brightness-120"
+					class="relative overflow-hidden rounded-xs filter transition-[filter] focus-within:brightness-50 hover:brightness-120"
 				>
 					<h3 class="sr-only">Imagen {{ virtualItem.index + 1 }} de la galeria</h3>
 					<UiButton
