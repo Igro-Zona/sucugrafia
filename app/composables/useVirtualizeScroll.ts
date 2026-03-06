@@ -25,7 +25,7 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 		if (el) virtualizer.value.measureElement(el instanceof Element ? el : el.$el);
 	}
 
-	const virtualViewportStyle = computed(() => ({
+	const virtualViewportStyle = computed<CSSProperties>(() => ({
 		position: "relative",
 		blockSize: `${totalSize.value}px`,
 	}));
