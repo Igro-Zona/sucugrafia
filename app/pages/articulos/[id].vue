@@ -65,14 +65,14 @@
 					<div class="flex gap-4">
 						<p class="flex items-center gap-1">
 							<Icon
-								name="material-symbols:calendar-today-rounded"
+								name="sucua:calendar"
 								class="text-primary"
 							/>
 							{{ formattedDate }}
 						</p>
 						<p class="flex items-center gap-1">
 							<Icon
-								name="material-symbols:alarm-rounded"
+								name="sucua:alarm"
 								class="text-primary"
 							/>
 							{{ readingTimeText }}

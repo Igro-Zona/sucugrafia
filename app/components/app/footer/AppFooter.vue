@@ -18,7 +18,7 @@
 					to="https://github.com/Igro-Zona/sucugrafia"
 					aria-label="Abrir en GitHub"
 					class="hover:bg-muted active:text-highlighted! text-muted hover:text-default! p-2 transition-colors focus-visible:outline-offset-0! lg:hidden"
-					:icon="{ name: 'simple-icons:github', size: 30, class: 'transition-colors' }"
+					:icon="{ name: 'sucua:github', size: 30, class: 'transition-colors' }"
 					:external-icon="false"
 				/>
 			</div>
@@ -31,7 +31,7 @@
 				to="https://github.com/Igro-Zona/sucugrafia"
 				aria-label="Abrir en GitHub"
 				class="hover:bg-muted active:text-highlighted! text-muted hover:text-default! hidden! p-2 transition-colors focus-visible:outline-offset-0! lg:inline-flex!"
-				:icon="{ name: 'simple-icons:github', size: 30, class: 'transition-colors' }"
+				:icon="{ name: 'sucua:github', size: 30, class: 'transition-colors' }"
 				:external-icon="false"
 			/>
 		</UiContainer>
