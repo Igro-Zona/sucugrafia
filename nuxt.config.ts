@@ -27,37 +27,19 @@ export default defineNuxtConfig({
 		optimizeDeps: {
 			include: ["@vue/devtools-core", "@vue/devtools-kit", "@vueuse/core", "tailwind-merge", "reka-ui", "tailwindcss/colors"],
 		},
-		build: {
-			sourcemap: false,
-			rollupOptions: {
-				output: {
-					manualChunks: {
-						vue: ["vue"],
-						reka: ["reka-ui"],
-					},
-				},
-			},
-		},
+		build: { sourcemap: false, rollupOptions: { output: { manualChunks: { vue: ["vue"], reka: ["reka-ui"] } } } },
 	},
 
+	app: { rootAttrs: { class: "isolate" } },
 	css: ["~/assets/css/main.css"],
-	app: {
-		rootAttrs: {
-			class: "isolate",
-		},
-		head: {
-			htmlAttrs: {
-				class: "dark",
-			},
-		},
-	},
+	components: [{ path: "~/components", pathPrefix: false }],
+	fonts: { defaults: { weights: ["400 700"], styles: ["normal"], subsets: ["latin-ext", "latin"] } },
 
-	components: [
-		{
-			path: "~/components",
-			pathPrefix: false,
-		},
-	],
+	typescript: { typeCheck: "build" },
+	eslint: { checker: true },
+	image: { cloudinary: { baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload" } },
+	ogImage: false,
+	sitemap: { zeroRuntime: true },
 
 	nitro: {
 		sourceMap: false,
@@ -76,75 +58,28 @@ export default defineNuxtConfig({
 		},
 	},
 
-	typescript: {
-		typeCheck: "build",
-	},
-
-	eslint: {
-		checker: true,
-	},
-
 	icon: {
 		provider: "none",
 		serverBundle: false,
-		clientBundle: {
-			scan: true,
-			includeCustomCollections: true,
-			sizeLimitKb: 4096,
-		},
-		customCollections: [
-			{
-				prefix: "sucua",
-				dir: "./app/assets/icons",
-			},
-		],
-	},
-
-	fonts: {
-		defaults: {
-			weights: ["400 700"],
-			styles: ["normal"],
-			subsets: ["latin-ext", "latin"],
-		},
-	},
-
-	image: {
-		cloudinary: {
-			baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload",
-		},
+		clientBundle: { scan: true, includeCustomCollections: true, sizeLimitKb: 4096 },
+		customCollections: [{ prefix: "sucua", dir: "./app/assets/icons" }],
 	},
 
 	content: {
-		database: {
-			type: "d1",
-			bindingName: "DB",
-		},
+		database: { type: "d1", bindingName: "DB" },
 		build: {
 			markdown: {
-				toc: {
-					depth: 3,
-					searchDepth: 3,
-				},
-				remarkPlugins: {
-					"remark-reading-time": {},
-				},
+				toc: { depth: 3, searchDepth: 3 },
+				remarkPlugins: { "remark-reading-time": {} },
 				highlight: false,
 			},
 		},
-		renderer: {
-			anchorLinks: true,
-		},
+		renderer: { anchorLinks: true },
 	},
 
 	site: {
 		url: "https://sucugrafia.sucua.workers.dev",
 		name: "Sucugrafia",
 		defaultLocale: "es-EC",
-	},
-
-	ogImage: false,
-
-	sitemap: {
-		zeroRuntime: true,
 	},
 });
