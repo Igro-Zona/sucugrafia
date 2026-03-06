@@ -12,14 +12,15 @@
 			/>
 
 			<GalleryArea
-				v-model:page="page"
+				:page="page"
 				:pages-max="pageCount"
 				:images="images"
+				@infinite-scroll="handleInfiniteScroll"
 			/>
 
 			<GalleryPagination
 				v-model:page="page"
-				class="mb-2 flex justify-center"
+				class="flex justify-center"
 				:default-page="page"
 				:sibling-count="1"
 				:total="pageCount"
@@ -45,9 +46,10 @@ const { pageCount } = usePageCount();
 const page = ref(1);
 const images = ref(await useImages(48, page.value));
 
+let isWatching = true;
 watch(page, async (newPage, oldPage) => {
-	if (newPage !== oldPage) {
-		await loadMore(false);
+	if (newPage !== oldPage && isWatching) {
+		await loadMore(true);
 	}
 });
 
@@ -61,5 +63,12 @@ async function loadMore(reset = false) {
 	const loadedImages = await $fetch("/api/cloudinary-images", { query: { page: page.value, limit: 50 } });
 	images.value.push(...loadedImages);
 	loading.value = false;
+}
+
+async function handleInfiniteScroll() {
+	isWatching = false;
+	page.value++;
+	await loadMore();
+	isWatching = true;
 }
 </script>
