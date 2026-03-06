@@ -1,7 +1,6 @@
 import { useVirtualizer, type VirtualItem, type VirtualizerOptions } from "@tanstack/vue-virtual";
 import type { CSSProperties } from "vue";
 
-type MaybeRef<T> = T | Ref<T>;
 export type VirtualScrollOptions = {
 	viewportWidth?: unknown;
 	virtualizerOptions: Omit<VirtualizerOptions<Element, Element>, "observeElementRect" | "observeElementOffset" | "scrollToFn">;
@@ -18,34 +17,21 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 	const lanes = computed(() => virtualizerOptions.value.lanes ?? 1);
 	const gap = computed(() => virtualizerOptions.value.gap ?? 0);
 
-	watch(
-		[lanes, width],
-		() => {
-			virtualizer.value.measure();
-		},
-		{ flush: "sync" },
-	);
+	watch([lanes, width], () => virtualizer.value.measure(), { flush: "sync" });
 
-	const totalSize = computed(() => {
-		if (!isMounted.value) return 216;
-		return virtualizer.value.getTotalSize();
-	});
+	const totalSize = computed(() => (!isMounted.value ? 216 : virtualizer.value.getTotalSize()));
 
 	function measureElement(el: Element | ComponentPublicInstance | null) {
-		if (el) {
-			const element = el instanceof Element ? el : (el as ComponentPublicInstance).$el;
-			virtualizer.value.measureElement(element);
-		}
+		if (el) virtualizer.value.measureElement(el instanceof Element ? el : el.$el);
 	}
 
-	const virtualViewportStyle = computed<CSSProperties>(() => ({
+	const virtualViewportStyle = computed(() => ({
 		position: "relative",
 		blockSize: `${totalSize.value}px`,
 	}));
 
 	function getVirtualItemStyle(virtualItem: VirtualItem): CSSProperties {
 		const laneSize = `calc((100% - ${(lanes.value - 1) * gap.value}px) / ${lanes.value})`;
-
 		const lanePosition =
 			lanes.value > 1 && virtualItem.lane !== undefined ? `calc(${virtualItem.lane} * ((${laneSize}) + ${gap.value}px))` : 0;
 
