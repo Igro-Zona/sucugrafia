@@ -1,31 +1,29 @@
 <template>
-	<UiContainer>
-		<UiSection
-			:title
-			class="mt-4"
-		>
-			<p class="lg: text-xl">{{ description }}</p>
+	<UiContainer class="py-4">
+		<UiSection :title>
+			<p class="lg:text-xl">{{ description }}</p>
 
 			<GalleryPagination
 				v-model:page="page"
 				class="flex justify-center"
-				:default-page="queryPage"
+				:default-page="page"
 				:sibling-count="1"
-				:total="pagesMax"
+				:total="pageCount"
 			/>
 
 			<GalleryArea
-				v-model:page="page"
-				:pages-max="pagesMax"
+				:page="page"
+				:pages-max="pageCount"
 				:images="images"
+				@infinite-scroll="handleInfiniteScroll"
 			/>
 
 			<GalleryPagination
 				v-model:page="page"
-				class="mb-2 flex justify-center"
-				:default-page="queryPage"
+				class="flex justify-center"
+				:default-page="page"
 				:sibling-count="1"
-				:total="pagesMax"
+				:total="pageCount"
 			/>
 		</UiSection>
 	</UiContainer>
@@ -43,21 +41,15 @@ useSeoMeta({
 	twitterDescription: description,
 });
 
-const route = useRoute();
-const queryPage = computed(() => Number(route.query.page ?? 1));
+const { pageCount } = usePageCount();
 
-const page = ref(queryPage.value);
-const pagesMax = await usePageCount();
+const page = ref(1);
 const images = ref(await useImages(48, page.value));
 
-watch([queryPage, page], async ([newQuery, newPage], [oldQuery, oldPage]) => {
-	if (newQuery !== oldQuery) {
-		page.value = newQuery;
+let isWatching = true;
+watch(page, async (newPage, oldPage) => {
+	if (newPage !== oldPage && isWatching) {
 		await loadMore(true);
-	}
-
-	if (newPage !== oldPage) {
-		await loadMore(false);
 	}
 });
 
@@ -66,17 +58,17 @@ async function loadMore(reset = false) {
 	if (loading.value) return;
 	loading.value = true;
 
-	if (reset) {
-		images.value = [];
-	}
+	if (reset) images.value = [];
 
-	const loadedImages = await $fetch("/api/cloudinary-images", {
-		query: {
-			page: page.value,
-			limit: 50,
-		},
-	});
+	const loadedImages = await $fetch("/api/cloudinary-images", { query: { page: page.value, limit: 50 } });
 	images.value.push(...loadedImages);
 	loading.value = false;
+}
+
+async function handleInfiniteScroll() {
+	isWatching = false;
+	page.value++;
+	await loadMore();
+	isWatching = true;
 }
 </script>

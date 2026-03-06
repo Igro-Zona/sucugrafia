@@ -1,14 +1,14 @@
 <template>
 	<ScrollAreaRoot
 		ref="scrollList"
-		class="relative mt-4 h-200 w-full pr-4"
+		class="relative mt-4 h-300 w-full pr-4"
 		tabindex="0"
 		@keydown="handleKeydown"
 	>
 		<ScrollAreaViewport
 			v-if="!isVirtualizerReady"
 			class="relative h-full w-full"
-			:as-child="true"
+			as-child
 		>
 			<div
 				role="feed"
@@ -17,26 +17,41 @@
 				<article
 					v-for="(image, index) in images"
 					:key="index"
-					class="aspect-video w-full overflow-hidden rounded-xs filter transition-[filter] hover:brightness-120"
+					class="relative aspect-video w-full overflow-hidden rounded-xs filter transition-[filter] focus-within:brightness-50 hover:brightness-120"
 				>
 					<h3 class="sr-only">Imagen {{ index + 1 }} de la galeria</h3>
-					<button
-						type="button"
-						class="h-full w-full cursor-pointer"
+					<UiButton
+						unstyled
+						class="absolute inset-0 cursor-pointer"
 						:tabindex="tabindex"
 						:aria-label="`Abrir imagen ${index + 1}`"
 						@click="openImageModal(image)"
-					>
-						<GalleryImage :src="image" />
-					</button>
+					/>
+					<NuxtPicture
+						quality="60"
+						width="318"
+						height="179"
+						densities="1x 2x"
+						format="avif,webp"
+						legacy-format="jpg"
+						:src="image"
+						provider="cloudinary"
+						class="h-full w-full"
+						:img-attrs="{
+							alt: '',
+							class: 'object-cover w-full h-full',
+						}"
+						loading="lazy"
+						sizes="318px sm:389px"
+					/>
 				</article>
 			</div>
 		</ScrollAreaViewport>
 
 		<ScrollAreaViewport
 			v-else
+			as-child
 			class="relative h-full w-full"
-			:as-child="true"
 			@scroll="handleScroll"
 		>
 			<div
@@ -49,26 +64,41 @@
 					:ref="measureElement"
 					:style="getVirtualItemStyle(virtualItem)"
 					:data-index="virtualItem.index"
-					class="overflow-hidden rounded-xs filter transition-[filter] hover:brightness-120"
+					class="relative overflow-hidden rounded-xs filter transition-[filter] focus-within:brightness-50 hover:brightness-120"
 				>
 					<h3 class="sr-only">Imagen {{ virtualItem.index + 1 }} de la galeria</h3>
-					<button
-						type="button"
-						class="h-full w-full cursor-pointer"
+					<UiButton
+						unstyled
+						class="absolute inset-0 cursor-pointer"
 						:tabindex="tabindex"
 						:aria-label="`Abrir imagen ${virtualItem.index + 1}`"
 						@click="openImageModal(images[virtualItem.index] || '')"
-					>
-						<GalleryImage :src="images[virtualItem.index] || ''" />
-					</button>
+					/>
+					<NuxtPicture
+						quality="60"
+						width="318"
+						height="179"
+						densities="1x 2x"
+						format="avif,webp"
+						legacy-format="jpg"
+						:src="images[virtualItem.index] || ''"
+						provider="cloudinary"
+						class="h-full w-full"
+						:img-attrs="{
+							alt: '',
+							class: 'object-cover w-full h-full',
+						}"
+						loading="lazy"
+						sizes="318px sm:389px"
+					/>
 				</article>
 			</div>
 		</ScrollAreaViewport>
 
 		<ScrollAreaScrollbar
+			force-mount
 			orientation="vertical"
 			class="bg-muted w-3 p-0.5"
-			:force-mount="true"
 		>
 			<ScrollAreaThumb class="bg-primary cursor-grab rounded-2xl" />
 		</ScrollAreaScrollbar>
@@ -76,7 +106,6 @@
 </template>
 
 <script setup lang="ts">
-import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from "reka-ui";
 import { useWindowSize } from "@vueuse/core";
 import GalleryModal from "~/components/gallery/GalleryModal.vue";
 
@@ -85,9 +114,8 @@ export interface GalleryAreaProps {
 	pagesMax: number;
 	images: string[];
 }
-
+const emits = defineEmits(["infinite-scroll"]);
 const { page, pagesMax, images } = defineProps<GalleryAreaProps>();
-const emits = defineEmits(["update:page"]);
 
 const isVirtualizerReady = ref(false);
 onMounted(() => {
@@ -98,14 +126,16 @@ const scrollList = useTemplateRef("scrollList");
 const { trapActive, handleKeydown } = useFocusOnKeydown(scrollList);
 const tabindex = computed(() => (trapActive.value ? 0 : -1));
 
-function handleScroll() {
-	const viewport = scrollList.value?.viewport as HTMLElement;
+async function handleScroll() {
+	if (!images.length) return;
+
+	const viewport = scrollList.value?.viewport;
 	if (!viewport) return;
 
 	const nearBottom = viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 200;
 
 	if (pagesMax && nearBottom && page < pagesMax) {
-		emits("update:page", page + 1);
+		emits("infinite-scroll");
 	}
 }
 
@@ -113,7 +143,7 @@ const { width } = useWindowSize();
 const gridLanes = computed(() => (width.value < 640 ? 1 : width.value < 1024 ? 2 : 3));
 const gridGap = 16;
 
-function estimateItemHeight(): number {
+function estimateItemHeight() {
 	const viewport = scrollList.value?.viewport;
 	if (!viewport) return 216;
 

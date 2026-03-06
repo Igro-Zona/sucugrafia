@@ -3,7 +3,7 @@
 		:disabled="disabled"
 		:aria-disabled="disabled"
 		:type="type ?? 'button'"
-		:class="!unstyled && 'group inline-flex cursor-pointer gap-1.5 rounded-md p-1.5 transition-colors'"
+		:class="!unstyled && 'group inline-flex cursor-pointer gap-1.5 rounded-md p-1.5 transition-colors disabled:cursor-default'"
 	>
 		<slot name="icon">
 			<Icon

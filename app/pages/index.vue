@@ -138,16 +138,6 @@ const cards: UiCardProps[] = [
 	},
 ];
 
-const mdAndLarger = useBreakpoints(breakpointsTailwind, {
-	ssrWidth: 767,
-}).greaterOrEqual("md");
-
-const images = ref<string[]>([]);
-let fetched = false;
-watchEffect(async () => {
-	if (mdAndLarger.value && !fetched) {
-		images.value = await useImages(6);
-		fetched = true;
-	}
-});
+const mdAndLarger = useBreakpoints(breakpointsTailwind, { ssrWidth: 767 }).greaterOrEqual("md");
+const images = await useImages(6);
 </script>

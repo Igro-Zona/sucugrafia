@@ -1,79 +1,88 @@
 <template>
 	<PaginationRoot
 		v-slot="{ page: currentPage, pageCount }"
-		v-bind="data"
-		:show-edges="true"
+		:default-page="defaultPage"
+		:page="page"
+		:sibling-count="siblingCount"
+		:total="total"
+		show-edges
 		:items-per-page="1"
 	>
 		<PaginationList
 			v-slot="{ items }"
 			class="flex items-center gap-2"
 		>
-			<UiLink
-				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center p-1.5 ring ring-inset aria-disabled:opacity-75"
-				:class="currentPage === 1 ? 'bg-muted pointer-events-none cursor-default' : ''"
-				to="/galeria?page=1"
-				:events="true"
-				aria-label="Primera página"
-			>
-				<Icon name="i-lucide-chevrons-left" />
-			</UiLink>
-			<UiLink
-				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center p-1.5 ring ring-inset aria-disabled:opacity-75"
-				:class="currentPage === 1 ? 'bg-muted pointer-events-none cursor-default' : ''"
-				:to="`/galeria?page=${currentPage - 1 === 0 ? currentPage : currentPage - 1}`"
-				:events="true"
-				aria-label="Página anterior"
-			>
-				<Icon name="i-lucide-chevron-left" />
-			</UiLink>
+			<PaginationFirst as-child>
+				<UiButton
+					class="ring-accented bg-default hover:bg-muted/75 disabled:bg-muted ring focus-visible:outline-offset-0!"
+					:disabled="currentPage === 1"
+					aria-label="Primera página"
+					icon="lucide:chevrons-left"
+					@click="$emit('update:page', 1)"
+				/>
+			</PaginationFirst>
 
-			<template v-for="(item, index) in items">
-				<UiLink
+			<PaginationPrev as-child>
+				<UiButton
+					class="ring-accented bg-default hover:bg-muted/75 disabled:bg-muted ring focus-visible:outline-offset-0!"
+					:disabled="currentPage === 1"
+					aria-label="Página anterior"
+					icon="lucide:chevron-left"
+					@click="$emit('update:page', Math.max(1, currentPage - 1))"
+				/>
+			</PaginationPrev>
+
+			<template
+				v-for="(item, index) in items"
+				:key="index"
+			>
+				<PaginationListItem
 					v-if="item.type === 'page'"
-					:key="index"
-					class="ring-accented text-default! bg-default hover:bg-elevated inline-flex aspect-square w-9 items-center justify-center p-1.5 ring ring-inset aria-disabled:opacity-75"
-					:to="`/galeria?page=${item.value}`"
-					:class="item.value === currentPage ? 'bg-primary text-inverted! ring-primary hover:bg-green-500' : ''"
-					:events="true"
+					as-child
+					:value="item.value"
 				>
-					{{ item.value }}
-				</UiLink>
+					<UiButton
+						class="ring-accented bg-default hover:bg-muted/75 disabled:text-inverted disabled:bg-primary w-9 justify-center ring focus-visible:outline-offset-0!"
+						:disabled="item.value === currentPage"
+						@click="$emit('update:page', item.value)"
+					>
+						{{ item.value }}
+					</UiButton>
+				</PaginationListItem>
 
-				<div
+				<PaginationEllipsis
 					v-else
-					:key="item.type"
-					class="ring-accented bg-default inline-flex items-center p-1.5 ring ring-inset"
+					as-child
 				>
-					<Icon name="i-lucide-ellipsis" />
-				</div>
+					<div class="ring-accented bg-default inline-flex items-center p-1.5 ring ring-inset">
+						<Icon name="lucide:ellipsis" />
+					</div>
+				</PaginationEllipsis>
 			</template>
 
-			<UiLink
-				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center p-1.5 ring ring-inset aria-disabled:opacity-75"
-				:class="currentPage === pageCount ? 'bg-muted pointer-events-none cursor-default' : ''"
-				:to="`/galeria?page=${currentPage + 1 > pageCount ? pageCount : currentPage + 1}`"
-				:events="true"
-				aria-label="Siguiente página"
-			>
-				<Icon name="i-lucide-chevron-right" />
-			</UiLink>
-			<UiLink
-				class="ring-accented text-default! bg-default hover:bg-elevated inline-flex items-center p-1.5 ring ring-inset aria-disabled:opacity-75"
-				:class="currentPage === pageCount ? 'bg-muted pointer-events-none cursor-default' : ''"
-				:to="`/galeria?page=${pageCount}`"
-				:events="true"
-				aria-label="Última página"
-			>
-				<Icon name="i-lucide-chevrons-right" />
-			</UiLink>
+			<PaginationNext as-child>
+				<UiButton
+					class="ring-accented bg-default hover:bg-muted/75 disabled:bg-muted ring focus-visible:outline-offset-0!"
+					:disabled="currentPage === pageCount"
+					aria-label="Siguiente página"
+					icon="lucide:chevron-right"
+					@click="$emit('update:page', Math.min(pageCount, currentPage + 1))"
+				/>
+			</PaginationNext>
+			<PaginationLast as-child>
+				<UiButton
+					class="ring-accented bg-default hover:bg-muted/75 disabled:bg-muted ring focus-visible:outline-offset-0!"
+					:disabled="currentPage === pageCount"
+					aria-label="Última página"
+					icon="lucide:chevrons-right"
+					@click="$emit('update:page', pageCount)"
+				/>
+			</PaginationLast>
 		</PaginationList>
 	</PaginationRoot>
 </template>
 
 <script setup lang="ts">
-import { PaginationList, PaginationRoot, useForwardPropsEmits } from "reka-ui";
-
 export interface GalleryPaginationProps {
 	defaultPage?: number;
 	page?: number;
@@ -81,7 +90,6 @@ export interface GalleryPaginationProps {
 	total: number;
 }
 
-const emits = defineEmits(["update:page"]);
-const props = defineProps<GalleryPaginationProps>();
-const data = useForwardPropsEmits(props, emits);
+defineEmits(["update:page"]);
+defineProps<GalleryPaginationProps>();
 </script>
