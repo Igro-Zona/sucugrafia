@@ -31,13 +31,6 @@ export default defineNuxtPlugin(() => {
   ${Object.entries(appConfig.ui.colors)
 		.map(([key, value]: [string, string]) => generateShades(key, value, prefix))
 		.join("\n  ")}
-  }
-  :root, :host, .light {
-  ${Object.keys(colors)
-		.map((key) => generateColor(key, 500))
-		.join("\n  ")}
-  }
-  .dark {
   ${Object.keys(colors)
 		.map((key) => generateColor(key, 400))
 		.join("\n  ")}
