@@ -1,5 +1,5 @@
 import { defineContentConfig, defineCollection } from "@nuxt/content";
-import { asSitemapCollection } from "@nuxtjs/sitemap/content";
+import { asSeoCollection } from "@nuxtjs/seo/content";
 import { z } from "zod";
 
 const articleSchema = z.object({
@@ -15,7 +15,7 @@ const articleSchema = z.object({
 export default defineContentConfig({
 	collections: {
 		articles: defineCollection(
-			asSitemapCollection({
+			asSeoCollection({
 				type: "page",
 				source: "articulos/**/*.md",
 				schema: articleSchema,

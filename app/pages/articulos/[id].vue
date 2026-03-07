@@ -153,13 +153,9 @@
 import useArticleActions from "~/composables/useArticleActions";
 const route = useRoute();
 const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
-
-useSeoMeta({
-	description: data.value?.description,
-	ogTitle: data.value?.title,
-	twitterTitle: data.value?.title,
-	twitterDescription: data.value?.description,
-});
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+useHead(data.value?.head ? (data.value.head as any) : {});
+useSeoMeta(data.value?.seo || {});
 
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();

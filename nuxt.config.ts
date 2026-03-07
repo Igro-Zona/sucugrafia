@@ -9,9 +9,9 @@ export default defineNuxtConfig({
 		"@nuxt/icon",
 		"@nuxt/fonts",
 		"reka-ui/nuxt",
-		"@nuxt/content",
 		"@nuxt/image",
 		"@nuxtjs/seo",
+		"@nuxt/content",
 		"nuxt-aos",
 	],
 
@@ -73,6 +73,12 @@ export default defineNuxtConfig({
 			},
 		},
 		renderer: { anchorLinks: true },
+	},
+
+	robots: {
+		blockAiBots: true,
+		blockNonSeoBots: true,
+		autoI18n: false,
 	},
 
 	site: {
