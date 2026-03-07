@@ -56,7 +56,5 @@
 const { open } = useSearch();
 const { data: articles } = await useAsyncData("articles-home", () => queryCollection("articles").all());
 const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("articles"));
-const { data: files } = await useAsyncData("search", () => queryCollectionSearchSections("articles"), {
-	server: false,
-});
+const { data: files } = await useAsyncData("search", () => queryCollectionSearchSections("articles"), { server: false });
 </script>
