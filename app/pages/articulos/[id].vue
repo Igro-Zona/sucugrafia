@@ -151,9 +151,16 @@
 
 <script lang="ts" setup>
 import useArticleActions from "~/composables/useArticleActions";
-
 const route = useRoute();
 const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
+
+useSeoMeta({
+	description: data.value?.description,
+	ogTitle: data.value?.title,
+	twitterTitle: data.value?.title,
+	twitterDescription: data.value?.description,
+});
+
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();
 	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
