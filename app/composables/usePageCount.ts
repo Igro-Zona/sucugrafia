@@ -6,10 +6,8 @@ export default function () {
 		immediate: !pageCountCookie.value,
 	});
 
-	watch(data, (newPageCount) => {
-		if (newPageCount) pageCountCookie.value = newPageCount;
-	});
-
+	watch(data, (newPageCount) => newPageCount && (pageCountCookie.value = newPageCount));
 	const pageCount = computed(() => pageCountCookie.value ?? data.value ?? 1);
+
 	return { pageCount, pending, error, refresh, status, clear };
 }

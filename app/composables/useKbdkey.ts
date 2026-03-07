@@ -24,33 +24,27 @@ const kbdKeysMap = {
 };
 const macOS = computed(() => import.meta.client && navigator && navigator.userAgent && navigator.userAgent.match(/Macintosh;/));
 export default function () {
-	const kbdKeysSpecificMap = reactive({
-		meta: " ",
-		alt: " ",
-		ctrl: " ",
-	});
+	const kbdKeysSpecificMap = reactive({ meta: " ", alt: " ", ctrl: " " });
+
 	onMounted(() => {
 		kbdKeysSpecificMap.meta = macOS.value ? kbdKeysMap.command : "Ctrl";
 		kbdKeysSpecificMap.ctrl = macOS.value ? kbdKeysMap.control : "Ctrl";
 		kbdKeysSpecificMap.alt = macOS.value ? kbdKeysMap.option : "Alt";
 	});
+
 	function getKbdKey(value?: MaybeArray<KbdKey | string>): string | undefined {
-		if (!value) {
-			return;
-		}
+		if (!value) return;
+
 		if (Array.isArray(value)) {
 			return value
 				.map((v) => getKbdKey(v))
 				.filter(Boolean)
 				.join(" + ");
 		}
-		if (["meta", "alt", "ctrl"].includes(value)) {
-			return kbdKeysSpecificMap[value as keyof typeof kbdKeysSpecificMap];
-		}
+
+		if (["meta", "alt", "ctrl"].includes(value)) return kbdKeysSpecificMap[value as keyof typeof kbdKeysSpecificMap];
 		return kbdKeysMap[value as keyof typeof kbdKeysMap] || value;
 	}
-	return {
-		macOS,
-		getKbdKey,
-	};
+
+	return { macOS, getKbdKey };
 }

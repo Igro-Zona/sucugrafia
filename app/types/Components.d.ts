@@ -1,6 +1,6 @@
 import type { AsTag } from "reka-ui";
 import type { HTMLAttributes } from "vue";
-export {};
+
 export interface StyledComponentProps {
 	unstyled?: boolean;
 }
@@ -44,3 +44,5 @@ declare global {
 		| "home"
 		| "end";
 }
+
+export {};

@@ -98,17 +98,14 @@
 	</ListboxRoot>
 </template>
 
+<!-- eslint-disable @typescript-eslint/no-empty-object-type -->
 <script setup lang="ts">
 import type { StyledComponentProps } from "~/types/Components";
 import { useFuse } from "@vueuse/integrations/useFuse";
 import { refThrottled } from "@vueuse/core";
-import type { UiLinkProps } from "../ui/UiLink.vue";
+import type { ContentFilteredItem } from "~/composables/useSearch";
 
-export interface ArticleCommandPaletteItem extends UiLinkProps {
-	label?: string;
-	suffix?: string;
-	level?: number;
-}
+export interface ArticleCommandPaletteItem extends ContentFilteredItem {}
 export interface ArticleCommandPaletteProps extends StyledComponentProps {
 	label?: string;
 	items?: ArticleCommandPaletteItem[];

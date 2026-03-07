@@ -1,6 +1,4 @@
-import type { RouteLocationNormalizedLoadedGeneric } from "vue-router";
-
-export default function (route: RouteLocationNormalizedLoadedGeneric) {
+export default function (route: Route) {
 	const url = useRequestURL();
 	const fullUrl = computed(() => `${url.origin}${route.fullPath}`);
 
