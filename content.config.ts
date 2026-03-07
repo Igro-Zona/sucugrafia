@@ -1,25 +1,25 @@
 import { defineContentConfig, defineCollection } from "@nuxt/content";
-import { asSitemapCollection } from "@nuxtjs/sitemap/content";
+import { asSeoCollection } from "@nuxtjs/seo/content";
 import { z } from "zod";
 
 const articleSchema = z.object({
 	meta: z.object({
-		date: z.date(),
+		date: z.optional(z.date()),
 		tags: z.optional(z.array(z.string())),
 		readingTime: z.object({ text: z.string() }),
-		author: z.string(),
-		thumbnail: z.string(),
+		author: z.optional(z.string()),
+		thumbnail: z.optional(z.string()),
 	}),
 });
 
 export default defineContentConfig({
 	collections: {
 		articles: defineCollection(
-			asSitemapCollection({
+			asSeoCollection({
 				type: "page",
 				source: "articulos/**/*.md",
 				schema: articleSchema,
-				indexes: [{ columns: ["path"] }],
+				indexes: [{ columns: ["path"], unique: true }],
 			}),
 		),
 	},

@@ -46,6 +46,15 @@ useHead({
 	],
 });
 
+const url = useRequestURL();
+const ogImage = `${url.origin}/og-image.png`;
+useSeoMeta({
+	ogImage,
+	twitterImage: ogImage,
+	ogImageWidth: 1200,
+	ogImageHeight: 600,
+});
+
 const footer = useTemplateRef("footer");
 const { isVisible: isFooterVisible } = useElementVisibility(footer);
 </script>

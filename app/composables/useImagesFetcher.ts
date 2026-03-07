@@ -1,4 +1,5 @@
 type CookieData = { limit: number; images: string[] };
+
 export default async function (limit = 48, page = 1) {
 	const firstPageImagesCookie = useCookie<CookieData | null>("initial_images", { default: () => null, maxAge: 86400 });
 

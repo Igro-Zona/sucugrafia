@@ -12,7 +12,7 @@
 			>
 				<UiLink
 					v-bind="link"
-					class="hover:bg-muted/50 text-dimmed! hover:text-default! data-[active=true]:bg-muted data-[active=true]:text-primary! focus-visible:text-muted! w-full items-center px-2.5 py-1.5 focus-visible:outline-offset-0! data-[active=false]:outline-white!"
+					class="hover:bg-muted/50 text-muted! hover:text-default! data-[active=true]:bg-muted data-[active=true]:text-primary! focus-visible:text-default! w-full items-center px-2.5 py-1.5 focus-visible:outline-offset-0! data-[active=false]:outline-white!"
 				/>
 			</li>
 		</ul>

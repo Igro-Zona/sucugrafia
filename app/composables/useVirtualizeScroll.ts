@@ -18,17 +18,13 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 	const gap = computed(() => virtualizerOptions.value.gap ?? 0);
 
 	watch([lanes, width], () => virtualizer.value.measure(), { flush: "sync" });
-
 	const totalSize = computed(() => (!isMounted.value ? 216 : virtualizer.value.getTotalSize()));
 
 	function measureElement(el: Element | ComponentPublicInstance | null) {
 		if (el) virtualizer.value.measureElement(el instanceof Element ? el : el.$el);
 	}
 
-	const virtualViewportStyle = computed<CSSProperties>(() => ({
-		position: "relative",
-		blockSize: `${totalSize.value}px`,
-	}));
+	const virtualViewportStyle = computed<CSSProperties>(() => ({ position: "relative", blockSize: `${totalSize.value}px` }));
 
 	function getVirtualItemStyle(virtualItem: VirtualItem): CSSProperties {
 		const laneSize = `calc((100% - ${(lanes.value - 1) * gap.value}px) / ${lanes.value})`;
@@ -50,11 +46,5 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 		virtualizer.value.measure();
 	});
 
-	return {
-		virtualizer,
-		virtualItems,
-		measureElement,
-		virtualViewportStyle,
-		getVirtualItemStyle,
-	};
+	return { virtualizer, virtualItems, measureElement, virtualViewportStyle, getVirtualItemStyle };
 }

@@ -101,7 +101,7 @@ import type { StyledComponentProps } from "~/types/Components";
 import type { UiLinkProps } from "../ui/UiLink.vue";
 
 export type AuthorType = {
-	name: string;
+	name?: string;
 	description?: string;
 };
 export interface ArticlesPostProps extends StyledComponentProps {

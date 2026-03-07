@@ -1,7 +1,7 @@
 <template>
 	<UiContainer class="py-4">
 		<UiSection
-			title="Nuestros articulos"
+			:title="title"
 			data-aos="zoom-in"
 		>
 			<UiButton
@@ -53,10 +53,19 @@
 </template>
 
 <script setup lang="ts">
+const title = "Nuestros articulos";
+const description =
+	"Encuentra todos nuestros artículos en un solo lugar. Explora la lista completa y utiliza la búsqueda para localizar fácilmente el contenido que necesitas";
+
+useSeoMeta({
+	description,
+	ogTitle: title,
+	twitterTitle: title,
+	twitterDescription: description,
+});
+
 const { open } = useSearch();
 const { data: articles } = await useAsyncData("articles-home", () => queryCollection("articles").all());
 const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("articles"));
-const { data: files } = await useAsyncData("search", () => queryCollectionSearchSections("articles"), {
-	server: false,
-});
+const { data: files } = await useAsyncData("search", () => queryCollectionSearchSections("articles"), { server: false });
 </script>
