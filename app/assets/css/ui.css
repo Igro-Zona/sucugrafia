@@ -2,7 +2,7 @@
 
 @layer base {
 	body {
-		@apply text-default bg-default antialiased scheme-light dark:scheme-dark;
+		@apply text-default bg-default antialiased scheme-dark;
 	}
 }
 

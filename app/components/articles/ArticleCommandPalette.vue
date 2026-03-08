@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/html-self-closing -->
 <template>
 	<ListboxRoot
 		:class="!unstyled && 'divide-default flex min-h-0 min-w-0 flex-col divide-y'"
@@ -9,32 +8,28 @@
 			v-model="searchTerm"
 			as-child
 		>
-			<div class="relative inline-flex items-center [&>input]:h-12">
-				<span class="absolute inset-y-0 inset-s-0 flex items-center ps-2.5">
-					<Icon
-						name="lucide:search"
-						:size="20"
-						class="text-dimmed"
-					/>
-				</span>
-
-				<input
-					type="text"
-					class="placeholder:text-dimmed text-highlighted w-full appearance-none gap-1.5 rounded-md border-0 bg-transparent px-2.5 py-1.5 ps-9 text-base/5 transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-75"
-					autocomplete="off"
-					aria-disabled="false"
-					placeholder="Buscar"
-				/>
-
-				<span class="absolute inset-y-0 inset-e-0 flex items-center pe-2.5">
+			<UiInput
+				:icon="{
+					name: 'lucide:search',
+					size: 20,
+					class: 'text-dimmed',
+				}"
+				:input="{
+					'type': 'text',
+					'autocomplete': 'off',
+					'aria-disabled': 'false',
+					'placeholder': 'Buscar',
+				}"
+			>
+				<template #trailing>
 					<UiButton
 						icon="lucide:x"
 						aria-label="Cerrar"
 						class="hover:bg-muted active:bg-muted/50 focus-visible:outline-offset-0!"
 						@click="$emit('update:open', false)"
 					/>
-				</span>
-			</div>
+				</template>
+			</UiInput>
 		</ListboxFilter>
 
 		<ListboxContent class="relative flex flex-col overflow-hidden">

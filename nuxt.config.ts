@@ -85,5 +85,8 @@ export default defineNuxtConfig({
 		url: "https://sucugrafia.sucua.workers.dev",
 		name: "Sucugrafia",
 		defaultLocale: "es-EC",
+		title: "Sucugrafia - Mejor forma para conocer a cantón Sucua",
+		description:
+			"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa.",
 	},
 });
