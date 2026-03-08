@@ -94,7 +94,7 @@ import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
 const title = "Sucugrafia - Mejor forma para conocer a cantón Sucúa";
 const description =
-	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa, donde cada imagen y relato conecta con sus raíces amazónicas y su riqueza cultural.";
+	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa, donde cada imagen y relato conecta con sus raíces amazónicas y su riqueza cultural";
 
 useSeoMeta({
 	description,
