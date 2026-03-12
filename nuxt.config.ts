@@ -22,10 +22,9 @@ export default defineNuxtConfig({
 	},
 
 	vite: {
-		// @ts-expect-error - Vite Plugin type mismatch between @tailwindcss/vite and @nuxt/vite-builder
-		plugins: [tailwindcss()],
-		optimizeDeps: { include: ["@vueuse/core", "reka-ui", "tailwindcss/colors"] },
-		build: { sourcemap: false, rollupOptions: { output: { manualChunks: { vue: ["vue"], reka: ["reka-ui"] } } } },
+		plugins: [tailwindcss({ optimize: true })],
+		optimizeDeps: { include: ["@vueuse/core", "reka-ui", "tailwindcss/colors", "@vue/devtools-core", "@vue/devtools-kit"] },
+		build: { rollupOptions: { output: { manualChunks: { vue: ["vue"], reka: ["reka-ui"] } } } },
 	},
 
 	app: {
