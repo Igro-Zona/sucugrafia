@@ -97,10 +97,11 @@ const description =
 	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa, donde cada imagen y relato conecta con sus raíces amazónicas y su riqueza cultural";
 
 const seoDescription =
-	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa.";
+	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa";
 useSeoMeta({
+	title: title,
+	titleTemplate: "%s",
 	description: seoDescription,
-	ogTitle: title,
 	twitterTitle: title,
 	twitterDescription: seoDescription,
 });

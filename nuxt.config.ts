@@ -27,13 +27,7 @@ export default defineNuxtConfig({
 		build: { rollupOptions: { output: { manualChunks: { vue: ["vue"], reka: ["reka-ui"] } } } },
 	},
 
-	app: {
-		rootAttrs: { class: "isolate" },
-		head: {
-			htmlAttrs: { class: "dark" },
-			link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-		},
-	},
+	app: { rootAttrs: { class: "isolate" }, head: { htmlAttrs: { class: "dark" } } },
 	css: ["~/assets/css/main.css"],
 	components: [{ path: "~/components", pathPrefix: false }],
 	fonts: { defaults: { weights: ["400 700"], styles: ["normal"], subsets: ["latin-ext", "latin"] } },

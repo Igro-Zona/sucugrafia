@@ -11,6 +11,10 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+	link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+});
+
 const url = useRequestURL();
 const ogImage = `${url.origin}/og-image.png`;
 useSeoMeta({

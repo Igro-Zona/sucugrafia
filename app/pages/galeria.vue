@@ -34,11 +34,13 @@ const title = "Nuestra galeria";
 const description =
 	"Explora la galería de Sucugrafia y déjate llevar por las imágenes que cuentan la historia de Sucúa: aquí cada fotografía está pensada para ti, para que descubras la cultura, la naturaleza y la vida de nuestra comunidad de una manera cercana y envolvente; haz clic en las que más te llamen la atención y disfruta cada detalle como si estuvieras caminando por sus calles y paisajes.";
 
+const seoDescription =
+	"Explora la galería de Sucugrafia y déjate llevar por las imágenes que cuentan la historia de Sucúa, aquí cada fotografía está pensada para ti";
 useSeoMeta({
-	description,
-	ogTitle: title,
+	title,
+	description: seoDescription,
 	twitterTitle: title,
-	twitterDescription: description,
+	twitterDescription: seoDescription,
 });
 
 const { pageCount } = usePageCount();
