@@ -58,8 +58,8 @@ const description =
 	"Encuentra todos nuestros artículos en un solo lugar. Explora la lista completa y utiliza la búsqueda para localizar fácilmente el contenido que necesitas";
 
 useSeoMeta({
+	title,
 	description,
-	ogTitle: title,
 	twitterTitle: title,
 	twitterDescription: description,
 });

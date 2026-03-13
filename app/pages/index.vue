@@ -96,11 +96,14 @@ const title = "Sucugrafia - Mejor forma para conocer a cantón Sucúa";
 const description =
 	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa, donde cada imagen y relato conecta con sus raíces amazónicas y su riqueza cultural";
 
+const seoDescription =
+	"Descubre Sucugrafia: historia, cultura y tradición en un solo lugar. Explora una galería vibrante y artículos únicos que revelan la esencia del cantón Sucúa";
 useSeoMeta({
-	description,
-	ogTitle: title,
+	title: title,
+	titleTemplate: "%s",
+	description: seoDescription,
 	twitterTitle: title,
-	twitterDescription: description,
+	twitterDescription: seoDescription,
 });
 
 const cards: UiCardProps[] = [

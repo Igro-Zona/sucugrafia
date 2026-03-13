@@ -56,14 +56,14 @@
 import type { UiAccordionItem } from "~/components/ui/UiAccordion.vue";
 
 const title = "Preguntas frecuentes";
-const description =
-	"En esta sección encontrarás respuestas claras y directas a las preguntas más comunes que nuestros usuarios suelen tener. La idea es que puedas resolver tus dudas rápidamente y sentir confianza al usar nuestra plataforma, sin necesidad de buscar en otros apartados.";
 
+const seoDescription =
+	"En esta sección encontrarás respuestas claras y directas a las preguntas más comunes que nuestros usuarios suelen tener";
 useSeoMeta({
-	description,
-	ogTitle: title,
+	title,
+	description: seoDescription,
 	twitterTitle: title,
-	twitterDescription: description,
+	twitterDescription: seoDescription,
 });
 
 const items: UiAccordionItem[] = [

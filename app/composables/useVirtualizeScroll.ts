@@ -1,5 +1,5 @@
 import { useVirtualizer, type VirtualItem, type VirtualizerOptions } from "@tanstack/vue-virtual";
-import type { CSSProperties } from "vue";
+import { type CSSProperties, nextTick } from "vue";
 
 export type VirtualScrollOptions = {
 	viewportWidth?: unknown;
@@ -41,8 +41,9 @@ export default function (options: MaybeRef<VirtualScrollOptions>) {
 		};
 	}
 
-	onMounted(() => {
+	onMounted(async () => {
 		isMounted.value = true;
+		await nextTick();
 		virtualizer.value.measure();
 	});
 
