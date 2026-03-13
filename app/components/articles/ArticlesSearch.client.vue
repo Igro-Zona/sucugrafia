@@ -5,7 +5,7 @@
 		description="bla"
 		class="h-1/5 w-full rounded-none md:max-w-200 md:rounded-lg"
 	>
-		<ArticleCommandPalette
+		<ArticlesCommandPalette
 			v-model:search-term="searchTerm"
 			:label="mappedNavigationGroup.label"
 			:items="mappedNavigationGroup.items"
