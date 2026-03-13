@@ -47,10 +47,10 @@
 				</div>
 
 				<div
-					v-if="data.description"
+					v-if="data.meta.contentDescription"
 					class="text-muted font-latto mt-4 text-lg text-pretty"
 				>
-					{{ data.description }}
+					{{ data.meta.contentDescription }}
 				</div>
 
 				<div class="mt-4 flex flex-wrap items-center justify-between gap-4">
@@ -120,10 +120,9 @@
 
 				<ContentRenderer :value="data" />
 
-				<UiSeparator color="primary" />
+				<p class="font-latto border-default border-t pt-12 text-2xl font-semibold">Articulos relacionados:</p>
 
-				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
-				<UiGrid>
+				<UiGrid v-if="links">
 					<ArticlesPost
 						v-for="article in links"
 						:key="article.id"
@@ -137,9 +136,7 @@
 					/>
 				</UiGrid>
 
-				<!-- <UiSeparator color="primary" />
-
-				<UContentSurround
+				<!--<UContentSurround
 					prev-icon="i-lucide-chevron-left"
 					next-icon="i-lucide-chevron-right"
 					:surround="surround"
@@ -149,13 +146,26 @@
 	</UiContainer>
 </template>
 
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script lang="ts" setup>
 import useArticleActions from "~/composables/useArticleActions";
 const route = useRoute();
 const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-useHead(data.value?.head ? (data.value.head as any) : {});
-useSeoMeta(data.value?.seo || {});
+useHead({ ...(data.value?.head as any) });
+useSeoMeta({
+	...data.value?.seo,
+	twitterTitle: data.value?.seo.title,
+	twitterDescription: data.value?.seo.description,
+});
+useSchemaOrg([
+	defineArticle({
+		headline: data.value?.title,
+		datePublished: data.value?.meta.date,
+		description: data.value?.description,
+		author: { "@type": "Person", "name": data.value?.meta.author },
+		keywords: data.value?.meta.tags,
+	}),
+]);
 
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();

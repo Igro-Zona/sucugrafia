@@ -9,6 +9,7 @@ const articleSchema = z.object({
 		readingTime: z.object({ text: z.string() }),
 		author: z.optional(z.string()),
 		thumbnail: z.optional(z.string()),
+		contentDescription: z.optional(z.string()),
 	}),
 });
 

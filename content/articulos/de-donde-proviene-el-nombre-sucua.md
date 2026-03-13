@@ -1,7 +1,8 @@
 ---
 title: "De donde proviene el nombre Sucúa?"
 date: 2025-11-13
-description:
+description: El nombre de Sucúa tiene raíces históricas y culturales que reflejan la identidad amazónica y la memoria colectiva de su pueblo
+contentDescription:
     El nombre de Sucúa tiene raíces históricas y culturales que reflejan la identidad amazónica y la memoria colectiva de su pueblo. Este
     artículo explora los orígenes y significados del topónimo, mostrando cómo la tradición oral y la historia local han dado forma a la
     denominación de este cantón.
