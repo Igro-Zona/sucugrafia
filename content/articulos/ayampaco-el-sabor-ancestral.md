@@ -2,6 +2,8 @@
 title: "Ayampaco: el sabor ancestral de Sucúa"
 date: 2026-01-26
 description:
+    El ayampaco, preparado con pollo o tilapia envueltos en hojas de bijao y acompañado de yuca o plátano, es el plato emblemático de Sucúa
+contentDescription:
     El ayampaco, preparado con pollo o tilapia envueltos en hojas de bijao y acompañado de yuca o plátano, es el plato emblemático de Sucúa.
     Más que una receta, representa la tradición shuar y la identidad amazónica, convirtiéndose en un símbolo de hospitalidad y orgullo
     cultural en Morona Santiago.

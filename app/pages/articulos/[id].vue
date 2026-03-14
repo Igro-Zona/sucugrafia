@@ -1,6 +1,6 @@
 <template>
 	<UiContainer>
-		<ArticlePage v-if="data">
+		<ArticlesPage v-if="data">
 			<template #right>
 				<div class="sticky top-[calc(var(--ui-header-height)+2rem)] right-0">
 					<!-- <UContentToc
@@ -47,10 +47,10 @@
 				</div>
 
 				<div
-					v-if="data.description"
+					v-if="data.meta.contentDescription"
 					class="text-muted font-latto mt-4 text-lg text-pretty"
 				>
-					{{ data.description }}
+					{{ data.meta.contentDescription }}
 				</div>
 
 				<div class="mt-4 flex flex-wrap items-center justify-between gap-4">
@@ -92,7 +92,7 @@
 				}"
 			/> -->
 
-			<div class="mt-8 space-y-12 pb-24">
+			<div class="mt-8">
 				<div class="flex gap-2 lg:hidden">
 					<button
 						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
@@ -120,52 +120,58 @@
 
 				<ContentRenderer :value="data" />
 
-				<UiSeparator color="primary" />
+				<div class="border-default border-y py-12">
+					<p class="font-latto mb-4 text-2xl font-semibold">Articulos relacionados:</p>
 
-				<p class="font-latto text-2xl font-semibold">Articulos relacionados:</p>
-				<UiGrid>
-					<ArticlesPost
-						v-for="article in links"
-						:key="article.id"
-						:title="article.title"
-						:image="article.meta.thumbnail"
-						:new="isNew(article.meta.date)"
-						:date="article.meta.date"
-						:link="{
-							to: article.path,
-						}"
-					/>
-				</UiGrid>
+					<UiGrid v-if="links">
+						<ArticlesPost
+							v-for="article in links"
+							:key="article.id"
+							:title="article.title"
+							:image="article.meta.thumbnail"
+							:new="isNew(article.meta.date)"
+							:date="article.meta.date"
+							:link="{
+								to: article.path,
+							}"
+						/>
+					</UiGrid>
+				</div>
 
-				<!-- <UiSeparator color="primary" />
-
-				<UContentSurround
-					prev-icon="i-lucide-chevron-left"
-					next-icon="i-lucide-chevron-right"
-					:surround="surround"
-				/> -->
+				<ArticlesSurround :surround="surround" />
 			</div>
-		</ArticlePage>
+		</ArticlesPage>
 	</UiContainer>
 </template>
 
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script lang="ts" setup>
 import useArticleActions from "~/composables/useArticleActions";
 const route = useRoute();
 const { data } = await useAsyncData(route.path, () => queryCollection("articles").path(route.path).first());
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-useHead(data.value?.head ? (data.value.head as any) : {});
-useSeoMeta(data.value?.seo || {});
+useHead({ ...(data.value?.head as any) });
+useSeoMeta({
+	...data.value?.seo,
+	twitterTitle: data.value?.seo.title,
+	twitterDescription: data.value?.seo.description,
+});
+useSchemaOrg([
+	defineArticle({
+		headline: data.value?.title,
+		datePublished: data.value?.meta.date,
+		description: data.value?.description,
+		author: { "@type": "Person", "name": data.value?.meta.author },
+		keywords: data.value?.meta.tags,
+	}),
+]);
 
 const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 	const res = await queryCollection("articles").where("path", "NOT LIKE", data.value?.path).all();
 	return orderBy(res, (a) => intersection(a.meta.tags, data.value?.meta.tags).length, "desc").slice(0, 5);
 });
-// const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-// 	return queryCollectionItemSurroundings("articles", route.path, {
-// 		fields: ["description"],
-// 	});
-// });
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
+	return queryCollectionItemSurroundings("articles", route.path, { fields: ["description"] });
+});
 
 const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
 const formattedDate = computed(() => formatDate(data.value?.meta.date));

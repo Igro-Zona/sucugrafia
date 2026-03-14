@@ -2,6 +2,8 @@
 title: "Navidad en Sucúa: tradición, unión y alegría en la Amazonía ecuatoriana"
 date: 2025-012-29
 description:
+    La Navidad en Sucúa se vive con luces, música y tradiciones que fortalecen la unión comunitaria y reflejan la identidad amazónica
+contentDescription:
     La Navidad en Sucúa se vive con luces, música y tradiciones que fortalecen la unión comunitaria y reflejan la identidad amazónica,
     convirtiendo estas fechas en un tiempo de esperanza y celebración compartida.
 tags: [historia, cultura]
