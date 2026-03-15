@@ -24,7 +24,7 @@
 					class: 'object-cover w-full  h-full',
 				}"
 				:loading="index === undefined ? 'lazy' : index <= 6 ? undefined : 'lazy'"
-				sizes="482px"
+				sizes="380px 412w:607px 639w:482px "
 			/>
 		</div>
 
