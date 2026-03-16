@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 	fonts: { defaults: { weights: ["400 700"], styles: ["normal"], subsets: ["latin-ext", "latin"] } },
 
 	typescript: { typeCheck: "build" },
-	eslint: { checker: true },
+	eslint: { checker: { eslintPath: "eslint" } },
 	image: { cloudinary: { baseURL: "https://res.cloudinary.com/dk7roc9rs/image/upload" } },
 	ogImage: false,
 	sitemap: { zeroRuntime: true },

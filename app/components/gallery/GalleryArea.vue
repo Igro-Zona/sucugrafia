@@ -40,8 +40,9 @@
 						:img-attrs="{
 							alt: '',
 							class: 'object-cover w-full h-full',
+							fetchpriority: index < 9 ? 'high' : undefined,
 						}"
-						loading="lazy"
+						:loading="index < 9 ? 'eager' : 'lazy'"
 						sizes="318px sm:389px"
 					/>
 				</article>
@@ -87,8 +88,9 @@
 						:img-attrs="{
 							alt: '',
 							class: 'object-cover w-full h-full',
+							fetchpriority: virtualItem.index < 9 ? 'high' : undefined,
 						}"
-						loading="lazy"
+						:loading="virtualItem.index < 9 ? 'eager' : 'lazy'"
 						sizes="318px sm:389px"
 					/>
 				</article>

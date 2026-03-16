@@ -106,4 +106,10 @@ const open = defineModel<boolean>("open", { default: false });
 function toggleOpen() {
 	open.value = !open.value;
 }
+
+const route = useRoute();
+watch(
+	() => route.fullPath,
+	() => (open.value = false),
+);
 </script>
