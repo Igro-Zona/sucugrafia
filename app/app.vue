@@ -26,4 +26,5 @@ useSeoMeta({
 
 const footer = useTemplateRef("footer");
 const { isVisible: isFooterVisible } = useElementVisibility(footer);
+provide("is-footer-visible", isFooterVisible);
 </script>
