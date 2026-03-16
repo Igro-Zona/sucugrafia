@@ -3,40 +3,33 @@
 		<ArticlesPage v-if="data">
 			<template #right>
 				<div class="sticky top-[calc(var(--ui-header-height)+2rem)] right-0">
-					<!-- <UContentToc
-						class="top-0"
-						title="Contenido"
-						color="secondary"
-						:links="data.body.toc?.links"
-					/> -->
-					<div class="flex flex-col justify-between gap-2">
-						<button
-							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+					<div class="flex flex-col gap-2">
+						<ArticlesToc
+							title="Contenido"
+							:links="data.body.toc?.links"
+						/>
+
+						<UiButton
+							icon="lucide:share"
+							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary gap-2! px-3 py-1.75 ring focus:outline-none focus-visible:ring-2"
 							@click="share"
 						>
-							<Icon name="lucide:share" />
-							<span>Compartir</span>
-						</button>
+							Compartir
+						</UiButton>
 
-						<button
-							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+						<UiButton
+							icon="lucide:link"
+							:trailing-icon="isLinkCopied ? { name: 'lucide:check', class: 'ml-auto' } : undefined"
+							class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary gap-2! px-3 py-1.75 ring focus:outline-none focus-visible:ring-2"
 							@click="copyLink"
 						>
-							<span class="inline-flex items-center gap-2">
-								<Icon name="lucide:link" />
-								<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
-							</span>
-
-							<Icon
-								v-if="isLinkCopied"
-								name="lucide:check"
-							/>
-						</button>
+							{{ isLinkCopied ? "Copiado" : "Copiar URL" }}
+						</UiButton>
 					</div>
 				</div>
 			</template>
 
-			<div class="border-default relative border-b py-8">
+			<div class="relative py-8">
 				<div
 					v-if="data.title"
 					class="flex flex-col items-center justify-center gap-4 lg:flex-row"
@@ -81,41 +74,31 @@
 				</div>
 			</div>
 
-			<!-- <UContentToc
-				class="lg:hidden"
+			<ArticlesToc
+				class="bg-default/75 sticky top-(--ui-header-height) z-100 -mx-6 backdrop-blur-xs transition-[top] lg:hidden"
+				:class="isFooterVisible && 'top-0!'"
 				title="Contenido"
-				color="primary"
 				:links="data.body.toc?.links"
-				highlight
-				:ui="{
-					container: 'border-solid',
-				}"
-			/> -->
+			/>
 
 			<div class="mt-8">
 				<div class="flex gap-2 lg:hidden">
-					<button
-						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+					<UiButton
+						icon="lucide:share"
+						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary gap-2! px-3 py-1.75 ring focus:outline-none focus-visible:ring-2"
 						@click="share"
 					>
-						<Icon name="lucide:share" />
-						<span>Compartir</span>
-					</button>
+						Compartir
+					</UiButton>
 
-					<button
-						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary inline-flex items-center justify-between gap-2 rounded-md px-3 py-2 font-medium ring transition-colors ring-inset hover:cursor-pointer focus:outline-none focus-visible:ring-2"
+					<UiButton
+						icon="lucide:link"
+						:trailing-icon="isLinkCopied ? { name: 'lucide:check', class: 'ml-auto' } : undefined"
+						class="ring-accented bg-elevated hover:bg-default/50 active:bg-default/50 focus-visible:ring-primary gap-2! px-3 py-1.75 ring focus:outline-none focus-visible:ring-2"
 						@click="copyLink"
 					>
-						<span class="inline-flex items-center gap-2">
-							<Icon name="lucide:link" />
-							<span>{{ isLinkCopied ? "Copiado" : "Copiar URL" }}</span>
-						</span>
-
-						<Icon
-							v-if="isLinkCopied"
-							name="lucide:check"
-						/>
-					</button>
+						{{ isLinkCopied ? "Copiado" : "Copiar URL" }}
+					</UiButton>
 				</div>
 
 				<ContentRenderer :value="data" />
@@ -138,7 +121,10 @@
 					</UiGrid>
 				</div>
 
-				<ArticlesSurround :surround="surround" />
+				<ArticlesSurround
+					class="mt-8"
+					:surround="surround"
+				/>
 			</div>
 		</ArticlesPage>
 	</UiContainer>
@@ -172,6 +158,8 @@ const { data: links } = await useAsyncData(`linked-${route.path}`, async () => {
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 	return queryCollectionItemSurroundings("articles", route.path, { fields: ["description"] });
 });
+
+const isFooterVisible = inject("is-footer-visible");
 
 const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
 const formattedDate = computed(() => formatDate(data.value?.meta.date));
