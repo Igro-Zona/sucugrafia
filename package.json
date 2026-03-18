@@ -46,8 +46,8 @@
 		"typescript": "^5.9.3",
 		"vite-plugin-eslint2": "^5.0.5",
 		"vue": "^3.5.30",
-		"vue-tsc": "^3.2.5",
-		"wrangler": "^4.74.0",
+		"vue-tsc": "^3.2.6",
+		"wrangler": "^4.75.0",
 		"zod": "^4.3.6"
 	},
 	"lint-staged": {
