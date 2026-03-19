@@ -25,7 +25,7 @@
 						class="absolute inset-0 cursor-pointer"
 						:tabindex="tabindex"
 						:aria-label="`Abrir imagen ${index + 1}`"
-						@click="openImageModal(image.src)"
+						@click="openImageModal(image)"
 					/>
 					<NuxtPicture
 						quality="60"
@@ -38,11 +38,11 @@
 						provider="cloudinary"
 						class="h-full w-full"
 						:img-attrs="{
-							alt: '',
+							alt: image.title ?? '',
 							class: 'object-cover w-full h-full',
-							fetchpriority: index < 9 ? 'high' : undefined,
+							fetchpriority: index < 15 ? 'high' : undefined,
 						}"
-						:loading="index < 9 ? 'eager' : 'lazy'"
+						:loading="index < 15 ? 'eager' : 'lazy'"
 						sizes="318px sm:389px"
 					/>
 				</article>
@@ -73,7 +73,7 @@
 						class="absolute inset-0 cursor-pointer"
 						:tabindex="tabindex"
 						:aria-label="`Abrir imagen ${virtualItem.index + 1}`"
-						@click="openImageModal(images[virtualItem.index]?.src || '')"
+						@click="openImageModal(images[virtualItem.index] || { src: '' })"
 					/>
 					<NuxtPicture
 						quality="60"
@@ -86,11 +86,11 @@
 						provider="cloudinary"
 						class="h-full w-full"
 						:img-attrs="{
-							alt: '',
+							alt: images[virtualItem.index]?.title ?? '',
 							class: 'object-cover w-full h-full',
-							fetchpriority: virtualItem.index < 9 ? 'high' : undefined,
+							fetchpriority: virtualItem.index < 15 ? 'high' : undefined,
 						}"
-						:loading="virtualItem.index < 9 ? 'eager' : 'lazy'"
+						:loading="virtualItem.index < 15 ? 'eager' : 'lazy'"
 						sizes="318px sm:389px"
 					/>
 				</article>
@@ -174,8 +174,8 @@ const virtualScrollOptions = computed<VirtualScrollOptions>(() => ({
 const { getVirtualItemStyle, measureElement, virtualItems, virtualViewportStyle } = useVirtualizeScroll(virtualScrollOptions);
 
 const { open } = useAppOverlay();
-function openImageModal(src: string) {
-	open(GalleryModal, { src });
+function openImageModal(image: Image) {
+	open(GalleryModal, image);
 }
 
 function toTop() {
