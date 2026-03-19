@@ -9,7 +9,7 @@
 				:description="description"
 			/>
 			<HeroMarquee
-				v-if="mdAndLarger"
+				v-if="mdAndLarger && images"
 				:images
 			/>
 		</UiContainer>
@@ -142,5 +142,11 @@ const cards: UiCardProps[] = [
 ];
 
 const mdAndLarger = useBreakpoints(breakpointsTailwind, { ssrWidth: 767 }).greaterOrEqual("md");
-const images = await useImages(6);
+const { imageStore } = useImagesStore();
+const images = computed(() =>
+	imageStore.value
+		.find((obj) => obj.id === 1)
+		?.images.slice(0, 5)
+		.map((image) => image.src),
+);
 </script>

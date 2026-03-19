@@ -12,6 +12,7 @@
 			/>
 
 			<GalleryArea
+				ref="area"
 				:page="page"
 				:pages-max="pageCount"
 				:images="images"
@@ -42,35 +43,38 @@ useSeoMeta({
 	twitterTitle: title,
 	twitterDescription: seoDescription,
 });
-
 const { pageCount } = usePageCount();
+const { imageStore, setPage } = useImagesStore();
 
 const page = ref(1);
-const images = ref(await useImages(48, page.value));
+const images = ref<Image[]>([]);
 
-let isWatching = true;
-watch(page, async (newPage, oldPage) => {
-	if (newPage !== oldPage && isWatching) {
-		await loadMore(true);
+watchEffect(() => {
+	const nextImages = imageStore.value.find((obj) => obj.id === page.value)?.images || [];
+	if (nextImages.length) {
+		images.value.push(...nextImages);
 	}
 });
 
-const loading = ref(false);
-async function loadMore(reset = false) {
-	if (loading.value) return;
-	loading.value = true;
+const infiniteScroll = ref(false);
+const area = useTemplateRef("area");
+watch(page, async (newPage, oldPage) => {
+	if (newPage === oldPage) return;
 
-	if (reset) images.value = [];
+	if (infiniteScroll.value) {
+		setPage(newPage);
+		infiniteScroll.value = false;
+	} else {
+		images.value = [];
+		setPage(newPage);
+		area.value?.toTop();
+	}
+});
 
-	const loadedImages = await $fetch("/api/cloudinary-images", { query: { page: page.value, limit: 50 } });
-	images.value.push(...loadedImages);
-	loading.value = false;
-}
-
-async function handleInfiniteScroll() {
-	isWatching = false;
-	page.value++;
-	await loadMore();
-	isWatching = true;
+function handleInfiniteScroll() {
+	if (page.value !== pageCount.value) {
+		infiniteScroll.value = true;
+		page.value++;
+	}
 }
 </script>
