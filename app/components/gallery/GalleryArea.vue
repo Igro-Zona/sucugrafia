@@ -25,7 +25,7 @@
 						class="absolute inset-0 cursor-pointer"
 						:tabindex="tabindex"
 						:aria-label="`Abrir imagen ${index + 1}`"
-						@click="openImageModal(image)"
+						@click="openImageModal(image.src)"
 					/>
 					<NuxtPicture
 						quality="60"
@@ -34,7 +34,7 @@
 						densities="1x 2x"
 						format="avif,webp"
 						legacy-format="jpg"
-						:src="image"
+						:src="image.src"
 						provider="cloudinary"
 						class="h-full w-full"
 						:img-attrs="{
@@ -73,7 +73,7 @@
 						class="absolute inset-0 cursor-pointer"
 						:tabindex="tabindex"
 						:aria-label="`Abrir imagen ${virtualItem.index + 1}`"
-						@click="openImageModal(images[virtualItem.index] || '')"
+						@click="openImageModal(images[virtualItem.index]?.src || '')"
 					/>
 					<NuxtPicture
 						quality="60"
@@ -82,7 +82,7 @@
 						densities="1x 2x"
 						format="avif,webp"
 						legacy-format="jpg"
-						:src="images[virtualItem.index] || ''"
+						:src="images[virtualItem.index]?.src || ''"
 						provider="cloudinary"
 						class="h-full w-full"
 						:img-attrs="{
@@ -111,13 +111,18 @@
 import { useWindowSize } from "@vueuse/core";
 import GalleryModal from "~/components/gallery/GalleryModal.vue";
 
+export interface Image {
+	src: string;
+	title?: string;
+	description?: string;
+}
 export interface GalleryAreaProps {
 	page: number;
-	pagesMax: number;
-	images: string[];
+	pagesMax?: number;
+	images?: Image[];
 }
 const emits = defineEmits(["infinite-scroll"]);
-const { page, pagesMax, images } = defineProps<GalleryAreaProps>();
+const { page, pagesMax = 1, images = [] } = defineProps<GalleryAreaProps>();
 
 const isVirtualizerReady = ref(false);
 onMounted(() => {
@@ -172,4 +177,9 @@ const { open } = useAppOverlay();
 function openImageModal(src: string) {
 	open(GalleryModal, { src });
 }
+
+function toTop() {
+	scrollList.value?.scrollTop();
+}
+defineExpose({ toTop });
 </script>

@@ -87,7 +87,7 @@ export interface GalleryPaginationProps {
 	defaultPage?: number;
 	page?: number;
 	siblingCount: number;
-	total: number;
+	total?: number;
 }
 
 defineEmits(["update:page"]);

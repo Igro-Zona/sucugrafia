@@ -5,8 +5,7 @@ export default defineCachedEventHandler(
 		const config = useRuntimeConfig(event);
 		const query = getQuery(event);
 		const page = query.page ? Number(query.page) : 1;
-		const maxResults = query.limit ? Number(query.limit) : 20;
-		const res = await $fetch<{ resources: { public_id: string }[] }>(
+		const res = await $fetch<{ resources: { public_id: string; context?: { custom: { alt?: string; caption?: string } } }[] }>(
 			`https://api.cloudinary.com/v1_1/${config.cloudinaryCloudName}/resources/by_asset_folder`,
 			{
 				method: "GET",
@@ -15,11 +14,15 @@ export default defineCachedEventHandler(
 				},
 				query: {
 					asset_folder: `gallery/${page}`,
-					max_results: maxResults,
+					max_results: 48,
 				},
 			},
 		);
-		return res.resources.map((image) => image.public_id);
+		return res.resources.map((image) => ({
+			src: image.public_id,
+			title: image.context?.custom.caption,
+			description: image.context?.custom.alt,
+		}));
 	},
 	{ maxAge: 86400, staleMaxAge: 86400 },
 );

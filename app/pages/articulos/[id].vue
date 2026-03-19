@@ -161,7 +161,7 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 
 const isFooterVisible = inject("is-footer-visible");
 
-const readingTimeText = computed(() => data.value?.meta.readingTime?.text);
+const readingTimeText = computed(() => toReadingTime(data.value?.meta.readingTime?.minutes));
 const formattedDate = computed(() => formatDate(data.value?.meta.date));
 
 const { isLinkCopied, copyLink, share } = useArticleActions(route);

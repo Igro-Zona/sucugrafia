@@ -6,7 +6,7 @@ const articleSchema = z.object({
 	meta: z.object({
 		date: z.optional(z.date()),
 		tags: z.optional(z.array(z.string())),
-		readingTime: z.object({ text: z.string() }),
+		readingTime: z.object({ minutes: z.number(), text: z.string() }),
 		author: z.optional(z.string()),
 		thumbnail: z.optional(z.string()),
 		contentDescription: z.optional(z.string()),
