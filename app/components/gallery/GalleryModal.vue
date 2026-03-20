@@ -16,7 +16,10 @@
 				/>
 			</div>
 
-			<p class="font-latto text-muted max-h-18 overflow-y-scroll text-pretty">
+			<p
+				v-if="description"
+				class="font-latto text-muted max-h-18 overflow-y-scroll text-pretty"
+			>
 				{{ description }}
 			</p>
 		</div>

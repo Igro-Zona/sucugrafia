@@ -35,11 +35,11 @@
 	"devDependencies": {
 		"@iconify-json/lucide": "^1.2.98",
 		"@nuxt/eslint": "^1.15.2",
-		"eslint": "^10.0.3",
+		"eslint": "^10.1.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.4.0",
 		"nitro-cloudflare-dev": "^0.2.2",
-		"nitropack": "^2.13.1",
+		"nitropack": "^2.13.2",
 		"nuxt-aos": "^1.2.6",
 		"prettier": "^3.8.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
@@ -47,7 +47,7 @@
 		"vite-plugin-eslint2": "^5.0.5",
 		"vue": "^3.5.30",
 		"vue-tsc": "^3.2.6",
-		"wrangler": "^4.75.0",
+		"wrangler": "^4.76.0",
 		"zod": "^4.3.6"
 	},
 	"lint-staged": {
