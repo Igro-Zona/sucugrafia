@@ -26,14 +26,14 @@
 		"@vueuse/integrations": "^14.2.1",
 		"better-sqlite3": "^12.8.0",
 		"commander": "^13.1.0",
-		"focus-trap": "^8.0.0",
+		"focus-trap": "^8.0.1",
 		"nuxt": "^4.4.2",
 		"reka-ui": "^2.9.2",
 		"remark-reading-time": "^2.1.0",
 		"vue-router": "^5.0.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.98",
+		"@iconify-json/lucide": "^1.2.99",
 		"@nuxt/eslint": "^1.15.2",
 		"eslint": "^10.1.0",
 		"husky": "^9.1.7",
@@ -43,11 +43,11 @@
 		"nuxt-aos": "^1.2.6",
 		"prettier": "^3.8.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
-		"typescript": "^5.9.3",
-		"vite-plugin-eslint2": "^5.0.5",
-		"vue": "^3.5.30",
+		"typescript": "^6.0.2",
+		"vite-plugin-eslint2": "^5.1.0",
+		"vue": "^3.5.31",
 		"vue-tsc": "^3.2.6",
-		"wrangler": "^4.76.0",
+		"wrangler": "^4.78.0",
 		"zod": "^4.3.6"
 	},
 	"lint-staged": {
