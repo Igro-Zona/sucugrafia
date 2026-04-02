@@ -19,12 +19,12 @@ function generateColor(key: string, shade: number) {
 }
 
 export default defineNuxtPlugin(() => {
-	const appConfig = useAppConfig();
+	const appConfig = useAppConfig() as { ui: { colors: Record<string, string>; prefix?: string } };
 	const nuxtApp = useNuxtApp();
 
 	const root = computed(() => {
 		const { neutral, ...colors } = appConfig.ui.colors;
-		const prefix = (appConfig.ui as { prefix?: string }).prefix;
+		const prefix = appConfig.ui.prefix;
 
 		return `@layer theme {
   :root, :host {
