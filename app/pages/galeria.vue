@@ -58,7 +58,7 @@ watchEffect(() => {
 
 const infiniteScroll = ref(false);
 const area = useTemplateRef("area");
-watch(page, async (newPage, oldPage) => {
+watch(page, (newPage, oldPage) => {
 	if (newPage === oldPage) return;
 
 	if (infiniteScroll.value) {

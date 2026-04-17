@@ -16,43 +16,46 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
-		"@nuxt/content": "^3.12.0",
+		"@nuxt/content": "^3.13.0",
 		"@nuxt/fonts": "^0.14.0",
 		"@nuxt/icon": "^2.2.1",
 		"@nuxt/image": "^2.0.0",
 		"@nuxtjs/seo": "^4.0.2",
 		"@tailwindcss/vite": "^4.2.2",
-		"@tanstack/vue-virtual": "^3.13.23",
+		"@tanstack/vue-virtual": "^3.13.24",
 		"@vueuse/integrations": "^14.2.1",
-		"better-sqlite3": "^12.8.0",
+		"better-sqlite3": "^12.9.0",
 		"commander": "^13.1.0",
 		"focus-trap": "^8.0.1",
 		"nuxt": "^4.4.2",
-		"reka-ui": "^2.9.3",
+		"reka-ui": "^2.9.6",
 		"remark-reading-time": "^2.1.0",
 		"vue-router": "^5.0.4"
 	},
 	"devDependencies": {
-		"@iconify-json/lucide": "^1.2.101",
+		"@iconify-json/lucide": "^1.2.102",
 		"@nuxt/eslint": "^1.15.2",
-		"eslint": "^10.1.0",
+		"eslint": "^10.2.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.4.0",
 		"nitro-cloudflare-dev": "^0.2.2",
 		"nitropack": "^2.13.3",
 		"nuxt-aos": "^1.2.6",
-		"prettier": "^3.8.1",
+		"prettier": "^3.8.3",
 		"prettier-plugin-tailwindcss": "^0.7.2",
-		"typescript": "^6.0.2",
+		"typescript": "^6.0.3",
 		"vite-plugin-eslint2": "^5.1.0",
-		"vue": "^3.5.31",
+		"vue": "^3.5.32",
 		"vue-tsc": "^3.2.6",
-		"wrangler": "^4.80.0",
+		"wrangler": "^4.83.0",
 		"zod": "^4.3.6"
 	},
 	"overrides": {
 		"lodash": "4.18.1",
-		"serialize-javascript": "7.0.5"
+		"serialize-javascript": "7.0.5",
+		"vite": "7.3.2",
+		"unhead": "2.1.13",
+		"unimport": "5.6.0"
 	},
 	"lint-staged": {
 		"*.{js,ts,vue,css,md,json}": [
