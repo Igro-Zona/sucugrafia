@@ -24,7 +24,15 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [tailwindcss({ optimize: true })],
 		optimizeDeps: { include: ["@vueuse/core", "reka-ui", "tailwindcss/colors", "@vue/devtools-core", "@vue/devtools-kit"] },
-		build: { sourcemap: false },
+		build: {
+			sourcemap: false,
+			rollupOptions: {
+				onwarn(warning, warn) {
+					if (warning.code === "SOURCEMAP_BROKEN") return;
+					warn(warning);
+				},
+			},
+		},
 	},
 
 	app: { rootAttrs: { class: "isolate" }, head: { htmlAttrs: { class: "dark" } } },
